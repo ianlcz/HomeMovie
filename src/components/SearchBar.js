@@ -44,7 +44,7 @@ const SearchBar = () => {
   return (
     <>
       <div className="flex justify-center">
-        <div className="flex flex-col w-11/12 items-center mb-6 py-4 bottom-0 bg-blue-600 bg-opacity-50 shadow-md backdrop-filter backdrop-blur-lg rounded-2xl z-30 fixed">
+        <div className="flex flex-col w-[97%] items-center lg:mb-6 py-4 bottom-0 bg-blue-600 bg-opacity-50 shadow-md backdrop-filter backdrop-blur-lg rounded-2xl z-30 fixed">
           <TitlePage />
           <Actions />
 

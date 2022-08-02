@@ -2,5 +2,6 @@
   "rules": {
     "eslint-disable-next-line": "off"
   },
+  "parserOptions": { "ecmaVersion": "latest" },
   "parser": "babel-eslint"
 }
