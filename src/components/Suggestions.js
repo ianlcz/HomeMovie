@@ -7,7 +7,7 @@ const Suggestions = ({ result }) => {
   const { isLoading } = useContext(AuthContext);
 
   return (
-    <div className="mt-84 lg:mt-72">
+    <div className="mt-6">
       {result.length > 0 ? (
         <>
           <ul className=" w-11/12 mx-auto grid grid-flow-cols grid-cols-1 lg:grid-cols-3 lg:gap-x-12 gap-y-3 lg:gap-y-6">
@@ -17,7 +17,7 @@ const Suggestions = ({ result }) => {
           </ul>
         </>
       ) : isLoading ? (
-        <div className="flex items-center w-max mx-auto mt-60">
+        <div className="flex items-center w-max mx-auto mt-72">
           <IoSyncCircle className="animate-spin w-6 mr-2 h-6 text-blue-600" />
           <p className="text-blue-600 text-sm font-semibold">
             Récupération de vos films...

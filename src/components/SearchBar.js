@@ -44,11 +44,11 @@ const SearchBar = () => {
   return (
     <>
       <div className="flex justify-center">
-        <div className="flex flex-col w-11/12 lg:w-1/2 items-center mt-6 py-6 bg-blue-600 bg-opacity-60 shadow-md backdrop-filter backdrop-blur-xl rounded-2xl z-30 fixed">
+        <div className="flex flex-col w-11/12 items-center mb-6 py-4 bottom-0 bg-blue-600 bg-opacity-50 shadow-md backdrop-filter backdrop-blur-lg rounded-2xl z-30 fixed">
           <TitlePage />
           <Actions />
 
-          <div className="flex flex-col lg:flex-row items-baseline w-4/5 mx-auto mt-6 mb-3 justify-between">
+          <div className="flex flex-col lg:flex-row items-baseline w-4/5 lg:w-3/5 mx-auto mt-6 mb-3 justify-between">
             <input
               type="text"
               value={userInput}
