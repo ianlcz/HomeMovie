@@ -1,16 +1,16 @@
-import Credit from "./screens/Credit";
-import Home from "./screens/Home";
-import Login from "./screens/Login";
-import Create from "./screens/movie/create";
-import Delete from "./screens/movie/delete";
-import Read from "./screens/movie/read";
-import Update from "./screens/movie/update";
-import Register from "./screens/Register";
+import Credit from "./pages/Credit";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Create from "./pages/movie/create";
+import Delete from "./pages/movie/delete";
+import Read from "./pages/movie/read";
+import Update from "./pages/movie/update";
+import Register from "./pages/Register";
 
 const routes = [
   {
     path: "/",
-    component: localStorage.getItem("authToken") ? <Home/> : <Login/>,
+    component: localStorage.getItem("authToken") ? <Home /> : <Login />,
     isProtected: false,
   },
   { path: "/register", component: <Register />, isProtected: false },

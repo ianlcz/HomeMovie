@@ -1,22 +1,17 @@
-# pull official base image
 FROM node:lts-alpine
 
-# set working directory
-WORKDIR /movie-house
+LABEL maintainer="ianlcz.io"
 
-# add `/app/node_modules/.bin` to $PATH
-ENV PATH /movie-house/node_modules/.bin:$PATH
+WORKDIR /app
 
-# install app dependencies
-COPY package.json ./
-COPY package-lock.json ./
-RUN npm install --silent
-RUN npm install react-scripts -g --silent
+COPY package*.json ./
 
-# add app
-COPY . ./
+RUN npm install
+
+COPY . .
+
+RUN cd ./api && npm install
 
 EXPOSE 3000
 
-# start app
-CMD ["npm", "start"]
+CMD ["npm", "run", "start"]

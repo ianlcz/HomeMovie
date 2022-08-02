@@ -1,6 +1,11 @@
 import { useContext } from "react";
 import { useLocation } from "react-router";
-import { IoAddCircle, IoExit, IoPencil, IoRemoveCircle } from "react-icons/io5";
+import {
+  IoAddCircle,
+  IoExit,
+  IoSettings,
+  IoRemoveCircle,
+} from "react-icons/io5";
 
 import AuthContext from "../auth/AuthContext";
 
@@ -34,9 +39,9 @@ const Actions = ({ children }) => {
         <div className="flex flex-row mt-2">
           <a
             href={`/edit/${children.ref}/${encodeURIComponent(children.title)}`}
-            className="flex items-center w-max mr-5 px-2 py-1 text-yellow-600 hover:text-yellow-50 border border-yellow-500 hover:border-yellow-400 bg-yellow-50 hover:bg-yellow-400 rounded-full shadow"
+            className="flex items-center w-max mr-5 px-2 py-1 text-gray-400 hover:text-gray-50 border border-gray-400 hover:border-gray-400 bg-gray-50 hover:bg-gray-400 rounded-full shadow"
           >
-            <IoPencil className="w-4 h-4" />
+            <IoSettings className="w-4 h-4" />
             <span className="ml-2 text-xs">Modifier</span>
           </a>
 

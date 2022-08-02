@@ -154,7 +154,7 @@ const Update = () => {
                 className={`my-8 w-max m-auto ${
                   suggestion.length === 1
                     ? ""
-                    : "grid grid-flow-col grid-rows-8 lg:grid-cols-2 lg:grid-rows-4 gap-8"
+                    : "grid grid-flow-col grid-rows-[repeat(8, minmax(0, 1fr))] lg:grid-cols-2 lg:grid-rows-4 gap-8"
                 }`}
               >
                 {suggestion

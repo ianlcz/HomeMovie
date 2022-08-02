@@ -31,7 +31,7 @@ const Section = ({ title, content }) =>
               key={c.id}
               className={
                 c.profile_path
-                  ? "pr-2 hover:bg-blue-50 hover:bg-opacity-20 backdrop-filter hover:backdrop-blur-md rounded-full transition duration-1000 cursor-pointer"
+                  ? "pr-2 hover:bg-blue-50/20 backdrop-filter hover:backdrop-blur-md rounded-full transition duration-1000 cursor-pointer"
                   : ""
               }
             >

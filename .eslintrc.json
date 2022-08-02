@@ -2,6 +2,10 @@
   "rules": {
     "eslint-disable-next-line": "off"
   },
-  "parserOptions": { "ecmaVersion": "latest" },
-  "parser": "babel-eslint"
+  "parserOptions": {
+    "requireConfigFile": false,
+    "ecmaVersion": "latest"
+  },
+  "parser": "@babel/eslint-parser",
+  "plugins": ["eslint-plugin-jsx"]
 }

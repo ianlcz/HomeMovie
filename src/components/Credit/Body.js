@@ -17,7 +17,7 @@ const Body = ({
     filmography,
   },
 }) => (
-  <div className="w-full lg:ml-84 mt-6 lg:mt-0 lg:pt-8 text-blue-600">
+  <div className="w-full lg:ml-[22rem] mt-6 lg:mt-0 lg:pt-8 text-blue-600">
     {biography ? (
       <Section title="Biographie" isBiography>
         <span className="leading-snug font-light text-sm lg:text-base text-justify">

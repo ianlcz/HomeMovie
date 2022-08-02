@@ -1,18 +1,8 @@
 module.exports = {
-  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {
-      margin: {
-        84: "22rem",
-      },
-      gridTemplateRows: {
-        8: "repeat(8, minmax(0, 1fr))",
-      },
-      aspectRatio: {
-        9.4: "9.4",
-      },
-    },
+    extend: {},
   },
   variants: {
     extend: {

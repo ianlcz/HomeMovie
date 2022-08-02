@@ -21,11 +21,11 @@ const Background = ({
       className={`top-0 left-0 w-full h-full
       ${
         isOnPane
-          ? `py-12 shadow-inner rounded-2xl bg-blue-600 ${
-              hasCover ? "bg-opacity-50" : undefined
+          ? `py-12 shadow-inner rounded-2xl ${
+              hasCover ? "bg-blue-600/50" : undefined
             }`
-          : `px-8 py-6 text-white bg-blue-600 ${
-              hasCover ? "bg-opacity-70" : undefined
+          : `px-8 py-6 text-white ${
+              hasCover ? "bg-blue-600/70" : undefined
             }`
       } z-10 relative`}
     >
