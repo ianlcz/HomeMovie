@@ -22,10 +22,10 @@ const Background = ({
       ${
         isOnPane
           ? `py-12 shadow-inner rounded-2xl ${
-              hasCover ? "bg-blue-600/50" : undefined
+              hasCover ? "bg-blue-600/50" : "bg-blue-600"
             }`
           : `px-8 py-6 text-white ${
-              hasCover ? "bg-blue-600/70" : undefined
+              hasCover ? "bg-blue-600/70" : "bg-blue-600"
             }`
       } z-10 relative`}
     >

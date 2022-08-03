@@ -7,5 +7,5 @@
     "ecmaVersion": "latest"
   },
   "parser": "@babel/eslint-parser",
-  "plugins": ["eslint-plugin-jsx"]
+  "plugins": ["typescript"]
 }
