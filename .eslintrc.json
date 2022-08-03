@@ -6,6 +6,6 @@
     "requireConfigFile": false,
     "ecmaVersion": "latest"
   },
-  "parser": "typescript-eslint-parser",
-  "plugins": ["typescript"]
+  "parser": "@babel/eslint-parser",
+  "plugins": ["jsx"]
 }
