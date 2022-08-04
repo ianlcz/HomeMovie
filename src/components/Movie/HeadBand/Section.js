@@ -37,7 +37,7 @@ const Section = ({ title, content }) =>
             >
               {c.profile_path ? (
                 <a
-                  href={`/credit/${c.id}`}
+                  href={`/credits/${c.id}`}
                   className="flex flex-row items-center"
                   title="Voir le profil"
                 >
