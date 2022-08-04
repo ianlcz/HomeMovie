@@ -1,5 +1,5 @@
 import Credit from "./pages/credits/[character_id]";
-import Home from "./pages";
+import Home from "./pages/home";
 import Login from "./pages/login";
 import Create from "./pages/movies/new";
 import Delete from "./pages/movies/delete/[reference]/[title]";
