@@ -12,7 +12,7 @@ const Pane = ({
   },
 }) => (
   <div
-    className={`flex flex-col bg-blue-50 -mt-8 px-6 pt-6 rounded-t-2xl ${
+    className={`flex flex-col bg-blue-50 -mt-8 px-4 pt-4 lg:px-14 lg:pt-8 rounded-t-2xl ${
       trailers.length > 0
         ? undefined
         : belongs_to_collection
@@ -82,7 +82,7 @@ const Pane = ({
                         className="w-12 h-12 lg:w-16 lg:h-16 md:w-20 md:h-auto object-cover rounded-xl shadow-md"
                       />
                     ) : undefined}
-                    <div className="lg:ml-2 px-2 lg:px-4 py-2">
+                    <div className="px-2 lg:px-4 py-2">
                       <p className="w-max px-2 shadow-inner text-white text-xs lg:text-sm bg-gradient-to-br from-blue-600 to-blue-400 rounded-full">
                         <span className="font-light">{`${
                           c.name.split(" ")[0]
