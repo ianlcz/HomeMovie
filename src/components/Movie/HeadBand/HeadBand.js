@@ -64,7 +64,7 @@ const HeadBand = ({
         title: title,
       }}
     >
-      <div className="flex flex-col lg:flex-row mt-4 mb-14 items-center justify-evenly">
+      <div className="flex flex-col lg:flex-row mt-4 mb-14 items-center justify-around">
         <div className="flex flex-col">
           <Poster>{{ poster_path, title }}</Poster>
 

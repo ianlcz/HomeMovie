@@ -44,17 +44,18 @@ const SearchBar = () => {
   return (
     <>
       <div className="flex justify-center">
-        <div className="flex flex-col w-[99%] lg:w-[98%] items-center mb-1 lg:mb-4 py-4 bottom-0 bg-blue-600/60 shadow-lg backdrop-filter backdrop-blur-xl rounded-2xl z-30 fixed">
+        <div className="flex flex-col w-[96%] items-center mb-0 py-4 lg:py-4 bottom-0 bg-blue-600/60 shadow-lg backdrop-filter backdrop-blur-2xl rounded-t-2xl z-30 fixed">
           <TitlePage />
 
-          <div className="flex flex-col lg:flex-row items-center w-4/5 lg:w-4/5 mx-auto mt-6 mb-3 justify-between">
+          <div className="flex flex-col lg:flex-row items-center w-full lg:w-4/5 mx-auto mt-6 mb-3 justify-evenly">
             <Actions />
+
             <input
               type="text"
               value={userInput}
               onChange={(e) => setUserInput(e.target.value)}
               placeholder="Rechercher un film ou une référence"
-              className="w-full lg:w-5/6 lg:mr-10 mt-4 mb-4 lg:mt-0 lg:mb-0 pl-6 h-12 border border-blue-500 text-blue-600 text-sm lg:text-base rounded-full shadow-inner placeholder-blue-400"
+              className="w-[92%] lg:w-5/6 lg:mr-10 mt-4 mb-4 lg:mt-0 lg:mb-0 lg:ml-10 pl-6 h-12 border border-blue-500 text-blue-600 text-sm lg:text-base rounded-full shadow-inner placeholder-blue-400"
             />
 
             <select
