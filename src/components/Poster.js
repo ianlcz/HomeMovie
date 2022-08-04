@@ -9,7 +9,7 @@ const Poster = ({ children: { poster_path, title }, isCenter }) =>
       <img
         src={`https://image.tmdb.org/t/p/original/${poster_path}`}
         alt={
-          useLocation().pathname.includes("/movie/")
+          useLocation().pathname.includes("/movies/")
             ? `Affiche du film : ${title}`
             : `Image de : ${title}`
         }

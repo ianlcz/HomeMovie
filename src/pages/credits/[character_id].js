@@ -3,13 +3,13 @@ import { useParams } from "react-router";
 import { Helmet } from "react-helmet";
 import { isMobileOnly } from "react-device-detect";
 import axios from "axios";
-import Poster from "../components/Poster";
-import Body from "../components/Credit/Body";
-import GoToHome from "../components/Movie/Pane/GoToHome";
-import Footer from "../components/Footer";
+import Poster from "../../components/Poster";
+import Body from "../../components/Credit/Body";
+import GoToHome from "../../components/Movie/Pane/GoToHome";
+import Footer from "../../components/Footer";
 
 const Credit = () => {
-  const { title } = useParams();
+  const { character_id } = useParams();
   const [people, setPeople] = useState({});
   const [bestMovies, setBestMovies] = useState([]);
   const [filmography, setFilmography] = useState({});
@@ -19,13 +19,13 @@ const Credit = () => {
     const fetchData = async () => {
       const peopleData = await axios
         .get(
-          `https://api.themoviedb.org/3/person/${title}?api_key=${process.env.REACT_APP_API_KEY}&language=fr-FR`,
+          `https://api.themoviedb.org/3/person/${character_id}?api_key=${process.env.REACT_APP_API_KEY}&language=fr-FR`,
         )
         .then((res) => res.data)
         .catch((err) => console.error(err.message));
       const movies = await axios
         .get(
-          `https://api.themoviedb.org/3/person/${title}/movie_credits?api_key=${process.env.REACT_APP_API_KEY}&language=fr-FR`,
+          `https://api.themoviedb.org/3/person/${character_id}/movie_credits?api_key=${process.env.REACT_APP_API_KEY}&language=fr-FR`,
         )
         .then((res) => res.data)
         .catch((err) => console.error(err.message));
@@ -62,7 +62,7 @@ const Credit = () => {
       setFilmography(movies);
     };
     fetchData();
-  }, [title]);
+  }, [character_id]);
 
   const {
     profile_path,

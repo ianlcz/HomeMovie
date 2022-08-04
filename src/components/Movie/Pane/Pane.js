@@ -71,7 +71,7 @@ const Pane = ({
                   className="w-fit h-max pr-2 lg:pr-0 hover:bg-blue-100 rounded-xl transition duration-500 ease-in"
                 >
                   <a
-                    href={`/credit/${c.id}`}
+                    href={`/credits/${c.id}`}
                     className="flex flex-row items-center"
                     title="Voir le profil"
                   >

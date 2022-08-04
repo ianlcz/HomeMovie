@@ -39,7 +39,7 @@ const Body = ({
               className="w-full transform hover:scale-110 transition duration-300 ease-in-out"
             >
               <a
-                href={`/movie/${m.title.toLowerCase()}?year=${String(
+                href={`/movies/${m.title.toLowerCase()}?year=${String(
                   new Date(m.release_date).getFullYear(),
                 )}`}
               >

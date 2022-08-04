@@ -1,11 +1,11 @@
-import Credit from "./pages/Credit";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Create from "./pages/movie/create";
-import Delete from "./pages/movie/delete";
-import Read from "./pages/movie/read";
-import Update from "./pages/movie/update";
-import Register from "./pages/Register";
+import Credit from "./pages/credits/[character_id]";
+import Home from "./pages";
+import Login from "./pages/login";
+import Create from "./pages/movies/new";
+import Delete from "./pages/movies/delete/[reference]/[title]";
+import Read from "./pages/movies/[title]";
+import Update from "./pages/movies/edit/[reference]/[title]";
+import Register from "./pages/register";
 
 const routes = [
   {
@@ -14,15 +14,19 @@ const routes = [
     isProtected: false,
   },
   { path: "/register", component: <Register />, isProtected: false },
-  { path: "/new", component: <Create />, isProtected: true },
-  { path: "/movie/:title", component: <Read />, isProtected: true },
-  { path: "/edit/:reference/:title", component: <Update />, isProtected: true },
+  { path: "/movies/new", component: <Create />, isProtected: true },
+  { path: "/movies/:title", component: <Read />, isProtected: true },
   {
-    path: "/delete/:reference/:title",
+    path: "/movies/edit/:reference/:title",
+    component: <Update />,
+    isProtected: true,
+  },
+  {
+    path: "/movies/delete/:reference/:title",
     component: <Delete />,
     isProtected: true,
   },
-  { path: "/credit/:title", component: <Credit />, isProtected: true },
+  { path: "/credits/:character_id", component: <Credit />, isProtected: true },
 ];
 
 export default routes;

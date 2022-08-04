@@ -2,10 +2,10 @@ import { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { useNavigate, useParams } from "react-router";
 import axios from "axios";
-import AuthContext from "../../auth/AuthContext";
-import { getCookieFromBrowser } from "../../auth/cookies";
-import Card from "../../components/Movie/Card";
-import Submit from "../../components/Submit";
+import { getCookieFromBrowser } from "../../../../auth/cookies";
+import AuthContext from "../../../../auth/AuthContext";
+import Card from "../../../../components/Movie/Card";
+import Submit from "../../../../components/Submit";
 import jwtDecode from "jwt-decode";
 
 const Update = () => {
@@ -75,7 +75,7 @@ const Update = () => {
         .catch((err) => console.error(err.message));
 
       navigate(
-        `/movie/${encodeURIComponent(newMovie.title).toLowerCase()}?year=${
+        `/movies/${encodeURIComponent(newMovie.title).toLowerCase()}?year=${
           newMovie.year
         }`,
       );

@@ -50,7 +50,7 @@ const Create = () => {
         .catch((err) => console.error(err.message));
 
       navigate(
-        `/movie/${encodeURIComponent(title.toLowerCase())}?year=${year}`,
+        `/movies/${encodeURIComponent(title.toLowerCase())}?year=${year}`,
       );
       window.location.reload(false);
     }

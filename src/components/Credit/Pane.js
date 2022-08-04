@@ -102,7 +102,7 @@ const Pane = ({ movies, gender }) => {
                 className="px-6 py-4 lg:px-8 lg:py-4 hover:bg-blue-100 cursor-pointer"
               >
                 <a
-                  href={`/movie/${m.title.toLowerCase()}?year=${String(
+                  href={`/movies/${m.title.toLowerCase()}?year=${String(
                     new Date(m.release_date).getFullYear(),
                   )}`}
                 >

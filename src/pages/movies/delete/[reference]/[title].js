@@ -2,8 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { useNavigate, useParams } from "react-router";
 import axios from "axios";
-import AuthContext from "../../auth/AuthContext";
-import Submit from "../../components/Submit";
+import AuthContext from "../../../../auth/AuthContext";
+import Submit from "../../../../components/Submit";
 
 const Delete = () => {
   const { user, movies } = useContext(AuthContext);

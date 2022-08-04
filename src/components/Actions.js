@@ -17,7 +17,7 @@ const Actions = ({ children }) => {
       {!children ? (
         <div className="flex flex-row items-center lg:justify-around w-full lg:w-4/5 lg:mx-auto">
           <a
-            href="/new"
+            href="/movies/new"
             className="flex items-center w-max mx-auto lg:mx-0 px-2 py-1 text-green-600 hover:text-green-50 border border-green-500 hover:border-green-400 bg-green-50 hover:bg-green-400 rounded-full shadow"
           >
             <IoAddCircle className="w-5 h-5" />
@@ -38,7 +38,9 @@ const Actions = ({ children }) => {
       ) : (
         <div className="flex flex-row mt-2">
           <a
-            href={`/edit/${children.ref}/${encodeURIComponent(children.title)}`}
+            href={`/movies/edit/${children.ref}/${encodeURIComponent(
+              children.title,
+            )}`}
             className="flex items-center w-max mr-5 px-2 py-1 text-gray-400 hover:text-gray-50 border border-gray-400 hover:border-gray-400 bg-gray-50 hover:bg-gray-400 rounded-full shadow"
           >
             <IoSettings className="w-4 h-4" />
@@ -46,7 +48,7 @@ const Actions = ({ children }) => {
           </a>
 
           <a
-            href={`/delete/${children.ref}/${encodeURIComponent(
+            href={`/movies/delete/${children.ref}/${encodeURIComponent(
               children.title,
             )}`}
             className="flex items-center w-max px-2 py-1 text-red-600 hover:text-red-50 border border-red-500 hover:border-red-400 bg-red-50 hover:bg-red-400 rounded-full shadow"

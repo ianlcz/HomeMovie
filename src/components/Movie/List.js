@@ -11,7 +11,7 @@ const List = ({ movie }) => {
   return movie.title ? (
     <li>
       <a
-        href={`/movie/${encodeURIComponent(movie.title.toLowerCase())}?year=${
+        href={`/movies/${encodeURIComponent(movie.title.toLowerCase())}?year=${
           movie.year
         }`}
         className="flex flex-row items-center mb-2"
