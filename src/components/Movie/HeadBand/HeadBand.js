@@ -47,7 +47,7 @@ const HeadBand = ({
         FR: { flatrate },
       } = await axios
         .get(
-          `https://api.themoviedb.org/3/movies/${id}/watch/providers?api_key=${process.env.REACT_APP_API_KEY}`,
+          `https://api.themoviedb.org/3/movie/${id}/watch/providers?api_key=${process.env.REACT_APP_API_KEY}`,
         )
         .then((res) => res.data.results)
         .catch((err) => console.error(err.message));
