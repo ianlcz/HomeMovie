@@ -43,7 +43,7 @@ const Delete = () => {
       <Helmet>
         <title>{`Suppression ${
           movie ? "de " + movie.title : "d'un film"
-        } | Movie House`}</title>
+        } | HomeMovie`}</title>
       </Helmet>
       <div className="flex flex-col bg-gradient-to-br from-red-900 to-red-400 min-h-screen">
         <div className="w-5/6 lg:w-auto mx-auto my-auto p-8 bg-red-50 rounded-xl shadow-lg">

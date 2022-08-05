@@ -1,18 +1,18 @@
-# movie-house
+# HomeMovie
 
 This project allows you to manage your movies collection.
 
 ## Development Team
 
 - **Bordeaux Ynov Campus IT department :**
-  - [Yann LE COZ](https://github.com/ianlcz) - Master1 Expert in Web Development
+  - [Yann LE COZ](https://github.com/ianlcz) - Master2 Expert in Web Development
 
 ## Installation
 
 You can install the project by cloning this repository:
 
 ```sh
-git clone https://github.com/ianlcz/movie-house.git
+git clone https://github.com/ianlcz/HomeMovie.git
 ```
 
 ## Before you start

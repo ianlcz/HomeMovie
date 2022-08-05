@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import jwt from "jwt-decode";
 import { getCookieFromBrowser, removeCookie, setCookie } from "./cookies";
+import { shuffleArray } from "../utils";
 
 const AuthContext = createContext({
   user: null,
@@ -137,6 +138,15 @@ export const AuthProvider = ({ children }) => {
             (res) =>
               res.data.results.find((r) => r.iso_3166_1 === "FR")
                 .release_dates[0].release_date,
+          )
+          .catch((err) => console.error(err.message));
+
+        movie.recommendations = await axios
+          .get(
+            `https://api.themoviedb.org/3/movie/${movieID}/recommendations?api_key=${process.env.REACT_APP_API_KEY}&language=fr-FR`,
+          )
+          .then((res) =>
+            shuffleArray(res.data.results.filter((r) => r.backdrop_path)),
           )
           .catch((err) => console.error(err.message));
 

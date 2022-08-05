@@ -59,7 +59,7 @@ const Create = () => {
   return (
     <>
       <Helmet>
-        <title>{`Ajout d'un nouveau film | Movie House`}</title>
+        <title>{`Ajout d'un nouveau film | HomeMovie`}</title>
       </Helmet>
       <div className="flex flex-col bg-gradient-to-br from-blue-600 to-blue-400 min-h-screen">
         <div className="w-4/5 lg:w-3/4 mx-auto my-auto p-8 bg-blue-50 rounded-xl shadow-lg">

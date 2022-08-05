@@ -6,7 +6,12 @@ import Trailer from "./Trailer";
 
 const Pane = ({
   children: {
-    detail: { ref, production_companies, belongs_to_collection },
+    detail: {
+      ref,
+      production_companies,
+      belongs_to_collection,
+      recommendations,
+    },
     cast,
     trailers,
   },
@@ -115,6 +120,35 @@ const Pane = ({
                 Bande-annonce
               </h2>
               <Trailer>{trailers}</Trailer>
+            </>
+          ) : undefined}
+
+          {recommendations.length > 0 ? (
+            <>
+              <h2 className="text-left text-xl mt-6 mb-4 font-medium">
+                Recommandations
+              </h2>
+              <ul className="flex flex-row flex-wrap lg:gap-x-3 gap-y-3 justify-between">
+                {recommendations.slice(0, isMobileOnly ? 4 : 6).map((r) => (
+                  <li
+                    key={r.id}
+                    className="hover:scale-110 duration-700 ease-in-out w-[172px] lg:w-52"
+                  >
+                    <a
+                      href={`/movies/${r.title.toLowerCase()}?year=${String(
+                        new Date(r.release_date).getFullYear(),
+                      )}`}
+                      title={r.title}
+                    >
+                      <img
+                        src={`https://image.tmdb.org/t/p/original/${r.backdrop_path}`}
+                        alt={`Couverture du film ${r.title}`}
+                        className="rounded-lg shadow-md"
+                      />
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </>
           ) : undefined}
 

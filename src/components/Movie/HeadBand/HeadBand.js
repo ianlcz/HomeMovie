@@ -1,5 +1,4 @@
 import { isMobileOnly } from "react-device-detect";
-import { SiPrimevideo, SiNetflix, SiAppletv, SiDiscord } from "react-icons/si";
 import Background from "../Background";
 import ReadingTime from "./ReadingTime";
 import Section from "./Section";
@@ -7,6 +6,7 @@ import Score from "./Score";
 import Poster from "../../Poster";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import StreamPlatform from "./StreamPlatform";
 
 const HeadBand = ({
   children: {
@@ -31,32 +31,6 @@ const HeadBand = ({
     compositors,
   },
 }) => {
-  const [streamPlatfom, setStreamPlatform] = useState(undefined);
-  const streamConfig = {
-    "Amazon Prime Video": {
-      icon: <SiPrimevideo size={50} />,
-      color: "bg-blue-500",
-    },
-    "Apple TV Plus": { icon: <SiAppletv size={40} />, color: "bg-gray-900" },
-    Netflix: { icon: <SiNetflix size={28} />, color: "bg-red-600" },
-  };
-
-  useEffect(() => {
-    const fetchStream = async () => {
-      const {
-        FR: { flatrate },
-      } = await axios
-        .get(
-          `https://api.themoviedb.org/3/movie/${id}/watch/providers?api_key=${process.env.REACT_APP_API_KEY}`,
-        )
-        .then((res) => res.data.results)
-        .catch((err) => console.error(err.message));
-
-      setStreamPlatform(flatrate ? flatrate[0] : undefined);
-    };
-    fetchStream();
-  }, []);
-
   return directors.length !== 0 ? (
     <Background
       data={{
@@ -68,23 +42,7 @@ const HeadBand = ({
         <div className="flex flex-col">
           <Poster>{{ poster_path, title }}</Poster>
 
-          {streamPlatfom && streamConfig[streamPlatfom.provider_name] ? (
-            <div
-              className={`hidden lg:flex flex-row justify-evenly items-center rounded-full w-11/12 mx-auto shadow-md cursor-default mt-4 ${
-                streamPlatfom.provider_name === "Netflix"
-                  ? "py-2"
-                  : streamPlatfom.provider_name === "Apple TV Plus"
-                  ? "py-1"
-                  : "py-0"
-              } ${streamConfig[streamPlatfom.provider_name].color}`}
-            >
-              {streamConfig[streamPlatfom.provider_name].icon}
-              <div className="flex flex-col text-sm leading-tight">
-                <h4 className="font-light">Disponible en streaming</h4>
-                <h3 className="font-semibold">Regardez maintenant</h3>
-              </div>
-            </div>
-          ) : undefined}
+          <StreamPlatform movie_id={id} />
         </div>
 
         <div className="flex flex-col w-full lg:w-3/5 mt-6 lg:mt-0">
@@ -168,12 +126,12 @@ const HeadBand = ({
           <Section title="Un film de" content={directors} />
 
           {tagline ? (
-            <p className="mb-2 text-blue-100 font-light text-sm">{tagline}</p>
+            <p className="text-blue-100 font-light text-sm">{tagline}</p>
           ) : undefined}
 
           {overview ? (
             <>
-              <h2 className="text-center lg:text-left text-xl mb-2 font-medium">
+              <h2 className="text-center lg:text-left text-xl mt-2 mb-2 font-medium">
                 Synopsis
               </h2>
               <p className="leading-snug font-light text-sm lg:text-base text-justify">

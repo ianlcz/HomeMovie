@@ -78,7 +78,7 @@ const Credit = () => {
   return profile_path ? (
     <>
       <Helmet>
-        <title>{`${name} | Movie House`}</title>
+        <title>{`${name} | HomeMovie`}</title>
       </Helmet>
       <div className="bg-blue-50 min-h-screen">
         <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between w-full px-8 pt-8 lg:pt-0">

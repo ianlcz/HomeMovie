@@ -17,7 +17,7 @@ const Login = () => {
   return (
     <>
       <Helmet>
-        <title>{`Connexion | Movie House`}</title>
+        <title>{`Connexion | HomeMovie`}</title>
       </Helmet>
       <div className="h-screen lg:min-h-screen flex flex-col bg-gradient-to-br from-blue-600 to-blue-400">
         <div className="w-11/12 lg:w-1/3 mx-auto my-auto py-8 bg-blue-50 rounded-xl shadow-lg">
