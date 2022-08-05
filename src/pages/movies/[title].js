@@ -50,7 +50,7 @@ const Read = () => {
       <Helmet>
         <title>{`${detail.ref ? `${detail.ref} -` : ""} ${
           detail.title
-        } | Movie House`}</title>
+        } | HomeMovie`}</title>
       </Helmet>
       <HeadBand>{{ detail, directors, compositors }}</HeadBand>
       <Pane>{{ detail, cast, trailers }}</Pane>

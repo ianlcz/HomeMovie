@@ -88,7 +88,7 @@ const Update = () => {
       <Helmet>
         <title>{`Modification ${
           movie ? "de " + movie.title : "d'un film"
-        } | Movie House`}</title>
+        } | HomeMovie`}</title>
       </Helmet>
       <div className="flex flex-col bg-gradient-to-br from-blue-900 to-blue-400 min-h-screen">
         <div className="w-4/5 lg:w-3/4 mx-auto my-auto p-8 bg-blue-50 rounded-xl shadow-lg">
