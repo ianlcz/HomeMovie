@@ -145,9 +145,12 @@ export const AuthProvider = ({ children }) => {
           .get(
             `https://api.themoviedb.org/3/movie/${movieID}/recommendations?api_key=${process.env.REACT_APP_API_KEY}&language=fr-FR`,
           )
-          .then((res) =>
-            shuffleArray(res.data.results.filter((r) => r.backdrop_path)),
-          )
+          .then((res) => {
+            const recommendations = res.data.results.filter(
+              (r) => r.backdrop_path,
+            );
+            return shuffleArray(recommendations);
+          })
           .catch((err) => console.error(err.message));
 
         movie.ref = ref;

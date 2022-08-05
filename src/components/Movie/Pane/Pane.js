@@ -143,7 +143,7 @@ const Pane = ({
                       <img
                         src={`https://image.tmdb.org/t/p/original/${r.backdrop_path}`}
                         alt={`Couverture du film ${r.title}`}
-                        className="rounded-lg shadow-md"
+                        className="rounded-lg shadow-md hover:shadow-lg duration-700 ease-in-out"
                       />
                     </a>
                   </li>
