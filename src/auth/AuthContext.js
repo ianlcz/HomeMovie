@@ -2,7 +2,7 @@ import React, { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import jwt from "jwt-decode";
 import { getCookieFromBrowser, removeCookie, setCookie } from "./cookies";
-import { shuffleArray } from "../utils";
+import { arrayOfUniqueElement, shuffleArray } from "../utils";
 
 const AuthContext = createContext({
   user: null,
@@ -160,6 +160,17 @@ export const AuthProvider = ({ children }) => {
           directors: crew.filter((c) => c.job === "Director"),
           compositors: crew.filter(
             (c) => c.job === "Original Music Composer" || c.job === "Music",
+          ),
+          characters_creators: arrayOfUniqueElement(
+            crew.filter(
+              (c) =>
+                c.known_for_department === "Writing" &&
+                (c.job === "Characters" ||
+                  c.job === "Comic Book" ||
+                  c.job === "Novel" ||
+                  c.job === "Short Story" ||
+                  c.job === "Original Series Creator"),
+            ),
           ),
           cast,
           trailers:
