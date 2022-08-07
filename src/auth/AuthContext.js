@@ -169,7 +169,8 @@ export const AuthProvider = ({ children }) => {
                   c.job === "Comic Book" ||
                   c.job === "Novel" ||
                   c.job === "Short Story" ||
-                  c.job === "Original Series Creator"),
+                  c.job === "Original Series Creator" ||
+                  c.job === "Author"),
             ),
           ),
           cast,
