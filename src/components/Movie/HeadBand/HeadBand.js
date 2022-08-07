@@ -29,6 +29,7 @@ const HeadBand = ({
     },
     directors,
     compositors,
+    charactersCreators,
   },
 }) => {
   return directors.length !== 0 ? (
@@ -140,7 +141,14 @@ const HeadBand = ({
             </>
           ) : undefined}
 
-          <Section title="Bande originale de" content={compositors} />
+          <div className="flex flex-row flex-wrap items-center justify-evenly">
+            <Section
+              title="D'après les personnages créés par"
+              content={charactersCreators}
+            />
+
+            <Section title="Bande originale de" content={compositors} />
+          </div>
 
           <Score>{{ vote_average, budget, revenue }}</Score>
         </div>

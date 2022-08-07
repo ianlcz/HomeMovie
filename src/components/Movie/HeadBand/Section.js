@@ -3,9 +3,9 @@ const Section = ({ title, content }) =>
     <div className={title === "Un film de" ? "my-4 lg:mt-0 lg:mb-6" : "mt-6"}>
       <p className="font-medium text-blue-100 text-center mb-2">{title}</p>
       <ul
-        className={`flex flex-row flex-wrap items-center justify-evenly w-full ${
-          content.length <= 2 ? "lg:w-3/5" : "lg:w-4/5"
-        } mx-auto`}
+        className={`flex flex-row flex-wrap items-center ${
+          content.length > 2 ? "justify-between" : "justify-around"
+        } w-full mx-auto gap-x-4 gap-y-2`}
       >
         {content.map((c) => {
           const body = (

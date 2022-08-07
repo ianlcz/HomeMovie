@@ -13,6 +13,7 @@ const Read = () => {
   const [detail, setDetail] = useState({});
   const [directors, setDirectors] = useState([]);
   const [compositors, setCompositors] = useState([]);
+  const [charactersCreators, setCharactersCreators] = useState([]);
   const [cast, setCast] = useState([]);
   const [trailers, setTrailers] = useState([]);
 
@@ -28,14 +29,21 @@ const Read = () => {
             m.title.toLowerCase() === decodeURIComponent(title.toLowerCase()) &&
             m.year == year,
         )[0];
-        const { movie, directors, compositors, cast, trailers } =
-          await getMovieInfo(
-            movieFound ? movieFound : { ref: "Preview", title, year },
-          );
+        const {
+          movie,
+          directors,
+          compositors,
+          characters_creators,
+          cast,
+          trailers,
+        } = await getMovieInfo(
+          movieFound ? movieFound : { ref: "Preview", title, year },
+        );
 
         setDetail(movie);
         setDirectors(directors);
         setCompositors(compositors);
+        setCharactersCreators(characters_creators);
         setCast(cast);
         setTrailers(trailers);
       } catch (err) {
@@ -52,7 +60,9 @@ const Read = () => {
           detail.title
         } | HomeMovie`}</title>
       </Helmet>
-      <HeadBand>{{ detail, directors, compositors }}</HeadBand>
+      <HeadBand>
+        {{ detail, directors, compositors, charactersCreators }}
+      </HeadBand>
       <Pane>{{ detail, cast, trailers }}</Pane>
     </>
   ) : null;

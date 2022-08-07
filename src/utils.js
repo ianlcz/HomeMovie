@@ -48,3 +48,7 @@ export const shuffleArray = (array) => {
 
   return array;
 };
+
+export const arrayOfUniqueElement = (array, filterParameter = "id") => [
+  ...new Map(array.map((item) => [item[filterParameter], item])).values(),
+];
