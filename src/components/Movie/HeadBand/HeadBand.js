@@ -141,7 +141,7 @@ const HeadBand = ({
             </>
           ) : undefined}
 
-          <div className="flex flex-row flex-wrap items-center justify-evenly">
+          <div className="flex flex-row flex-wrap items-start justify-evenly">
             <Section
               title="D'après les personnages créés par"
               content={charactersCreators}
