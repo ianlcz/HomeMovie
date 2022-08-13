@@ -4,7 +4,9 @@ const Section = ({ title, content }) =>
       <p className="font-medium text-blue-100 text-center mb-2">{title}</p>
       <ul
         className={`flex flex-row flex-wrap items-center ${
-          content.length > 2 && title !== "Un film de" ? "justify-between" : "justify-evenly"
+          content.length > 2 && title !== "Un film de"
+            ? "justify-between"
+            : "justify-evenly"
         } ${
           title === "Un film de" ? "w-full lg:w-1/2" : "w-full"
         } mx-auto gap-x-4 gap-y-2`}
@@ -33,7 +35,7 @@ const Section = ({ title, content }) =>
               key={c.id}
               className={
                 c.profile_path
-                  ? "pr-2 hover:bg-blue-50/20 backdrop-filter hover:backdrop-blur-md rounded-full transition duration-1000 cursor-pointer"
+                  ? "pr-2 hover:bg-blue-50/20 backdrop-filter hover:backdrop-blur rounded-full transition duration-[800ms] ease-in-out cursor-pointer"
                   : ""
               }
             >

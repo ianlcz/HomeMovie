@@ -155,7 +155,7 @@ const Pane = ({
           {belongs_to_collection &&
           belongs_to_collection.name &&
           belongs_to_collection.backdrop_path ? (
-            <div className="w-full lg:w-1/3 mx-auto mt-10">
+            <div className="w-full lg:w-1/2 mx-auto mt-10">
               <Background
                 data={{
                   cover: `https://image.tmdb.org/t/p/original/${belongs_to_collection.backdrop_path}`,
@@ -163,13 +163,40 @@ const Pane = ({
                 }}
                 isOnPane
               >
-                <div className="flex flex-col">
-                  <h3 className="font-bold text-lg text-center text-blue-200">
-                    Collection
-                  </h3>
-                  <p className="ml-2 font-medium text-center text-blue-200">
-                    {belongs_to_collection.name.split(" - ")[0]}
-                  </p>
+                <div className="px-4 flex flex-col text-white">
+                  <div className="flex flex-col lg:flex-row flex-wrap gap-x-1 mb-2 lg:mb-2 text-lg lg:text-xl items-center justify-center">
+                    <h3 className="font-semibold">
+                      Fait partie de la collection
+                    </h3>
+
+                    <p className="ml-0.5 font-normal">
+                      {belongs_to_collection.name.split(" - ")[0]}
+                    </p>
+                  </div>
+
+                  <ul className="flex flex-row flex-wrap font-extralight text justify-left">
+                    <span className="mr-1">Comprend</span>
+                    {belongs_to_collection.parts
+                      .sort(
+                        (a, b) =>
+                          new Date(a.release_date) > new Date(b.release_date),
+                      )
+                      .map((p, index) => (
+                        <li key={p.id}>
+                          <a
+                            href={`/movies/${p.title.toLowerCase()}?year=${String(
+                              new Date(p.release_date).getFullYear(),
+                            )}`}
+                            className="font-normal hover:text-blue-200 transition duration-700 ease-in-out"
+                          >
+                            {p.title}
+                          </a>
+                          {index + 1 < belongs_to_collection.parts.length ? (
+                            <span className="mr-1">,</span>
+                          ) : undefined}
+                        </li>
+                      ))}
+                  </ul>
                 </div>
               </Background>
             </div>
