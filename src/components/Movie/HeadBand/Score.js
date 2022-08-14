@@ -3,7 +3,7 @@ import { formatNumber } from "../../../utils";
 
 const Score = ({ children: { vote_average, budget, revenue } }) =>
   vote_average > 0 || budget || revenue ? (
-    <table className="w-full lg:w-1/2 mx-auto mt-6 shadow-inner bg-blue-100/95 rounded-full">
+    <table className="w-full lg:w-1/2 mx-auto mt-6 shadow bg-blue-100/80 backdrop-filter backdrop-blur-sm rounded-full">
       <thead>
         <tr className="text-base text-blue-600">
           {vote_average > 0 ? (

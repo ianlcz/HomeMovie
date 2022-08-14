@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import jwt from "jwt-decode";
+import lodash from "lodash";
 import { getCookieFromBrowser, removeCookie, setCookie } from "./cookies";
 import { arrayOfUniqueElement, shuffleArray } from "../utils";
 
@@ -113,7 +114,17 @@ export const AuthProvider = ({ children }) => {
           .get(
             `https://api.themoviedb.org/3/movie/${movieID}/credits?api_key=${process.env.REACT_APP_API_KEY}&language=fr-FR`,
           )
-          .then((res) => res.data.crew)
+          .then((res) =>
+            res.data.crew
+              .sort((a, b) => a.popularity < b.popularity)
+              .sort((a, b) =>
+                a.profile_path === b.profile_path
+                  ? 0
+                  : b.profile_path === null
+                  ? -1
+                  : 1,
+              ),
+          )
           .catch((err) => console.error(err.message));
 
         const cast = await axios
@@ -153,6 +164,16 @@ export const AuthProvider = ({ children }) => {
           })
           .catch((err) => console.error(err.message));
 
+        if (movie.belongs_to_collection) {
+          const collection = await axios
+            .get(
+              `https://api.themoviedb.org/3/collection/${movie.belongs_to_collection.id}?api_key=${process.env.REACT_APP_API_KEY}&language=fr-FR`,
+            )
+            .then((res) => res.data)
+            .catch((err) => console.error(err.message));
+          movie.belongs_to_collection = collection;
+        }
+
         movie.ref = ref;
 
         return {
@@ -169,10 +190,11 @@ export const AuthProvider = ({ children }) => {
                   c.job === "Comic Book" ||
                   c.job === "Novel" ||
                   c.job === "Short Story" ||
+                  c.job === "Original Story" ||
                   c.job === "Original Series Creator" ||
                   c.job === "Author"),
             ),
-          ),
+          ).slice(0, 6),
           cast,
           trailers:
             trailers.filter(

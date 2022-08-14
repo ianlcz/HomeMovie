@@ -9,7 +9,7 @@ const Background = ({
       <img
         src={cover}
         className={`w-full h-full object-cover ${
-          isOnPane ? "rounded-2xl" : undefined
+          isOnPane ? "rounded-xl" : undefined
         } z-0 absolute`}
         alt={`Couverture ${
           isOnPane ? "de la collection" : "du film"

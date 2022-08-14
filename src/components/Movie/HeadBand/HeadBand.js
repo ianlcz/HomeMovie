@@ -53,7 +53,7 @@ const HeadBand = ({
             </p>
           ) : undefined}
 
-          <h1 className="flex flex-row w-full items-center justify-center text-center flex-wrap text-2xl lg:text-4xl font-semibold">
+          <h1 className="flex flex-row w-full items-center justify-center text-center text-white/90 flex-wrap text-2xl lg:text-4xl font-semibold">
             {title}
 
             {new Date(release_date).getTime() < new Date().getTime() ? (
@@ -64,7 +64,9 @@ const HeadBand = ({
           </h1>
 
           {original_title.toLowerCase() !== title.toLowerCase() ? (
-            <p className="mt-2 text-sm italic text-center">{original_title}</p>
+            <p className="mt-2 text-sm italic text-white/90 text-center">
+              {original_title}
+            </p>
           ) : undefined}
 
           {new Date(release_date).getTime() > new Date().getTime() ? (
@@ -141,7 +143,7 @@ const HeadBand = ({
             </>
           ) : undefined}
 
-          <div className="flex flex-row flex-wrap items-center justify-evenly">
+          <div className="flex flex-row flex-wrap gap-x-4 items-start justify-around">
             <Section
               title="D'après les personnages créés par"
               content={charactersCreators}
