@@ -1,7 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import jwt from "jwt-decode";
-import lodash from "lodash";
 import { getCookieFromBrowser, removeCookie, setCookie } from "./cookies";
 import { arrayOfUniqueElement, shuffleArray } from "../utils";
 
@@ -162,6 +161,13 @@ export const AuthProvider = ({ children }) => {
             );
             return shuffleArray(recommendations);
           })
+          .catch((err) => console.error(err.message));
+
+        movie.watchProvider = await axios
+          .get(
+            `https://api.themoviedb.org/3/movie/${movieID}/watch/providers?api_key=${process.env.REACT_APP_API_KEY}`,
+          )
+          .then((res) => res.data.results.FR)
           .catch((err) => console.error(err.message));
 
         if (movie.belongs_to_collection) {

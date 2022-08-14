@@ -26,6 +26,7 @@ const HeadBand = ({
       budget,
       revenue,
       release_date,
+      watchProvider,
     },
     directors,
     compositors,
@@ -43,7 +44,7 @@ const HeadBand = ({
         <div className="flex flex-col">
           <Poster>{{ poster_path, title }}</Poster>
 
-          <StreamPlatform movie_id={id} />
+          <StreamPlatform provider={watchProvider} />
         </div>
 
         <div className="flex flex-col w-full lg:w-3/5 mt-6 lg:mt-0">
