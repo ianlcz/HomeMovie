@@ -1,12 +1,12 @@
-import { isMobileOnly } from "react-device-detect";
-import Background from "../Background";
-import ReadingTime from "./ReadingTime";
-import Section from "./Section";
-import Score from "./Score";
-import Poster from "../../Poster";
 import { useEffect, useState } from "react";
+import { isMobileOnly } from "react-device-detect";
 import axios from "axios";
+import Background from "../Background";
+import Poster from "../../Poster";
 import StreamPlatform from "./StreamPlatform";
+import ReadingTime from "./ReadingTime";
+import TechnicalTeamSection from "./TechnicalTeamSection";
+import Score from "./Score";
 
 const HeadBand = ({
   children: {
@@ -127,7 +127,7 @@ const HeadBand = ({
             )}
           </div>
 
-          <Section title="Un film de" content={directors} />
+          <TechnicalTeamSection title="Un film de" content={directors} />
 
           {tagline ? (
             <p className="text-blue-100 font-light text-sm">{tagline}</p>
@@ -145,12 +145,15 @@ const HeadBand = ({
           ) : undefined}
 
           <div className="flex flex-row flex-wrap gap-x-4 items-start justify-around">
-            <Section
+            <TechnicalTeamSection
               title="D'après les personnages créés par"
               content={charactersCreators}
             />
 
-            <Section title="Bande originale de" content={compositors} />
+            <TechnicalTeamSection
+              title="Bande originale de"
+              content={compositors}
+            />
           </div>
 
           <Score>{{ vote_average, budget, revenue }}</Score>

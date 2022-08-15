@@ -90,7 +90,10 @@ const Credit = () => {
 
               <div className="flex flex-col w-full">
                 <h1 className="w-max mx-auto mt-6 px-4 text-center text-2xl font-semibold text-white bg-gradient-to-br from-blue-700 to-blue-400 rounded-full shadow-inner">
-                  {name}
+                  <span className="font-light">{`${name.split(" ")[0]} `}</span>
+                  <span className="font-medium">
+                    {name.split(" ").slice(1).join(" ")}
+                  </span>
                 </h1>
 
                 <p className="w-max mx-auto mt-2 text-base text-blue-500">

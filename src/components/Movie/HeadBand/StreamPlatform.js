@@ -12,8 +12,6 @@ const StreamPlatform = ({ provider }) => {
     Netflix: { icon: <SiNetflix size={28} />, color: "bg-red-600" },
   };
 
-  console.log(provider);
-
   return provider && streamConfig[provider.flatrate[0].provider_name] ? (
     <a
       className={`hidden lg:flex flex-row justify-evenly items-center rounded-full w-11/12 mx-auto shadow-md mt-4 ${

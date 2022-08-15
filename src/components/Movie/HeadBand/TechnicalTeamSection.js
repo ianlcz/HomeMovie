@@ -1,4 +1,4 @@
-const Section = ({ title, content }) =>
+const TechnicalTeamSection = ({ title, content }) =>
   content.length > 0 ? (
     <div className={title === "Un film de" ? "my-4 lg:mt-0 lg:mb-6" : "mt-6"}>
       <p className="font-medium text-blue-100 text-center mb-2">{title}</p>
@@ -57,4 +57,4 @@ const Section = ({ title, content }) =>
     </div>
   ) : null;
 
-export default Section;
+export default TechnicalTeamSection;
