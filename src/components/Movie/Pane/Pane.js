@@ -1,8 +1,7 @@
 import { isMobileOnly } from "react-device-detect";
-import Footer from "../../Footer";
-import Background from "../Background";
+import Collection from "./Collection";
 import GoToHome from "./GoToHome";
-import Trailer from "./Trailer";
+import Footer from "../../Footer";
 
 const Pane = ({
   children: {
@@ -15,34 +14,35 @@ const Pane = ({
     cast,
     trailers,
   },
-}) => (
-  <div
-    className={`flex flex-col bg-blue-50 -mt-8 px-4 pt-4 lg:px-14 lg:pt-8 rounded-t-2xl ${
-      trailers.length > 0
-        ? undefined
-        : belongs_to_collection
-        ? "lg:min-h-screen"
-        : "lg:max-h-screen"
-    } z-10 relative`}
-  >
-    {production_companies ? (
-      <>
-        <div className="text-blue-600 w-full">
-          <h2 className="text-xl text-center font-medium">
-            {production_companies.filter((p) => p.logo_path).length > 1
-              ? "Sociétés"
-              : "Société"}{" "}
-            de production
-          </h2>
+}) => {
+  const PaneItems = [
+    {
+      title: {
+        text: `${
+          production_companies.filter((p) => p.logo_path).slice(0, 2).length > 1
+            ? "Sociétés"
+            : "Société"
+        } de production`,
+        options: "text-center",
+      },
+      body: {
+        verify:
+          production_companies.filter((p) => p.logo_path).slice(0, 2).length >
+          0,
+        content: (
           <ul className="flex flex-row justify-around lg:justify-evenly my-6">
-            {production_companies.filter((p) => p.logo_path).length === 0
-              ? production_companies.slice(0, 2).map((p) => (
-                  <li key={p.id}>
-                    <p className="w-max mx-auto text-center text-xs font-medium">
-                      {p.name}
-                    </p>
-                  </li>
-                ))
+            {production_companies.filter((p) => p.logo_path).slice(0, 2)
+              .length === 0
+              ? production_companies
+                  .filter((p) => p.logo_path)
+                  .slice(0, 2)
+                  .map((p) => (
+                    <li key={p.id}>
+                      <p className="w-max mx-auto text-center text-xs font-medium">
+                        {p.name}
+                      </p>
+                    </li>
+                  ))
               : production_companies
                   .filter((p) => p.logo_path)
                   .slice(0, 2)
@@ -61,9 +61,16 @@ const Pane = ({
                     </li>
                   ))}
           </ul>
-
-          <h2 className="text-xl mb-4 text-center font-medium">Distribution</h2>
-
+        ),
+      },
+    },
+    {
+      title: { text: "Distribution", options: "mb-4 text-center" },
+      body: {
+        verify:
+          cast.filter((p) => p.profile_path).slice(0, isMobileOnly ? 6 : 12)
+            .length > 0,
+        content: (
           <ul
             className={`grid grid-flow-dense lg:grid-flow-col grid-cols-1 grid-rows-1 lg:grid-cols-3 lg:grid-rows-3 gap-x-0 gap-y-4 lg:gap-x-4 lg:gap-y-8`}
           >
@@ -113,104 +120,89 @@ const Pane = ({
                 </li>
               ))}
           </ul>
-
-          {trailers.length > 0 ? (
-            <>
-              <h2 className="text-xl mt-6 mb-4 text-center font-semibold">
-                Bande-annonce
-              </h2>
-              <Trailer>{trailers}</Trailer>
-            </>
-          ) : undefined}
-
-          {recommendations.length > 0 ? (
-            <>
-              <h2 className="text-left text-xl mt-6 mb-4 font-medium">
-                Recommandations
-              </h2>
-              <ul className="flex flex-row flex-wrap lg:gap-x-3 gap-y-3 justify-between">
-                {recommendations.slice(0, isMobileOnly ? 4 : 6).map((r) => (
-                  <li
-                    key={r.id}
-                    className="hover:scale-110 duration-700 ease-in-out w-[172px] lg:w-52"
-                  >
-                    <a
-                      href={`/movies/${r.title.toLowerCase()}?year=${String(
-                        new Date(r.release_date).getFullYear(),
-                      )}`}
-                      title={r.title}
-                    >
-                      <img
-                        src={`https://image.tmdb.org/t/p/original/${r.backdrop_path}`}
-                        alt={`Couverture du film ${r.title}`}
-                        className="rounded-lg shadow-md hover:shadow-lg duration-700 ease-in-out"
-                      />
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </>
-          ) : undefined}
-
-          {belongs_to_collection &&
-          belongs_to_collection.name &&
-          belongs_to_collection.backdrop_path ? (
-            <div className="w-full lg:w-1/2 mx-auto mt-10">
-              <Background
-                data={{
-                  cover: `https://image.tmdb.org/t/p/original/${belongs_to_collection.backdrop_path}`,
-                  title: belongs_to_collection.name,
-                }}
-                isOnPane
-              >
-                <div className="px-4 flex flex-col text-white">
-                  <div className="flex flex-col lg:flex-row flex-wrap gap-x-1 mb-2 lg:mb-2 text-lg lg:text-xl items-center justify-center">
-                    <h3 className="font-semibold">
-                      Fait partie de la collection
-                    </h3>
-
-                    <p className="ml-0.5 font-normal">
-                      {belongs_to_collection.name.split(" - ")[0]}
-                    </p>
-                  </div>
-
-                  <ul className="flex flex-row flex-wrap font-extralight text justify-left">
-                    <span className="mr-1">Comprend</span>
-                    {belongs_to_collection.parts
-                      .sort(
-                        (a, b) =>
-                          new Date(a.release_date) > new Date(b.release_date),
-                      )
-                      .map((p, index) => (
-                        <li key={p.id}>
-                          <a
-                            href={`/movies/${p.title.toLowerCase()}?year=${String(
-                              new Date(p.release_date).getFullYear(),
-                            )}`}
-                            className="font-normal hover:text-blue-200 transition duration-700 ease-in-out"
-                          >
-                            {p.title}
-                          </a>
-                          {index + 1 < belongs_to_collection.parts.length ? (
-                            <span className="mr-1">,</span>
-                          ) : undefined}
-                        </li>
-                      ))}
-                  </ul>
-                </div>
-              </Background>
-            </div>
-          ) : undefined}
-
-          <div className="flex mt-6">
-            <GoToHome />
+        ),
+      },
+    },
+    {
+      title: { text: "Bande-annonce", options: "mt-6 mb-4 text-center" },
+      body: {
+        verify: trailers.length > 0,
+        content: (
+          <div className="aspect-w-16 aspect-h-[9.4] rounded-xl">
+            <iframe
+              className="rounded-xl shadow-lg"
+              src={`https://www.youtube.com/embed/${
+                trailers[
+                  Math.floor(Math.random() * Math.floor(trailers.length))
+                ].key
+              }`}
+              frameBorder="0"
+              allowFullScreen
+            ></iframe>
           </div>
-        </div>
+        ),
+      },
+    },
+    {
+      title: { text: "Recommandations", options: "mt-6 mb-4 text-left" },
+      body: {
+        verify: recommendations.length > 0,
+        content: (
+          <ul className="flex flex-row flex-wrap lg:gap-x-3 gap-y-3 justify-between">
+            {recommendations.slice(0, isMobileOnly ? 4 : 6).map((r) => (
+              <li
+                key={r.id}
+                className="hover:scale-110 duration-700 ease-in-out w-[172px] lg:w-52"
+              >
+                <a
+                  href={`/movies/${r.title.toLowerCase()}?year=${String(
+                    new Date(r.release_date).getFullYear(),
+                  )}`}
+                  title={r.title}
+                >
+                  <img
+                    src={`https://image.tmdb.org/t/p/original/${r.backdrop_path}`}
+                    alt={`Couverture du film ${r.title}`}
+                    className="rounded-lg shadow-md hover:shadow-lg duration-700 ease-in-out"
+                  />
+                </a>
+              </li>
+            ))}
+          </ul>
+        ),
+      },
+    },
+  ];
 
-        <Footer />
-      </>
-    ) : undefined}
-  </div>
-);
+  return (
+    <div
+      className={`flex flex-col bg-blue-50 w-full -mt-8 px-4 pt-4 lg:px-14 lg:pt-8 rounded-t-2xl ${
+        trailers.length > 0
+          ? undefined
+          : belongs_to_collection
+          ? "lg:min-h-screen"
+          : "lg:max-h-screen"
+      } text-blue-600 z-10 relative`}
+    >
+      {PaneItems.map(
+        ({ title: { text, options }, body: { verify, content } }, idx) =>
+          verify ? (
+            <span key={idx}>
+              <h2 className={`${options} text-xl font-medium`}>{text}</h2>
+              {content}
+            </span>
+          ) : undefined,
+      )}
+
+      <Collection data={belongs_to_collection} />
+
+      <div className="flex mt-6">
+        <GoToHome />
+      </div>
+
+      <Footer />
+    </div>
+  );
+};
 
 export default Pane;
