@@ -168,10 +168,12 @@ export const AuthProvider = ({ children }) => {
           .get(
             `https://api.themoviedb.org/3/movie/${movieID}/watch/providers?api_key=${process.env.REACT_APP_API_KEY}`,
           )
-          .then((res) =>
-            res.data.results.FR && res.data.results.FR.flatrate
-              ? res.data.FR
-              : undefined,
+          .then(
+            async ({
+              data: {
+                results: { FR },
+              },
+            }) => (FR && FR.flatrate ? FR : undefined),
           )
           .catch((err) => console.error(err.message));
 

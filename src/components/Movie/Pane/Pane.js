@@ -187,10 +187,10 @@ const Pane = ({
       {PaneItems.map(
         ({ title: { text, options }, body: { verify, content } }, idx) =>
           verify ? (
-            <>
+            <span key={idx}>
               <h2 className={`${options} text-xl font-medium`}>{text}</h2>
               {content}
-            </>
+            </span>
           ) : undefined,
       )}
 

@@ -22,6 +22,7 @@ const StreamPlatform = ({ provider }) => {
           : "py-0"
       } ${streamConfig[provider.flatrate[0].provider_name].color}`}
       href={provider.link}
+      target="_blank"
     >
       {streamConfig[provider.flatrate[0].provider_name].icon}
       <div className="flex flex-col text-sm leading-tight">
