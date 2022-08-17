@@ -1,7 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import jwt from "jwt-decode";
-import lodash from "lodash";
 import { getCookieFromBrowser, removeCookie, setCookie } from "./cookies";
 import { arrayOfUniqueElement, shuffleArray } from "../utils";
 
@@ -145,10 +144,11 @@ export const AuthProvider = ({ children }) => {
           .get(
             `https://api.themoviedb.org/3/movie/${movieID}/release_dates?api_key=${process.env.REACT_APP_API_KEY}`,
           )
-          .then(
-            (res) =>
-              res.data.results.find((r) => r.iso_3166_1 === "FR")
-                .release_dates[0].release_date,
+          .then((res) =>
+            res.data.results.find((r) => r.iso_3166_1 === "FR")
+              ? res.data.results.find((r) => r.iso_3166_1 === "FR")
+                  .release_dates[0].release_date
+              : undefined,
           )
           .catch((err) => console.error(err.message));
 
@@ -162,6 +162,19 @@ export const AuthProvider = ({ children }) => {
             );
             return shuffleArray(recommendations);
           })
+          .catch((err) => console.error(err.message));
+
+        movie.watchProvider = await axios
+          .get(
+            `https://api.themoviedb.org/3/movie/${movieID}/watch/providers?api_key=${process.env.REACT_APP_API_KEY}`,
+          )
+          .then(
+            async ({
+              data: {
+                results: { FR },
+              },
+            }) => (FR && FR.flatrate ? FR : undefined),
+          )
           .catch((err) => console.error(err.message));
 
         if (movie.belongs_to_collection) {
