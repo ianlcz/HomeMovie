@@ -21,7 +21,7 @@ const Background = ({
       className={`top-0 left-0 w-full h-full
       ${
         isOnPane
-          ? `py-12 shadow-inner rounded-2xl ${
+          ? `py-12 shadow-inner rounded-xl ${
               hasCover ? "bg-blue-600/50" : "bg-blue-600"
             }`
           : `px-8 py-6 text-white ${
