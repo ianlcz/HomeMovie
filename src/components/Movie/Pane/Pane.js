@@ -26,6 +26,9 @@ const Pane = ({
         options: "text-center",
       },
       body: {
+        verify:
+          production_companies.filter((p) => p.logo_path).slice(0, 2).length >
+          0,
         content:
           production_companies.filter((p) => p.logo_path).slice(0, 2).length >
           0 ? (
@@ -66,6 +69,9 @@ const Pane = ({
     {
       title: { text: "Distribution", options: "mb-4 text-center" },
       body: {
+        verify:
+          cast.filter((p) => p.profile_path).slice(0, isMobileOnly ? 6 : 12)
+            .length > 0,
         content:
           cast.filter((p) => p.profile_path).slice(0, isMobileOnly ? 6 : 12)
             .length > 0 ? (
@@ -124,6 +130,7 @@ const Pane = ({
     {
       title: { text: "Bande-annonce", options: "mt-6 mb-4 text-center" },
       body: {
+        verify: trailers.length > 0,
         content:
           trailers.length > 0 ? (
             <div className="aspect-w-16 aspect-h-[9.4] rounded-xl">
@@ -144,6 +151,7 @@ const Pane = ({
     {
       title: { text: "Recommandations", options: "mt-6 mb-4 text-left" },
       body: {
+        verify: recommendations.length > 0,
         content:
           recommendations.length > 0 ? (
             <ul className="flex flex-row flex-wrap lg:gap-x-3 gap-y-3 justify-between">
@@ -183,12 +191,13 @@ const Pane = ({
       } text-blue-600 z-10 relative`}
     >
       {PaneItems.map(
-        ({ title: { text, options }, body: { verify, content } }, idx) => (
-          <span key={idx}>
-            <h2 className={`${options} text-xl font-medium`}>{text}</h2>
-            {content}
-          </span>
-        ),
+        ({ title: { text, options }, body: { verify, content } }, idx) =>
+          verify ? (
+            <span key={idx}>
+              <h2 className={`${options} text-xl font-medium`}>{text}</h2>
+              {content}
+            </span>
+          ) : undefined,
       )}
 
       <Collection data={belongs_to_collection} />
