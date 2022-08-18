@@ -19,7 +19,7 @@ const Pane = ({
     {
       title: {
         text: `${
-          production_companies.filter((p) => p.logo_path).slice(0, 2).length > 1
+          production_companies.filter((p) => p.logo_path).slice(0, 4).length > 1
             ? "Sociétés"
             : "Société"
         } de production`,
@@ -27,17 +27,17 @@ const Pane = ({
       },
       body: {
         verify:
-          production_companies.filter((p) => p.logo_path).slice(0, 2).length >
+          production_companies.filter((p) => p.logo_path).slice(0, 4).length >
           0,
         content:
-          production_companies.filter((p) => p.logo_path).slice(0, 2).length >
+          production_companies.filter((p) => p.logo_path).slice(0, 4).length >
           0 ? (
-            <ul className="flex flex-row justify-around lg:justify-evenly my-6">
-              {production_companies.filter((p) => p.logo_path).slice(0, 2)
+            <ul className="flex flex-row flex-wrap gap-4 items-center justify-around lg:justify-evenly my-6">
+              {production_companies.filter((p) => p.logo_path).slice(0, 4)
                 .length === 0
                 ? production_companies
                     .filter((p) => p.logo_path)
-                    .slice(0, 2)
+                    .slice(0, 4)
                     .map((p) => (
                       <li key={p.id}>
                         <p className="w-max mx-auto text-center text-xs font-medium">
@@ -47,7 +47,7 @@ const Pane = ({
                     ))
                 : production_companies
                     .filter((p) => p.logo_path)
-                    .slice(0, 2)
+                    .slice(0, 4)
                     .map((p) => (
                       <li key={p.id}>
                         {p.logo_path ? (
@@ -179,6 +179,8 @@ const Pane = ({
       },
     },
   ];
+
+  console.log(production_companies);
 
   return (
     <div

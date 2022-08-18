@@ -1,7 +1,23 @@
+import axios from "axios";
+import { useEffect } from "react";
 import Background from "../Background";
 
-const Collection = ({ data }) =>
-  data && data.name && data.backdrop_path ? (
+const Collection = ({ data }) => {
+  useEffect(() => {
+    data &&
+      data.parts.forEach(async (m) => {
+        m.cast = await axios
+          .get(
+            `https://api.themoviedb.org/3/movie/${m.id}/credits?api_key=${process.env.REACT_APP_API_KEY}&language=fr-FR`,
+          )
+          .then((res) =>
+            res.data.cast.filter((c) => c.known_for_department === "Acting"),
+          )
+          .catch((err) => console.error(err.message));
+      });
+  }, [data]);
+
+  return data && data.name && data.backdrop_path ? (
     <div className="w-full lg:w-1/2 mx-auto mt-10">
       <Background
         data={{
@@ -23,18 +39,33 @@ const Collection = ({ data }) =>
               .sort(
                 (a, b) => new Date(a.release_date) > new Date(b.release_date),
               )
-              .map(({ id, title, release_date }, index) => (
+              .map(({ id, title, cast, release_date }, idx) => (
                 <li key={id}>
                   <a
-                    href={`/movies/${title.toLowerCase()}?year=${String(
-                      new Date(release_date).getFullYear(),
-                    )}`}
-                    title={`Voir la fiche du film`}
-                    className="font-normal hover:font-medium transition-all duration-700 ease-in-out"
+                    href={
+                      (cast && cast.length === 0) ||
+                      isNaN(new Date(release_date).getFullYear())
+                        ? undefined
+                        : `/movies/${title.toLowerCase()}?year=${String(
+                            new Date(release_date).getFullYear(),
+                          )}`
+                    }
+                    title={
+                      (cast && cast.length === 0) ||
+                      isNaN(new Date(release_date).getFullYear())
+                        ? undefined
+                        : "Voir la fiche du film"
+                    }
+                    className={`font-normal ${
+                      (cast && cast.length === 0) ||
+                      isNaN(new Date(release_date).getFullYear())
+                        ? ""
+                        : "hover:font-medium transition-all duration-700 ease-in-out"
+                    }`}
                   >
                     {title}
                   </a>
-                  {index + 1 < data.parts.length ? (
+                  {idx + 1 < data.parts.length ? (
                     <span className="mr-1">,</span>
                   ) : undefined}
                 </li>
@@ -44,5 +75,6 @@ const Collection = ({ data }) =>
       </Background>
     </div>
   ) : undefined;
+};
 
 export default Collection;

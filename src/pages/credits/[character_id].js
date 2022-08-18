@@ -115,9 +115,10 @@ const Credit = () => {
 
                 {place_of_birth ? (
                   <p className="w-full truncate mx-auto mt-2 text-sm text-center font-semibold text-blue-600">
-                    {place_of_birth
-                      .replace(/s*\[.*?]s*/g, "")
-                      .replace(" ,", ",")}
+                    {[
+                      place_of_birth.split(",")[0],
+                      place_of_birth.split(",").slice(-2),
+                    ].join(",")}
                   </p>
                 ) : undefined}
               </div>
