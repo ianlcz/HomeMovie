@@ -158,7 +158,7 @@ const Pane = ({
               {recommendations.slice(0, isMobileOnly ? 4 : 6).map((r) => (
                 <li
                   key={r.id}
-                  className="hover:scale-110 duration-700 ease-in-out w-[172px] lg:w-52"
+                  className="hover:scale-110 duration-700 ease-in-out w-[172px] lg:w-[204px] 2xl:w-[280px]"
                 >
                   <a
                     href={`/movies/${r.title.toLowerCase()}?year=${String(
@@ -171,7 +171,7 @@ const Pane = ({
                       alt={`Couverture du film ${r.title}`}
                       className="rounded-lg shadow-md hover:shadow-lg duration-700 ease-in-out"
                     />
-                  </a>
+                  </a>‡
                 </li>
               ))}
             </ul>
