@@ -171,7 +171,7 @@ const Pane = ({
                       alt={`Couverture du film ${r.title}`}
                       className="rounded-lg shadow-md hover:shadow-lg duration-700 ease-in-out"
                     />
-                  </a>‡
+                  </a>
                 </li>
               ))}
             </ul>
