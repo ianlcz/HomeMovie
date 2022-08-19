@@ -7,6 +7,7 @@ const Pane = ({
   children: {
     detail: {
       ref,
+      title,
       production_companies,
       belongs_to_collection,
       recommendations,
@@ -180,8 +181,6 @@ const Pane = ({
     },
   ];
 
-  console.log(production_companies);
-
   return (
     <div
       className={`flex flex-col bg-blue-50 w-full -mt-8 px-4 pt-4 lg:px-14 lg:pt-8 rounded-t-2xl ${
@@ -202,7 +201,10 @@ const Pane = ({
           ) : undefined,
       )}
 
-      <Collection data={belongs_to_collection} />
+      <Collection
+        movie_title={title}
+        belongs_to_collection={belongs_to_collection}
+      />
 
       <div className="flex mt-6">
         <GoToHome />

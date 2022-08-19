@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { isMobileOnly } from "react-device-detect";
 import axios from "axios";
 import Background from "../Background";
@@ -32,8 +31,8 @@ const HeadBand = ({
     compositors,
     charactersCreators,
   },
-}) => {
-  return directors.length !== 0 ? (
+}) =>
+  directors.length > 0 ? (
     <Background
       data={{
         cover: `https://image.tmdb.org/t/p/original/${backdrop_path}`,
@@ -160,7 +159,6 @@ const HeadBand = ({
         </div>
       </div>
     </Background>
-  ) : null;
-};
+  ) : undefined;
 
 export default HeadBand;

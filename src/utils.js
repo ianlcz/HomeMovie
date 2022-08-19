@@ -16,17 +16,11 @@ export const formatNumber = (number) =>
   number === null || isNaN(number)
     ? 0
     : String(number).length >= 10
-    ? `${Math.round(number / 1000000000)} Mrds`
+    ? `${(number / 1000000000).toFixed(2)} Mrds`
     : String(number).length >= 7
-    ? `${(number / 1000000).toFixed(
-        (number / 1000000 - (number / 1000000).toFixed(0)).toFixed(1) < 0.1
-          ? 0
-          : 1,
-      )} M`
+    ? `${(number / 1000000).toFixed(0)} M`
     : String(number).length >= 4
-    ? `${(number / 1000).toFixed(
-        (number / 1000 - (number / 1000).toFixed(0)).toFixed(1) < 0.1 ? 0 : 1,
-      )} k`
+    ? `${(number / 1000).toFixed(0)} k`
     : number;
 
 export const shuffleArray = (array) => {
