@@ -1,5 +1,5 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
+import axios from "axios";
 import { isMobileOnly } from "react-device-detect";
 
 const Pane = ({ movies, gender }) => {
@@ -7,15 +7,6 @@ const Pane = ({ movies, gender }) => {
 
   useEffect(() => {
     const today = new Date();
-
-    movies.forEach(async (m) => {
-      m.directors = await axios
-        .get(
-          `https://api.themoviedb.org/3/movie/${m.id}/credits?api_key=${process.env.REACT_APP_API_KEY}&language=fr-FR`,
-        )
-        .then((res) => res.data.crew.filter((c) => c.job === "Director"))
-        .catch((err) => console.error(err.message));
-    });
 
     setInformations(
       movies
@@ -37,7 +28,9 @@ const Pane = ({ movies, gender }) => {
           }),
         ),
     );
-  }, [movies]);
+  }, []);
+
+  console.log(movies);
 
   const traductions = [
     {
@@ -110,7 +103,7 @@ const Pane = ({ movies, gender }) => {
               <li
                 key={m.id}
                 className={`px-6 py-4 lg:px-8 lg:py-4 ${
-                  m.directors && m.directors.length > 0 && m.release_date !== ""
+                  m.release_date !== ""
                     ? "cursor-pointer hover:bg-blue-100 transition-all duration-100 ease-in-out"
                     : ""
                 }
@@ -118,8 +111,6 @@ const Pane = ({ movies, gender }) => {
               >
                 <a
                   href={
-                    m.directors &&
-                    m.directors.length > 0 &&
                     m.release_date !== ""
                       ? `/movies/${m.title.toLowerCase()}?year=${String(
                           new Date(m.release_date).getFullYear(),

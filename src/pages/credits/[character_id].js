@@ -118,7 +118,10 @@ const Credit = () => {
                     {[
                       place_of_birth.split(",")[0],
                       place_of_birth.split(",").slice(-2),
-                    ].join(",")}
+                    ]
+                      .join(", ")
+                      .replace(/s*\[.*?]s*/g, "")
+                      .replace(" ,", "")}
                   </p>
                 ) : undefined}
               </div>

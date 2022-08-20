@@ -1,4 +1,5 @@
 import { isMobileOnly } from "react-device-detect";
+import { IoInformationCircle } from "react-icons/io5";
 import Collection from "./Collection";
 import GoToHome from "./GoToHome";
 import Footer from "../../Footer";
@@ -70,9 +71,7 @@ const Pane = ({
     {
       title: { text: "Distribution", options: "mb-4 text-center" },
       body: {
-        verify:
-          cast.filter((p) => p.profile_path).slice(0, isMobileOnly ? 6 : 12)
-            .length > 0,
+        verify: true,
         content:
           cast.filter((p) => p.profile_path).slice(0, isMobileOnly ? 6 : 12)
             .length > 0 ? (
@@ -125,7 +124,14 @@ const Pane = ({
                   </li>
                 ))}
             </ul>
-          ) : undefined,
+          ) : (
+            <div className="flex flex-row items-center justify-center text-blue-500">
+              <IoInformationCircle size={"20px"} />
+              <p className="ml-1 font-light text-sm">
+                Aucune distribution est disponible pour l'instant
+              </p>
+            </div>
+          ),
       },
     },
     {
