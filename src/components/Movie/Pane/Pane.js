@@ -103,7 +103,7 @@ const Pane = ({
                           <span className="font-light">{`${
                             c.name.split(" ")[0]
                           } `}</span>
-                          <span className="font-medium">
+                          <span className="font-semibold">
                             {c.name.split(" ").slice(1).join(" ")}
                           </span>
                         </p>
