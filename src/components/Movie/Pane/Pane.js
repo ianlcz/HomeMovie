@@ -209,7 +209,7 @@ const Pane = ({
 
       <Collection
         movie_title={title}
-        belongs_to_collection={belongs_to_collection.sort((a, b) => new Date(a.release_date) - new Date(b.release_date))}
+        belongs_to_collection={belongs_to_collection}
       />
 
       <div className="flex mt-6">
