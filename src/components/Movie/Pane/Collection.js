@@ -27,7 +27,7 @@ const Collection = ({ movie_title, belongs_to_collection }) =>
             <span className="mr-1">Comprend</span>
             {belongs_to_collection.parts
               .sort(
-                (a, b) => new Date(a.release_date) > new Date(b.release_date),
+                (a, b) => new Date(a.release_date) - new Date(b.release_date),
               )
               .map(({ id, title, release_date }, idx) => (
                 <li key={id}>
