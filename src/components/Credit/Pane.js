@@ -30,8 +30,6 @@ const Pane = ({ movies, gender }) => {
     );
   }, []);
 
-  console.log(movies);
-
   const traductions = [
     {
       en: "Director",

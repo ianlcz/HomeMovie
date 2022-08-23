@@ -1,4 +1,5 @@
 import { IoInformationCircle } from "react-icons/io5";
+import { formatName } from "../../../utils";
 
 const TechnicalTeamSection = ({ title, content }) =>
   content.length > 0 || title === "Un film de" ? (
@@ -25,11 +26,11 @@ const TechnicalTeamSection = ({ title, content }) =>
                   />
                 ) : undefined}
                 <p className="text-sm">
-                  <span className="font-light">{`${
-                    c.name.split(" ")[0]
-                  } `}</span>
+                  <span className="font-light">
+                    {formatName(c.name).firstname}
+                  </span>
                   <span className="font-semibold">
-                    {c.name.split(" ").slice(1).join(" ")}
+                    {formatName(c.name).lastname}
                   </span>
                 </p>
               </>

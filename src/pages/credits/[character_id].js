@@ -7,6 +7,7 @@ import Poster from "../../components/Poster";
 import Body from "../../components/Credit/Body";
 import GoToHome from "../../components/Movie/Pane/GoToHome";
 import Footer from "../../components/Footer";
+import { arrayOfUniqueElement, formatName } from "../../utils";
 
 const Credit = () => {
   const { character_id } = useParams();
@@ -90,9 +91,11 @@ const Credit = () => {
 
               <div className="flex flex-col w-full">
                 <h1 className="w-max mx-auto mt-6 px-4 text-center text-2xl font-semibold text-white bg-gradient-to-br from-blue-700 to-blue-400 rounded-full shadow-inner">
-                  <span className="font-extralight">{`${name.split(" ")[0]} `}</span>
+                  <span className="font-extralight">
+                    {formatName(name).firstname}
+                  </span>
                   <span className="font-semibold">
-                    {name.split(" ").slice(1).join(" ")}
+                    {formatName(name).lastname}
                   </span>
                 </h1>
 
@@ -115,10 +118,10 @@ const Credit = () => {
 
                 {place_of_birth ? (
                   <p className="w-full truncate mx-auto mt-2 text-sm text-center font-semibold text-blue-600">
-                    {[
+                    {arrayOfUniqueElement([
                       place_of_birth.split(",")[0],
                       place_of_birth.split(",").slice(-2),
-                    ]
+                    ])
                       .join(", ")
                       .replace(/s*\[.*?]s*/g, "")
                       .replace(" ,", "")}

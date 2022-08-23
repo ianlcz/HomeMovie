@@ -3,6 +3,7 @@ import { IoInformationCircle } from "react-icons/io5";
 import Collection from "./Collection";
 import GoToHome from "./GoToHome";
 import Footer from "../../Footer";
+import { formatName } from "../../../utils";
 
 const Pane = ({
   children: {
@@ -100,11 +101,11 @@ const Pane = ({
                       ) : undefined}
                       <div className="px-2 lg:px-4 py-2">
                         <p className="w-max px-2 shadow-inner text-white text-xs lg:text-sm bg-gradient-to-br from-blue-600 to-blue-400 rounded-full">
-                          <span className="font-light">{`${
-                            c.name.split(" ")[0]
-                          } `}</span>
+                          <span className="font-light">
+                            {formatName(c.name).firstname}
+                          </span>
                           <span className="font-semibold">
-                            {c.name.split(" ").slice(1).join(" ")}
+                            {formatName(c.name).lastname}
                           </span>
                         </p>
                         <p className="mt-1 text-left text-xs lg:text-sm">

@@ -46,3 +46,26 @@ export const shuffleArray = (array) => {
 export const arrayOfUniqueElement = (array, filterParameter = "id") => [
   ...new Map(array.map((item) => [item[filterParameter], item])).values(),
 ];
+
+export const formatName = (nameOfCharacter) => {
+  return (nameOfCharacter.split(" ")[1] &&
+    nameOfCharacter.split(" ")[1].length === 2 &&
+    /./g.test(nameOfCharacter.split(" ")[1])) ||
+    (nameOfCharacter.split(" ")[0].length === 2 &&
+      /./g.test(nameOfCharacter.split(" ")[0]))
+    ? {
+        lastname: nameOfCharacter.split(" ").at(-1),
+        firstname:
+          nameOfCharacter
+            .split(" ")
+            .slice(0, nameOfCharacter.split(" ").length - 1)
+            .join(" ") + " ",
+      }
+    : {
+        lastname: nameOfCharacter
+          .split(" ")
+          .slice(1, nameOfCharacter.split(" ").length)
+          .join(" "),
+        firstname: nameOfCharacter.split(" ")[0] + " ",
+      };
+};
