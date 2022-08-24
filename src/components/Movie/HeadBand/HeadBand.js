@@ -12,6 +12,7 @@ const HeadBand = ({
     detail: {
       id,
       ref,
+      code,
       backdrop_path,
       original_title,
       title,
@@ -47,8 +48,8 @@ const HeadBand = ({
 
       <div className="flex flex-col w-full lg:w-3/5 mt-6 lg:mt-0">
         {ref && new Date(release_date).getTime() < new Date().getTime() ? (
-          <p className="w-16 mx-auto mb-2 px-2 py-0.5 text-xs text-center font-medium rounded-full shadow bg-gradient-to-tr from-blue-600 to-blue-400">
-            {ref}
+          <p className="w-fit mx-auto mb-2 px-2 py-0.5 text-xs text-center font-medium rounded-full shadow bg-gradient-to-tr from-blue-600 to-blue-400">
+            {code === "Pas vu" ? code : code ? `${code} - ${ref}` : "Preview"}
           </p>
         ) : undefined}
 

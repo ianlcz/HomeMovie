@@ -190,7 +190,7 @@ const Pane = ({
 
   return (
     <div
-      className={`flex flex-col bg-blue-50 w-full -mt-8 px-4 pt-4 lg:px-14 lg:pt-8 rounded-t-2xl ${
+      className={`flex flex-col bg-blue-50 w-full -mt-8 px-4 pt-4 lg:px-14 lg:pt-8 rounded-t-lg ${
         trailers.length > 0
           ? undefined
           : belongs_to_collection
