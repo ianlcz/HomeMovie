@@ -63,7 +63,8 @@ const HeadBand = ({
           ) : undefined}
         </h1>
 
-        {original_title.toLowerCase() !== title.toLowerCase() ? (
+        {original_title.toLowerCase() !==
+        title.replace(" : ", ": ").toLowerCase() ? (
           <p className="mt-2 text-sm italic text-white/90 text-center">
             {original_title}
           </p>
