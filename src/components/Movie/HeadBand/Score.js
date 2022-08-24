@@ -18,7 +18,7 @@ const Score = ({ children: { vote_average, budget, revenue } }) =>
           {vote_average > 0 ? (
             <td className="text-center">{`${Math.round(
               vote_average * 10,
-            )}%`}</td>
+            )} %`}</td>
           ) : undefined}
           {budget ? (
             <td className="text-center">{formatNumber(budget)}</td>

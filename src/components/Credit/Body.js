@@ -32,11 +32,11 @@ const Body = ({
           gender === 1 ? "Connue" : gender === 2 ? "Connu" : "Connu/e"
         } pour`}
       >
-        <ul className="grid grid-flow-col grid-cols-2 grid-rows-2 lg:grid-cols-4 lg:grid-rows-1 gap-6 lg:gap-x-6 lg:gap-y-0 mt-4 items-center">
+        <ul className="grid grid-flow-col grid-cols-2 grid-rows-2 lg:grid-cols-4 lg:grid-rows-1 gap-x-4 gap-y-6 lg:gap-x-4 lg:gap-y-0 mt-4 items-center">
           {bestMovies.map((m) => (
             <li
               key={m.id}
-              className="w-full transform hover:scale-110 transition duration-300 ease-in-out"
+              className="w-full transform hover:scale-110 transition-all duration-700 ease-in-out"
             >
               <a
                 href={`/movies/${m.title.toLowerCase()}?year=${String(

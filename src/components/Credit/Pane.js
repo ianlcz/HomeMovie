@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 import { isMobileOnly } from "react-device-detect";
 
 const Pane = ({ movies, gender }) => {
@@ -27,7 +28,7 @@ const Pane = ({ movies, gender }) => {
           }),
         ),
     );
-  }, [movies]);
+  }, []);
 
   const traductions = [
     {
@@ -99,12 +100,21 @@ const Pane = ({ movies, gender }) => {
             {i.movies.map((m) => (
               <li
                 key={m.id}
-                className="px-6 py-4 lg:px-8 lg:py-4 hover:bg-blue-100 cursor-pointer"
+                className={`px-6 py-4 lg:px-8 lg:py-4 ${
+                  m.release_date !== ""
+                    ? "cursor-pointer hover:bg-blue-100 transition-all duration-100 ease-in-out"
+                    : ""
+                }
+              `}
               >
                 <a
-                  href={`/movies/${m.title.toLowerCase()}?year=${String(
-                    new Date(m.release_date).getFullYear(),
-                  )}`}
+                  href={
+                    m.release_date !== ""
+                      ? `/movies/${m.title.toLowerCase()}?year=${String(
+                          new Date(m.release_date).getFullYear(),
+                        )}`
+                      : undefined
+                  }
                 >
                   <div className="flex flex-row items-center w-full text-sm lg:text-base font-medium truncate">
                     <span className="mr-4">{m.title}</span>

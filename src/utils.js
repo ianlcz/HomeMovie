@@ -16,17 +16,11 @@ export const formatNumber = (number) =>
   number === null || isNaN(number)
     ? 0
     : String(number).length >= 10
-    ? `${Math.round(number / 1000000000)} Mrds`
+    ? `${(number / 1000000000).toFixed(2)} Mrds`
     : String(number).length >= 7
-    ? `${(number / 1000000).toFixed(
-        (number / 1000000 - (number / 1000000).toFixed(0)).toFixed(1) < 0.1
-          ? 0
-          : 1,
-      )} M`
+    ? `${(number / 1000000).toFixed(0)} M`
     : String(number).length >= 4
-    ? `${(number / 1000).toFixed(
-        (number / 1000 - (number / 1000).toFixed(0)).toFixed(1) < 0.1 ? 0 : 1,
-      )} k`
+    ? `${(number / 1000).toFixed(0)} k`
     : number;
 
 export const shuffleArray = (array) => {
@@ -52,3 +46,26 @@ export const shuffleArray = (array) => {
 export const arrayOfUniqueElement = (array, filterParameter = "id") => [
   ...new Map(array.map((item) => [item[filterParameter], item])).values(),
 ];
+
+export const formatName = (nameOfCharacter) => {
+  return (nameOfCharacter.split(" ")[1] &&
+    nameOfCharacter.split(" ")[1].length === 2 &&
+    /./g.test(nameOfCharacter.split(" ")[1])) ||
+    (nameOfCharacter.split(" ")[0].length === 2 &&
+      /./g.test(nameOfCharacter.split(" ")[0]))
+    ? {
+        lastname: nameOfCharacter.split(" ").at(-1),
+        firstname:
+          nameOfCharacter
+            .split(" ")
+            .slice(0, nameOfCharacter.split(" ").length - 1)
+            .join(" ") + " ",
+      }
+    : {
+        lastname: nameOfCharacter
+          .split(" ")
+          .slice(1, nameOfCharacter.split(" ").length)
+          .join(" "),
+        firstname: nameOfCharacter.split(" ")[0] + " ",
+      };
+};

@@ -20,7 +20,7 @@ const Filmography = ({ movies: { cast, crew }, job, gender }) => {
             ? cast.filter((c) =>
                 c.character
                   ? !c.character.toLowerCase().includes("self")
-                  : undefined
+                  : undefined,
               )
             : [],
         order: job === "Acting" ? 0 : job === "Directing" ? 4 : 1,
@@ -32,7 +32,7 @@ const Filmography = ({ movies: { cast, crew }, job, gender }) => {
               (c) =>
                 c.department === "Directing" &&
                 c.job === "Director" &&
-                c.release_date
+                c.release_date,
             )
           : undefined,
         order: job === "Acting" ? 1 : job === "Directing" ? 0 : 3,
@@ -43,7 +43,7 @@ const Filmography = ({ movies: { cast, crew }, job, gender }) => {
           ? crew.filter(
               (c) =>
                 c.department === "Sound" &&
-                (c.job === "Original Music Composer" || c.job === "Music")
+                (c.job === "Original Music Composer" || c.job === "Music"),
             )
           : undefined,
         order: job === "Acting" ? 4 : job === "Directing" ? 3 : 0,
@@ -63,7 +63,7 @@ const Filmography = ({ movies: { cast, crew }, job, gender }) => {
                 c.department === "Writing" &&
                 (c.job === "Writer" ||
                   c.job === "Characters" ||
-                  c.job === "Screenplay")
+                  c.job === "Screenplay"),
             )
           : undefined,
         order: job === "Acting" ? 3 : job === "Directing" ? 2 : 4,
@@ -74,21 +74,21 @@ const Filmography = ({ movies: { cast, crew }, job, gender }) => {
   return filmography.every((m) => m.movies)
     ? filmography
         .sort((a, b) => a.order - b.order)
-        .map((f, index) =>
-          f.movies.length > 0 ? (
-            <Section key={index} title={f.title}>
+        .map(({ movies, title }, idx) =>
+          movies.length > 0 ? (
+            <Section key={idx} title={title}>
               <Pane
-                movies={f.movies
+                movies={movies
                   .filter((m) => m.release_date)
                   .sort(
                     (a, b) =>
                       new Date(b.release_date).getTime() -
-                      new Date(a.release_date).getTime()
+                      new Date(a.release_date).getTime(),
                   )}
                 gender={gender}
               />
             </Section>
-          ) : undefined
+          ) : undefined,
         )
     : null;
 };
