@@ -32,7 +32,7 @@ const Body = ({
           gender === 1 ? "Connue" : gender === 2 ? "Connu" : "Connu/e"
         } pour`}
       >
-        <ul className="grid grid-flow-col grid-cols-2 grid-rows-2 lg:grid-cols-4 lg:grid-rows-1 gap-x-4 gap-y-6 lg:gap-x-4 lg:gap-y-0 mt-4 items-center">
+        <ul className="grid grid-flow-col grid-cols-2 grid-rows-2 lg:grid-cols-4 lg:grid-rows-1 gap-x-4 gap-y-6 lg:gap-x-4 lg:gap-y-0 2xl:gap-x-8 mt-4 items-center">
           {bestMovies.map((m) => (
             <li
               key={m.id}
