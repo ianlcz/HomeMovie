@@ -73,7 +73,7 @@ export const AuthProvider = ({ children }) => {
    * @param {Object} movie
    * @returns informations of movie
    */
-  const getMovieInfo = async ({ ref, title, year }) => {
+  const getMovieInfo = async ({ ref, code, title, year }) => {
     if (title) {
       const results = await axios
         .get(
@@ -187,6 +187,7 @@ export const AuthProvider = ({ children }) => {
           movie.belongs_to_collection = collection;
         }
 
+        movie.code = ["Vu", "Vu au cinéma mais pas revu", "Pas vu"][code - 1];
         movie.ref = ref;
 
         return {
