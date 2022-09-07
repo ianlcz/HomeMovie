@@ -1,13 +1,17 @@
-import * as React from "react";
+import { lazy } from "react";
 import Login from "./pages/login";
-import Create from "./pages/movies/new";
-import Delete from "./pages/movies/delete/[reference]/[title]";
-import Update from "./pages/movies/edit/[reference]/[title]";
 import Register from "./pages/register";
 
-const Home = React.lazy(() => import("./pages/index"));
-const Read = React.lazy(() => import("./pages/movies/[title]"));
-const Credit = React.lazy(() => import("./pages/credits/[character_id]"));
+/* Movies pages */
+import Create from "./pages/movies/new";
+import Read from "./pages/movies/[title]";
+import Update from "./pages/movies/edit/[reference]/[title]";
+import Delete from "./pages/movies/delete/[reference]/[title]";
+
+/* Credits pages */
+import Credit from "./pages/credits/[character_id]";
+
+const Home = lazy(() => import("./pages/index"));
 
 const routes = [
   {

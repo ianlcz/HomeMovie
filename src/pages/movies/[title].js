@@ -1,11 +1,12 @@
-import { useContext, useEffect, useState } from "react";
+import { lazy, useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { useLocation, useParams } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import AuthContext from "../../auth/AuthContext";
 import { getCookieFromBrowser } from "../../auth/cookies";
-import HeadBand from "../../components/Movie/HeadBand/HeadBand";
-import Pane from "../../components/Movie/Pane/Pane";
+
+const HeadBand = lazy(() => import("../../components/Movie/HeadBand/HeadBand"));
+const Pane = lazy(() => import("../../components/Movie/Pane/Pane"));
 
 const Read = () => {
   const { getMovieInfo, movies } = useContext(AuthContext);
@@ -37,7 +38,7 @@ const Read = () => {
           cast,
           trailers,
         } = await getMovieInfo(
-          movieFound ? movieFound : { ref:"Preview", title, year },
+          movieFound ? movieFound : { ref: "Preview", title, year },
         );
 
         setDetail(movie);
@@ -60,6 +61,7 @@ const Read = () => {
           detail.title
         } | HomeMovie`}</title>
       </Helmet>
+
       <HeadBand>
         {{ detail, directors, compositors, charactersCreators }}
       </HeadBand>

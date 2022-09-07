@@ -86,10 +86,17 @@ const HeadBand = ({
           </span>
         ) : undefined}
 
-        <div className="flex flex-row items-center lg:w-max mx-auto mt-2 lg:my-4">
+        <div
+          className={`flex flex-row items-center lg:w-max mx-auto mt-2 ${
+            original_title.toLowerCase() ===
+            title.replace(" : ", ": ").toLowerCase()
+              ? "lg:-my-1"
+              : "lg:my-4"
+          }`}
+        >
           {genres && (
             <>
-              <ul className="flex flex-row">
+              <ul className="flex flex-row font-light">
                 {isMobileOnly
                   ? genres.slice(0, 2).map((g, index) => (
                       <li
@@ -113,7 +120,7 @@ const HeadBand = ({
                             : undefined
                         }`}
                       >
-                        <p className="text-sm lg:text-base">
+                        <p className="text-sm">
                           {g.name}
                           {index === genres.length - 1 ? undefined : ", "}
                         </p>
@@ -123,7 +130,9 @@ const HeadBand = ({
 
               {runtime > 0 ? (
                 <>
-                  <p className="mx-2">&bull;</p>
+                  {genres.length > 0 ? (
+                    <p className="mx-2">&bull;</p>
+                  ) : undefined}
                   <ReadingTime>{runtime}</ReadingTime>
                 </>
               ) : undefined}

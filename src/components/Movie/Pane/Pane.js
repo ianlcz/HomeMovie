@@ -162,7 +162,7 @@ const Pane = ({
         verify: recommendations.length > 0,
         content:
           recommendations.length > 0 ? (
-            <ul className="flex flex-row flex-wrap lg:gap-x-3 gap-y-3 justify-between">
+            <ul className="flex flex-row flex-wrap lg:gap-x-4 gap-y-3 justify-between">
               {recommendations.slice(0, isMobileOnly ? 4 : 6).map((r) => (
                 <li
                   key={r.id}
@@ -190,6 +190,7 @@ const Pane = ({
 
   return (
     <div
+<<<<<<< Updated upstream
       className={`flex flex-col bg-blue-50 w-full -mt-8 px-4 pt-4 lg:px-14 lg:pt-8 rounded-t-xl ${
         trailers.length > 0
           ? undefined
@@ -197,6 +198,9 @@ const Pane = ({
           ? "lg:min-h-screen"
           : "lg:max-h-screen"
       } text-blue-600 z-10 relative`}
+=======
+      className={`flex flex-col bg-blue-50 w-full -mt-8 px-4 pt-4 lg:px-14 lg:pt-8 rounded-t-lg text-blue-600 z-10 relative`}
+>>>>>>> Stashed changes
     >
       {PaneItems.map(
         ({ title: { text, options }, body: { verify, content } }, idx) =>
