@@ -190,17 +190,7 @@ const Pane = ({
 
   return (
     <div
-<<<<<<< Updated upstream
-      className={`flex flex-col bg-blue-50 w-full -mt-8 px-4 pt-4 lg:px-14 lg:pt-8 rounded-t-xl ${
-        trailers.length > 0
-          ? undefined
-          : belongs_to_collection
-          ? "lg:min-h-screen"
-          : "lg:max-h-screen"
-      } text-blue-600 z-10 relative`}
-=======
       className={`flex flex-col bg-blue-50 w-full -mt-8 px-4 pt-4 lg:px-14 lg:pt-8 rounded-t-lg text-blue-600 z-10 relative`}
->>>>>>> Stashed changes
     >
       {PaneItems.map(
         ({ title: { text, options }, body: { verify, content } }, idx) =>
