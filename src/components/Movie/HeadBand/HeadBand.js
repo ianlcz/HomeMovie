@@ -75,7 +75,7 @@ const HeadBand = ({
         ) : undefined}
 
         {new Date(release_date).getTime() > new Date().getTime() ? (
-          <span className="w-max mx-auto mt-3 lg:mt-4 text-xs lg:text-xs font-bold uppercase">
+          <span className="w-max mx-auto mt-3 lg:mt-6 text-xs lg:text-xs font-bold uppercase">
             Le{" "}
             {new Date(release_date).toLocaleDateString("fr-FR", {
               year: "numeric",
@@ -89,7 +89,8 @@ const HeadBand = ({
         <div
           className={`flex flex-row items-center lg:w-max mx-auto mt-2 ${
             original_title.toLowerCase() ===
-            title.replace(" : ", ": ").toLowerCase()
+              title.replace(" : ", ": ").toLowerCase() &&
+            new Date(release_date).getTime() < new Date().getTime()
               ? "lg:-my-1"
               : "lg:my-4"
           }`}
