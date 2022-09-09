@@ -3,9 +3,10 @@ import Actions from "../Actions";
 const List = ({ movie }) => {
   const codeEquivalent = [
     { code: 1, label: "Vu" },
-    { code: 3, label: "Vu au cinéma mais pas revu" },
+    { code: 3, label: "Vu au cinéma" },
     { code: 4, label: "Pas vu" },
     { code: 5, label: "Souhait" },
+    { code: 6, label: "Vu en streaming" },
   ];
 
   return movie.title ? (
@@ -27,8 +28,8 @@ const List = ({ movie }) => {
             ) : undefined}
           </p>
           <p className="w-max mt-1 px-2 rounded text-white text-xs bg-blue-400">
-            {codeEquivalent.filter((c) => c.code === movie.code)[0]
-              ? codeEquivalent.filter((c) => c.code === movie.code)[0].label
+            {codeEquivalent.find((c) => c.code === movie.code)
+              ? codeEquivalent.find((c) => c.code === movie.code).label
               : undefined}
           </p>
           <Actions>{{ title: movie.title, ref: movie.ref }}</Actions>

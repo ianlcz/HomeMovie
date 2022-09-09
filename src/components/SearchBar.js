@@ -65,8 +65,10 @@ const SearchBar = () => {
             >
               <option value={0}>Filtrer</option>
               <option value={1}>Vu</option>
-              <option value={3}>Vu au cinéma mais pas revu</option>
+              <option value={3}>Vu au cinéma</option>
+              <option value={6}>Vu en streaming</option>
               <option value={4}>Pas vu</option>
+              <option value={5}>Souhait</option>
             </select>
           </div>
         </div>

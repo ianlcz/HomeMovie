@@ -57,9 +57,14 @@ const Read = () => {
   return detail.title ? (
     <>
       <Helmet>
-        <title>{`${detail.ref ? `${detail.ref} -` : ""} ${
-          detail.title
-        } | HomeMovie`}</title>
+        <title>{`${
+          detail.code &&
+          (detail.code === "Vu au cinéma" || detail.code === "Vu en streaming")
+            ? `${detail.code} -`
+            : detail.ref
+            ? `${detail.ref} -`
+            : ""
+        } ${detail.title} | HomeMovie`}</title>
       </Helmet>
 
       <HeadBand>
