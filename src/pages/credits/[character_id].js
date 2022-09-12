@@ -83,14 +83,14 @@ const Credit = () => {
       </Helmet>
       <div className="bg-blue-50 min-h-screen">
         <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between w-full px-8 pt-8 lg:pt-0">
-          <div className="lg:flex lg:items-center lg:h-full lg:fixed">
+          <div className="lg:flex lg:items-center lg:w-[22%] lg:h-full lg:fixed">
             <div>
               <Poster isCenter>
                 {{ poster_path: profile_path, title: name }}
               </Poster>
 
-              <div className="flex flex-col w-full">
-                <h1 className="w-max mx-auto mt-6 px-4 text-center text-2xl font-semibold text-white bg-gradient-to-br from-blue-700 to-blue-400 rounded-full shadow-inner">
+              <div className="flex flex-col flex-wrap">
+                <h1 className="w-fit mx-auto mt-6 px-4 text-center text-2xl font-semibold text-white bg-gradient-to-br from-blue-700 to-blue-400 rounded-full shadow-inner">
                   <span className="font-extralight">
                     {formatName(name).firstname}
                   </span>
