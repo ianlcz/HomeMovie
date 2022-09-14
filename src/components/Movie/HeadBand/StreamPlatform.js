@@ -6,10 +6,10 @@ const StreamPlatform = ({ provider }) => {
   const streamConfig = {
     "Amazon Prime Video": {
       icon: <SiPrimevideo size={50} />,
-      color: "bg-['#49a8dc']",
+      color: "bg-[#49a8dc]",
     },
-    "Apple TV Plus": { icon: <SiAppletv size={40} />, color: "bg-['#303030']" },
-    Netflix: { icon: <SiNetflix size={28} />, color: "bg-['#d32f27']" },
+    "Apple TV Plus": { icon: <SiAppletv size={40} />, color: "bg-[#303030]" },
+    Netflix: { icon: <SiNetflix size={28} />, color: "bg-[#d32f27]" },
   };
 
   return provider && streamConfig[provider.flatrate[0].provider_name] ? (
