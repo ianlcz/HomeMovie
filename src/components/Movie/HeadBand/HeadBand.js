@@ -52,7 +52,7 @@ const HeadBand = ({
 
       <div className="flex flex-col w-full lg:w-3/5 mt-6 lg:mt-0">
         {ref && new Date(release_date).getTime() < new Date().getTime() ? (
-          <p className="w-fit mx-auto mb-2 px-2 py-0.5 text-xs text-center font-medium rounded-full shadow bg-gradient-to-tr from-blue-700/75 to-blue-400/75">
+          <p className="w-fit mx-auto mb-2 px-2 py-0.5 text-xs text-center font-medium rounded-full shadow bg-gradient-to-tr from-blue-700/80 to-blue-400/80">
             {code === "Vu au cinéma" || code === "Vu en streaming"
               ? code
               : code
