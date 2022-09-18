@@ -4,12 +4,15 @@ import Collection from "./Collection";
 import GoToHome from "./GoToHome";
 import Footer from "../../Footer";
 import { formatName } from "../../../utils";
+import Background from "../Background";
+import { useState } from "react";
 
 const Pane = ({
   children: {
     detail: {
       ref,
       title,
+      backdrop_path,
       production_companies,
       belongs_to_collection,
       recommendations,
@@ -18,6 +21,7 @@ const Pane = ({
     trailers,
   },
 }) => {
+  const isHover = false;
   const PaneItems = [
     {
       title: {
@@ -85,7 +89,7 @@ const Pane = ({
                 .map((c) => (
                   <li
                     key={c.id}
-                    className="w-fit h-max pr-2 lg:pr-0 hover:bg-blue-100 rounded-xl transition duration-500 ease-in"
+                    className="w-fit h-max pr-2 lg:pr-0 hover:bg-blue-100/70 hover:shadow rounded-xl transition duration-500 ease-in"
                   >
                     <a
                       href={`/credits/${c.id}`}
@@ -189,29 +193,40 @@ const Pane = ({
   ];
 
   return (
-    <div
-      className={`flex flex-col bg-blue-50 w-full -mt-8 px-4 pt-4 lg:px-14 lg:pt-8 rounded-t-lg text-blue-600 z-10 relative`}
-    >
-      {PaneItems.map(
-        ({ title: { text, options }, body: { verify, content } }, idx) =>
-          verify ? (
-            <span key={idx}>
-              <h2 className={`${options} text-xl font-medium`}>{text}</h2>
-              {content}
-            </span>
-          ) : undefined,
-      )}
+    <div className="w-full h-auto mx-auto z-0 relative shadow-[0px_-10px_10px_rgba(0,0,0,0.1)]">
+      {backdrop_path ? (
+        <img
+          src={`https://image.tmdb.org/t/p/original/${backdrop_path}`}
+          className="w-full h-full object-cover rounded-t-xl z-0 absolute"
+        />
+      ) : undefined}
 
-      <Collection
-        movie_title={title}
-        belongs_to_collection={belongs_to_collection}
-      />
+      <div
+        className={`flex flex-col ${
+          backdrop_path ? "bg-blue-50/90 backdrop-blur-xl" : "bg-blue-50"
+        } w-full -mt-8 px-4 pt-4 lg:px-14 lg:pt-8 rounded-t-xl text-blue-600 z-10 relative`}
+      >
+        {PaneItems.map(
+          ({ title: { text, options }, body: { verify, content } }, idx) =>
+            verify ? (
+              <span key={idx}>
+                <h2 className={`${options} text-xl font-medium`}>{text}</h2>
+                {content}
+              </span>
+            ) : undefined,
+        )}
 
-      <div className="flex mt-6">
-        <GoToHome />
+        <Collection
+          movie_title={title}
+          belongs_to_collection={belongs_to_collection}
+        />
+
+        <div className="flex mt-6">
+          <GoToHome />
+        </div>
+
+        <Footer />
       </div>
-
-      <Footer />
     </div>
   );
 };
