@@ -203,7 +203,7 @@ const Pane = ({
 
       <div
         className={`flex flex-col ${
-          backdrop_path ? "bg-blue-50/90 backdrop-blur-lg" : "bg-blue-50"
+          backdrop_path ? "bg-blue-50/90 backdrop-blur-xl" : "bg-blue-50"
         } w-full -mt-8 px-4 pt-4 lg:px-14 lg:pt-8 rounded-t-xl text-blue-600 z-10 relative`}
       >
         {PaneItems.map(
