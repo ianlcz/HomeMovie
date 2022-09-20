@@ -47,13 +47,17 @@ const HeadBand = ({
       <div className="flex flex-col">
         <Poster>{{ poster_path, title }}</Poster>
 
-        <StreamPlatform provider={watchProvider} />
+        {poster_path ? <StreamPlatform provider={watchProvider} /> : undefined}
       </div>
 
       <div className="flex flex-col w-full lg:w-3/5 mt-6 lg:mt-0">
         {ref && new Date(release_date).getTime() < new Date().getTime() ? (
-          <p className="w-fit mx-auto mb-2 px-2 py-0.5 text-xs text-center font-medium rounded-full shadow bg-gradient-to-tr from-blue-600 to-blue-400">
-            {code === "Pas vu" ? code : code ? `${code} - ${ref}` : "Preview"}
+          <p className="w-fit mx-auto mb-2 px-2 py-0.5 text-xs text-center font-medium rounded-full shadow bg-gradient-to-tr from-blue-700/80 to-blue-400/80">
+            {code === "Vu au cinéma" || code === "Vu en streaming"
+              ? code
+              : code
+              ? `${code} - ${ref}`
+              : "Preview"}
           </p>
         ) : undefined}
 
@@ -75,7 +79,7 @@ const HeadBand = ({
         ) : undefined}
 
         {new Date(release_date).getTime() > new Date().getTime() ? (
-          <span className="w-max mx-auto mt-3 lg:mt-4 text-xs lg:text-xs font-bold uppercase">
+          <span className="w-max mx-auto mt-3 lg:mt-6 text-xs lg:text-xs font-bold uppercase">
             Le{" "}
             {new Date(release_date).toLocaleDateString("fr-FR", {
               year: "numeric",
@@ -86,10 +90,20 @@ const HeadBand = ({
           </span>
         ) : undefined}
 
-        <div className="flex flex-row items-center lg:w-max mx-auto mt-2 lg:my-4">
+        <div
+          className={`flex flex-row items-center lg:w-max mx-auto mt-2 ${
+            original_title.toLowerCase() ===
+              title.replace(" : ", ": ").toLowerCase() &&
+            new Date(release_date).getTime() < new Date().getTime()
+              ? "lg:-my-1"
+              : new Date(release_date).getTime() < new Date().getTime()
+              ? "lg:my-0"
+              : "lg:my-4"
+          }`}
+        >
           {genres && (
             <>
-              <ul className="flex flex-row">
+              <ul className="flex flex-row font-light">
                 {isMobileOnly
                   ? genres.slice(0, 2).map((g, index) => (
                       <li
@@ -113,7 +127,7 @@ const HeadBand = ({
                             : undefined
                         }`}
                       >
-                        <p className="text-sm lg:text-base">
+                        <p className="text-sm">
                           {g.name}
                           {index === genres.length - 1 ? undefined : ", "}
                         </p>
@@ -123,7 +137,9 @@ const HeadBand = ({
 
               {runtime > 0 ? (
                 <>
-                  <p className="mx-2">&bull;</p>
+                  {genres.length > 0 ? (
+                    <p className="mx-2">&bull;</p>
+                  ) : undefined}
                   <ReadingTime>{runtime}</ReadingTime>
                 </>
               ) : undefined}

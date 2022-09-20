@@ -187,7 +187,14 @@ export const AuthProvider = ({ children }) => {
           movie.belongs_to_collection = collection;
         }
 
-        movie.code = ["Vu", "Vu au cinéma mais pas revu", "Pas vu"][code - 1];
+        movie.code = [
+          "Vu",
+          "",
+          "Vu au cinéma",
+          "Pas vu",
+          "Souhait",
+          "Vu en streaming",
+        ][code - 1];
         movie.ref = ref;
 
         return {

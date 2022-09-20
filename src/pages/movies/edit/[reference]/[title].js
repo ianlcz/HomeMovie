@@ -90,7 +90,7 @@ const Update = () => {
           movie ? "de " + movie.title : "d'un film"
         } | HomeMovie`}</title>
       </Helmet>
-      <div className="flex flex-col bg-gradient-to-br from-blue-900 to-blue-400 min-h-screen">
+      <div className="flex flex-col bg-gradient-to-br from-blue-600 to-blue-400 min-h-screen">
         <div className="w-4/5 lg:w-3/4 mx-auto my-auto p-8 bg-blue-50 rounded-xl shadow-lg">
           <h1 className="mb-6 font-semibold text-2xl text-center text-blue-900">
             Voulez-vous modifier ce film ?
@@ -129,8 +129,10 @@ const Update = () => {
                   >
                     <option>--Choisir un code--</option>
                     <option value={1}>Vu</option>
-                    <option value={3}>Vu au cinéma mais pas revu</option>
+                    <option value={3}>Vu au cinéma</option>
+                    <option value={6}>Vu en streaming</option>
                     <option value={4}>Pas vu</option>
+                    <option value={5}>Souhait</option>
                   </select>
                 </div>
 

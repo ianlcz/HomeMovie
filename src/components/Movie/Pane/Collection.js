@@ -5,7 +5,8 @@ import Background from "../Background";
 const Collection = ({ movie_title, belongs_to_collection }) =>
   belongs_to_collection &&
   belongs_to_collection.name &&
-  belongs_to_collection.backdrop_path ? (
+  belongs_to_collection.backdrop_path &&
+  belongs_to_collection.parts.length > 1 ? (
     <div className="w-full lg:w-1/2 mx-auto mt-10">
       <Background
         data={{

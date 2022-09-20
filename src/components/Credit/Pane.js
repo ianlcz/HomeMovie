@@ -116,8 +116,10 @@ const Pane = ({ movies, gender }) => {
                       : undefined
                   }
                 >
-                  <div className="flex flex-row items-center w-full text-sm lg:text-base font-medium truncate">
-                    <span className="mr-4">{m.title}</span>
+                  <div className="flex flex-row items-center w-full text-sm lg:text-base font-medium">
+                    <span className="mr-4 truncate">
+                      {m.title.split(" / ").slice(0, 3).join(" / ")}
+                    </span>
 
                     {m.vote_average > 0 ? (
                       <p
