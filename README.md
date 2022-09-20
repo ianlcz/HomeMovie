@@ -54,3 +54,7 @@ REACT_APP_API_KEY=<YOUR_TMDB_API_KEY>
 ```
 
 Next, you will need to type the command `npm start` to launch the project and your browser will open the HomeMovie application at http://localhost:3000.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
