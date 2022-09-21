@@ -57,13 +57,13 @@ const SearchBar = () => {
               value={userInput}
               onChange={(e) => setUserInput(e.target.value)}
               placeholder="Rechercher un film ou une référence"
-              className="w-[92%] lg:w-5/6 lg:mr-10 mt-4 mb-4 lg:mt-0 lg:mb-0 lg:ml-10 pl-6 h-12 border border-blue-500 text-blue-500 bg-white dark:bg-slate-800 text-sm lg:text-base rounded-full shadow-inner placeholder-blue-400"
+              className="w-[92%] lg:w-5/6 lg:mr-10 mt-4 mb-4 lg:mt-0 lg:mb-0 lg:ml-10 pl-6 h-12 focus:outline-none focus:ring-2 focus:dark:ring-1 focus:ring-blue-500 border border-blue-500 text-blue-500 bg-white dark:bg-slate-800 text-sm lg:text-base rounded-full shadow-inner placeholder-blue-400 transition duration-700 ease-in-out"
             />
 
             <select
               value={code}
               onChange={(e) => setCode(e.target.value)}
-              className="w-max mx-auto px-4 py-1 text-sm text-blue-400 appearance-none bg-white dark:bg-slate-800 rounded-md border border-blue-300"
+              className="w-max mx-auto px-4 py-1 text-sm text-blue-400 appearance-none focus:outline-none focus:ring-2 focus:dark:ring-1 focus:ring-blue-500 bg-white dark:bg-slate-800 rounded-md border border-blue-500 transition duration-700 ease-in-out"
             >
               <option value={0}>Filtrer</option>
               <option value={1}>Vu</option>
