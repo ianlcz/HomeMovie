@@ -43,7 +43,7 @@ const SearchBar = () => {
   return (
     <>
       <div className="flex justify-center">
-        <div className="flex flex-col w-[96%] items-center mb-0 py-4 lg:py-4 bottom-0 bg-blue-600/60 shadow-lg backdrop-filter backdrop-blur-2xl rounded-t-2xl z-30 fixed">
+        <div className="flex flex-col w-[96%] items-center mb-0 py-4 lg:pt-5 bottom-0 bg-blue-600/60 shadow-lg backdrop-filter backdrop-blur-2xl rounded-t-2xl z-30 fixed">
           <h1 className="text-2xl text-blue-50 mr-2 uppercase">
             <span className="font-bold">Home</span>
             <span className="font-thin">Movie</span>
