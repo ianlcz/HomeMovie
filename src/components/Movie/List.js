@@ -21,7 +21,7 @@ const List = ({ movie }) => {
           {movie.ref}
         </p>
         <div>
-          <p className="text-blue-700 font-light">
+          <p className="text-blue-500 dark:text-blue-400 font-light">
             {movie.title}
             {movie.year ? (
               <span className="ml-1 font-medium text-sm">{`(${movie.year})`}</span>

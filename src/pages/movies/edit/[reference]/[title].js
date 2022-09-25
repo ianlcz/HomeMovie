@@ -90,9 +90,9 @@ const Update = () => {
           movie ? "de " + movie.title : "d'un film"
         } | HomeMovie`}</title>
       </Helmet>
-      <div className="flex flex-col bg-gradient-to-br from-blue-600 to-blue-400 min-h-screen">
-        <div className="w-4/5 lg:w-3/4 mx-auto my-auto p-8 bg-blue-50 rounded-xl shadow-lg">
-          <h1 className="mb-6 font-semibold text-2xl text-center text-blue-900">
+      <div className="flex flex-col bg-gradient-to-br from-blue-600 to-blue-400 dark:from-slate-800 dark:to-slate-800 min-h-screen">
+        <div className="w-4/5 lg:w-3/4 mx-auto my-auto p-8 bg-blue-50 dark:bg-slate-600 rounded-xl shadow-lg">
+          <h1 className="mb-6 font-semibold text-2xl text-center text-blue-900 dark:text-blue-500">
             Voulez-vous modifier ce film ?
           </h1>
           <form onSubmit={HandleEdit}>
@@ -106,7 +106,7 @@ const Update = () => {
               </ul>
             ) : undefined}
 
-            <label className="flex justify-center my-3 text-blue-600 font-medium">
+            <label className="flex justify-center my-3 text-blue-600 dark:text-blue-500 font-medium">
               par
             </label>
 
@@ -119,13 +119,13 @@ const Update = () => {
                     placeholder="Nouvelle référence"
                     value={newRef}
                     onChange={(e) => setNewRef(e.target.value)}
-                    className="w-full px-4 py-1 text-sm text-blue-400 border-2 border-blue-200 placeholder-blue-200 rounded-full font-semibold shadow-inner"
+                    className="w-full px-4 py-1 text-sm text-blue-400 focus:outline-none focus:ring-2 focus:dark:ring-1 focus:ring-blue-500 border border-blue-500 placeholder-blue-400 dark:bg-slate-800 rounded-full font-semibold shadow-inner"
                   />
 
                   <select
                     value={newCode}
                     onChange={(e) => setNewCode(e.target.value)}
-                    className="w-max mt-6 px-4 py-1 text-sm text-blue-400 border-2 border-blue-200 appearance-none placeholder-blue-200 font-medium rounded-full shadow-inner"
+                    className="w-max mt-6 px-4 py-1 text-sm text-blue-400 border border-blue-500 appearance-none focus:outline-none focus:ring-2 focus:dark:ring-1 focus:ring-blue-500 bg-white dark:bg-slate-800 font-medium rounded transition duration-700 ease-in-out"
                   >
                     <option>--Choisir un code--</option>
                     <option value={1}>Vu</option>
@@ -146,7 +146,7 @@ const Update = () => {
                   placeholder="Nouveau titre"
                   value={newTitle}
                   onChange={(e) => setNewTitle(e.target.value)}
-                  className="w-full px-4 py-1 text-sm text-blue-400 border-2 border-blue-200 placeholder-blue-200 rounded-full font-semibold shadow-inner"
+                  className="w-full px-4 py-1 text-sm text-blue-400 focus:outline-none focus:ring-2 focus:dark:ring-1 focus:ring-blue-500 border border-blue-500 placeholder-blue-400 dark:bg-slate-800 rounded-full font-semibold shadow-inner"
                 />
               </div>
             </div>

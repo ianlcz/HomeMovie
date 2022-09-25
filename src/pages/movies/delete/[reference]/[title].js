@@ -45,9 +45,9 @@ const Delete = () => {
           movie ? "de " + movie.title : "d'un film"
         } | HomeMovie`}</title>
       </Helmet>
-      <div className="flex flex-col bg-gradient-to-br from-red-900 to-red-400 min-h-screen">
-        <div className="w-5/6 lg:w-auto mx-auto my-auto p-8 bg-red-50 rounded-xl shadow-lg">
-          <h1 className="mb-6 font-semibold text-2xl text-center text-red-900">
+      <div className="flex flex-col bg-gradient-to-br from-red-900 to-red-400 dark:from-slate-800 dark:to-slate-800 min-h-screen">
+        <div className="w-5/6 lg:w-auto mx-auto my-auto p-8 bg-red-50 dark:bg-slate-600 rounded-xl shadow-lg">
+          <h1 className="mb-6 font-semibold text-2xl text-center text-red-900 dark:text-red-500">
             Voulez-vous retirer ce film ?
           </h1>
           <form onSubmit={handleDelete}>

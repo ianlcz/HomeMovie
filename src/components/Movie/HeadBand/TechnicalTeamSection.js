@@ -41,7 +41,7 @@ const TechnicalTeamSection = ({ title, content }) =>
                 key={c.id}
                 className={
                   c.profile_path
-                    ? "pr-2 hover:bg-blue-50/20 backdrop-filter hover:backdrop-blur rounded-full transition duration-[800ms] ease-in-out cursor-pointer"
+                    ? "pr-2 hover:bg-blue-50/20 hover:dark:bg-slate-800/25 backdrop-filter hover:backdrop-blur rounded-full transition duration-[800ms] ease-in-out cursor-pointer"
                     : ""
                 }
               >
