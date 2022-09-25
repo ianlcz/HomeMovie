@@ -20,8 +20,8 @@ const Login = () => {
         <title>{`Connexion | HomeMovie`}</title>
       </Helmet>
       <div className="h-screen lg:min-h-screen flex flex-col bg-gradient-to-br from-blue-600 to-blue-400 dark:from-slate-800 dark:to-slate-800">
-        <div className="w-11/12 lg:w-1/3 mx-auto my-auto py-8 bg-blue-50 dark:bg-slate-400/90 rounded-xl shadow-lg">
-          <h1 className="font-semibold text-2xl text-center text-blue-600">
+        <div className="w-11/12 lg:w-1/3 mx-auto my-auto py-8 bg-blue-50 dark:bg-slate-600 rounded-xl shadow-lg">
+          <h1 className="font-semibold text-2xl text-center text-blue-500">
             Connexion
           </h1>
 
@@ -35,7 +35,7 @@ const Login = () => {
                 value={emailAddress}
                 onChange={(e) => setEmailAddress(e.target.value)}
                 required
-                className="mb-4 px-4 py-1 text-blue-400 border-2 border-blue-200 placeholder-blue-200 dark:bg-slate-600 rounded-full font-semibold shadow-inner"
+                className="mb-4 px-4 py-1 text-blue-400 focus:outline-none focus:ring-2 focus:dark:ring-1 focus:ring-blue-500 border border-blue-500 placeholder-blue-400 dark:bg-slate-800 rounded-full font-semibold shadow-inner transition duration-700 ease-in-out"
               />
               <input
                 type="password"
@@ -45,7 +45,7 @@ const Login = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="mb-4 px-4 py-1 text-blue-400 border-2 border-blue-200 placeholder-blue-200 dark:bg-slate-600 rounded-full font-semibold shadow-inner"
+                className="mb-4 px-4 py-1 text-blue-400 focus:outline-none focus:ring-2 focus:dark:ring-1 focus:ring-blue-500 border border-blue-500 placeholder-blue-400 dark:bg-slate-800 rounded-full font-semibold shadow-inner transition duration-700 ease-in-out"
               />
             </div>
 
@@ -59,7 +59,7 @@ const Login = () => {
             </div>
 
             <div className="flex items-center text-xs w-max mx-auto">
-              <p className="mr-1.5 font-semibold text-blue-600">
+              <p className="mr-1.5 font-semibold text-blue-500">
                 Vous n'avez pas de compte ?
               </p>
 
