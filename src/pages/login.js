@@ -19,7 +19,7 @@ const Login = () => {
       <Helmet>
         <title>{`Connexion | HomeMovie`}</title>
       </Helmet>
-      <div className="h-screen lg:min-h-screen flex flex-col bg-gradient-to-br from-blue-600 to-blue-400 dark:from-slate-800 dark:to-slate-800">
+      <div className="h-screen lg:min-h-screen flex flex-col bg-gradient-to-br from-blue-800 to-blue-400 dark:from-slate-800 dark:to-slate-800">
         <div className="w-11/12 lg:w-1/3 mx-auto my-auto py-8 bg-blue-50 dark:bg-slate-600 rounded-xl shadow-lg">
           <h1 className="font-semibold text-2xl text-center text-blue-500">
             Connexion
@@ -52,7 +52,7 @@ const Login = () => {
             <div className="w-max mx-auto">
               <button
                 type="submit"
-                className="mt-4 mb-6 px-4 text-sm py-1 bg-gradient-to-tr from-blue-600 to-blue-400 hover:from-blue-400 hover:to-blue-600 font-medium text-blue-50 rounded-full"
+                className="mt-4 mb-6 px-4 text-sm py-1 bg-gradient-to-tr from-blue-800 to-blue-400 hover:from-blue-400 hover:to-blue-800 font-medium text-blue-50 rounded-full"
               >
                 Accéder à ma collection
               </button>

@@ -5,7 +5,7 @@ const Score = ({ children: { vote_average, budget, revenue } }) =>
   vote_average > 0 || budget || revenue ? (
     <table className="w-full lg:w-1/2 mx-auto mt-6 shadow bg-blue-50/80 dark:bg-slate-800/80 backdrop-filter backdrop-blur dark:backdrop-blur-md rounded-full">
       <thead>
-        <tr className="text-base text-blue-500">
+        <tr className="text-base text-blue-600 dark:text-blue-500">
           {vote_average > 0 ? (
             <th className="font-semibold">Score</th>
           ) : undefined}
@@ -14,7 +14,7 @@ const Score = ({ children: { vote_average, budget, revenue } }) =>
         </tr>
       </thead>
       <tbody>
-        <tr className="text-sm text-blue-500">
+        <tr className="text-sm text-blue-600 dark:text-blue-500">
           {vote_average > 0 ? (
             <td className="text-center">{`${Math.round(
               vote_average * 10,

@@ -90,7 +90,7 @@ const Update = () => {
           movie ? "de " + movie.title : "d'un film"
         } | HomeMovie`}</title>
       </Helmet>
-      <div className="flex flex-col bg-gradient-to-br from-blue-600 to-blue-400 dark:from-slate-800 dark:to-slate-800 min-h-screen">
+      <div className="flex flex-col bg-gradient-to-br from-blue-800 to-blue-400 dark:from-slate-800 dark:to-slate-800 min-h-screen">
         <div className="w-4/5 lg:w-3/4 mx-auto my-auto p-8 bg-blue-50 dark:bg-slate-600 rounded-xl shadow-lg">
           <h1 className="mb-6 font-semibold text-2xl text-center text-blue-900 dark:text-blue-500">
             Voulez-vous modifier ce film ?
@@ -98,7 +98,7 @@ const Update = () => {
           <form onSubmit={HandleEdit}>
             {movie ? (
               <ul className="my-4">
-                <li className="flex flex-row items-center w-max mx-auto px-2 rounded-full text-white bg-gradient-to-br from-blue-600 to-blue-400 truncate">
+                <li className="flex flex-row items-center w-max mx-auto px-2 rounded-full text-white bg-gradient-to-br from-blue-800 to-blue-400 truncate">
                   <p className="text-sm font-bold mr-1">{`${movie.ref} -`}</p>
                   <p className="mr-2 text-sm font-semibold">{movie.title}</p>
                   <p className="text-sm">{`(${movie.year})`}</p>
@@ -106,7 +106,7 @@ const Update = () => {
               </ul>
             ) : undefined}
 
-            <label className="flex justify-center my-3 text-blue-600 dark:text-blue-500 font-medium">
+            <label className="flex justify-center my-3 text-blue-800 dark:text-blue-500 font-medium">
               par
             </label>
 

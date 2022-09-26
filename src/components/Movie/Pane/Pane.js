@@ -104,7 +104,7 @@ const Pane = ({
                         />
                       ) : undefined}
                       <div className="px-2 lg:px-4 py-2">
-                        <p className="w-max px-2 shadow-inner text-white text-xs lg:text-sm bg-gradient-to-br from-blue-600 to-blue-400 rounded-full">
+                        <p className="w-max px-2 shadow-inner text-white text-xs lg:text-sm bg-gradient-to-br from-blue-800 to-blue-400 rounded-full">
                           <span className="font-light">
                             {formatName(c.name).firstname}
                           </span>
@@ -130,7 +130,7 @@ const Pane = ({
                 ))}
             </ul>
           ) : (
-            <div className="flex flex-row items-center justify-center text-blue-500">
+            <div className="flex flex-row items-center justify-center text-blue-600">
               <IoInformationCircle size={"20px"} />
               <p className="ml-1 font-light text-sm">
                 Aucune distribution est disponible pour l'instant
@@ -206,13 +206,13 @@ const Pane = ({
           backdrop_path
             ? "bg-blue-50/90 backdrop-blur-xl dark:bg-slate-800/90 dark:backdrop-blur-2xl"
             : "bg-blue-50 dark:bg-slate-800"
-        } w-full -mt-8 px-4 pt-4 lg:px-14 lg:pt-8 rounded-t-xl text-blue-500 z-10 relative`}
+        } w-full -mt-8 px-4 pt-4 lg:px-14 lg:pt-8 rounded-t-xl text-blue-600 dark:text-blue-500 z-10 relative`}
       >
         {PaneItems.map(
           ({ title: { text, options }, body: { verify, content } }, idx) =>
             verify ? (
               <span key={idx}>
-                <h2 className={`${options} text-xl font-medium`}>{text}</h2>
+                <h2 className={`${options} text-xl font-medium text-blue-800 dark:text-blue-600`}>{text}</h2>
                 {content}
               </span>
             ) : undefined,

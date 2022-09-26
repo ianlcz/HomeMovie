@@ -29,7 +29,7 @@ const Register = () => {
       <Helmet>
         <title>{`Inscription | HomeMovie`}</title>
       </Helmet>
-      <div className="flex flex-col bg-gradient-to-br from-blue-600 to-blue-400 dark:from-slate-800 dark:to-slate-800 min-h-screen">
+      <div className="flex flex-col bg-gradient-to-br from-blue-800 to-blue-400 dark:from-slate-800 dark:to-slate-800 min-h-screen">
         <div className="w-5/6 lg:w-2/5 mx-auto my-auto p-8 bg-blue-50 dark:bg-slate-600 rounded-xl shadow-lg">
           <h1 className="font-semibold text-2xl text-center text-blue-500">
             Inscription
@@ -74,7 +74,7 @@ const Register = () => {
             <div className="w-max mx-auto">
               <button
                 type="submit"
-                className="mt-4 px-4 text-sm py-1 bg-gradient-to-tr from-blue-600 to-blue-400 hover:from-blue-400 hover:to-blue-600 font-medium text-blue-50 rounded-full"
+                className="mt-4 px-4 text-sm py-1 bg-gradient-to-tr from-blue-800 to-blue-400 hover:from-blue-400 hover:to-blue-800 font-medium text-blue-50 rounded-full"
               >
                 Créer mon compte
               </button>

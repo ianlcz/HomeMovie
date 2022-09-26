@@ -90,7 +90,7 @@ const Credit = () => {
               </Poster>
 
               <div className="flex flex-col flex-wrap">
-                <h1 className="w-fit mx-auto mt-6 px-4 text-center text-2xl font-semibold text-white bg-gradient-to-br from-blue-700 to-blue-400 rounded-full shadow-inner">
+                <h1 className="w-fit mx-auto mt-6 px-4 text-center text-2xl font-semibold text-white bg-gradient-to-br from-blue-800 to-blue-400 rounded-full shadow-inner">
                   <span className="font-extralight">
                     {formatName(name).firstname}
                   </span>
@@ -117,7 +117,7 @@ const Credit = () => {
                 </p>
 
                 {place_of_birth ? (
-                  <p className="w-full truncate mx-auto mt-2 text-sm text-center font-semibold text-blue-600 dark:text-blue-400">
+                  <p className="w-full truncate mx-auto mt-2 text-sm text-center font-semibold text-blue-800 dark:text-blue-400">
                     {arrayOfUniqueElement([
                       place_of_birth.split(",")[0],
                       place_of_birth.split(",").slice(-2),

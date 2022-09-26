@@ -102,7 +102,7 @@ const Pane = ({ movies, gender }) => {
                 key={m.id}
                 className={`px-6 py-4 lg:px-8 lg:py-4 ${
                   m.release_date !== ""
-                    ? "cursor-pointer dark:text-blue-400 hover:dark:text-blue-600 hover:bg-blue-100 hover:dark:bg-blue-100/80 transition-all duration-100 ease-in-out"
+                    ? "cursor-pointer dark:text-blue-400 hover:dark:text-blue-800 hover:bg-blue-100 hover:dark:bg-blue-100/80 transition-all duration-100 ease-in-out"
                     : ""
                 }
               `}
@@ -137,9 +137,7 @@ const Pane = ({ movies, gender }) => {
                   </div>
                   {m.character ? (
                     <div className="flex flex-row text-sm lg:text-base">
-                      <span className="mr-1 lg:mr-2">
-                        incarnant
-                      </span>
+                      <span className="mr-1 lg:mr-2">incarnant</span>
                       <p className="w-max md:w-max lg:min-w-max truncate">
                         {isMobileOnly
                           ? m.character
