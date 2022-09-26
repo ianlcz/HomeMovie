@@ -81,7 +81,7 @@ const Credit = () => {
       <Helmet>
         <title>{`${name} | HomeMovie`}</title>
       </Helmet>
-      <div className="bg-blue-50 min-h-screen">
+      <div className="bg-blue-50 dark:bg-slate-800 min-h-screen">
         <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between w-full px-8 pt-8 lg:pt-0">
           <div className="lg:flex lg:items-center lg:w-[22%] lg:h-full lg:fixed">
             <div>
@@ -90,7 +90,7 @@ const Credit = () => {
               </Poster>
 
               <div className="flex flex-col flex-wrap">
-                <h1 className="w-fit mx-auto mt-6 px-4 text-center text-2xl font-semibold text-white bg-gradient-to-br from-blue-700 to-blue-400 rounded-full shadow-inner">
+                <h1 className="w-fit mx-auto mt-6 px-4 text-center text-2xl font-semibold text-white bg-gradient-to-br from-blue-800 to-blue-400 rounded-full shadow-inner">
                   <span className="font-extralight">
                     {formatName(name).firstname}
                   </span>
@@ -117,7 +117,7 @@ const Credit = () => {
                 </p>
 
                 {place_of_birth ? (
-                  <p className="w-full truncate mx-auto mt-2 text-sm text-center font-semibold text-blue-600">
+                  <p className="w-full truncate mx-auto mt-2 text-sm text-center font-semibold text-blue-800 dark:text-blue-400">
                     {arrayOfUniqueElement([
                       place_of_birth.split(",")[0],
                       place_of_birth.split(",").slice(-2),

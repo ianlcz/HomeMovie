@@ -16,7 +16,7 @@ const Card = ({
       ) : undefined}
 
       <div className="w-max">
-        <div className="flex flex-row items-center w-max mx-auto px-2 rounded-full text-white bg-gradient-to-br from-blue-600 to-blue-400 truncate">
+        <div className="flex flex-row items-center w-max mx-auto px-2 rounded-full text-white bg-gradient-to-br from-blue-800 to-blue-400 truncate">
           <h2 className="mr-2 text-xs lg:text-sm font-semibold">{title}</h2>
 
           {release_date ? (

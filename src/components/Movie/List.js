@@ -17,11 +17,11 @@ const List = ({ movie }) => {
         }`}
         className="flex flex-row items-center mb-2"
       >
-        <p className="flex items-center justify-center w-16 h-6 mr-4 shadow-inner bg-gradient-to-br from-blue-600 to-blue-400 text-white text-center text-sm font-semibold rounded-xl">
+        <p className="flex items-center justify-center w-16 h-6 mr-4 shadow-inner bg-gradient-to-br from-blue-800 to-blue-400 text-white text-center text-sm font-semibold rounded-xl">
           {movie.ref}
         </p>
         <div>
-          <p className="text-blue-700 font-light">
+          <p className="text-blue-600 dark:text-blue-500 font-light">
             {movie.title}
             {movie.year ? (
               <span className="ml-1 font-medium text-sm">{`(${movie.year})`}</span>

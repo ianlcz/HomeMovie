@@ -20,7 +20,7 @@ const Body = ({
   <div className="w-full lg:ml-[22rem] mt-6 lg:mt-0 lg:pt-8 text-blue-600">
     {biography ? (
       <Section title="Biographie" isBiography>
-        <span className="leading-snug font-light text-sm lg:text-base text-justify">
+        <span className="leading-snug font-light text-sm lg:text-base text-justify dark:text-blue-400">
           <ReactMarkdown>{biography}</ReactMarkdown>
         </span>
       </Section>
@@ -48,7 +48,7 @@ const Body = ({
                   alt={`Affiche du film : ${m.title}`}
                   className="w-full object-cover rounded-xl shadow-xl"
                 />
-                <p className="w-full mx-auto mt-2 px-4 truncate text-center text-sm font-medium text-white bg-gradient-to-br from-blue-600 to-blue-400 rounded-full">
+                <p className="w-full mx-auto mt-2 px-4 truncate text-center text-sm font-medium text-white bg-gradient-to-br from-blue-800 to-blue-400 rounded-full">
                   {m.character}
                 </p>
               </a>

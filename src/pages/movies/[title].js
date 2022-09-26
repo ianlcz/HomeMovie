@@ -38,7 +38,7 @@ const Read = () => {
           cast,
           trailers,
         } = await getMovieInfo(
-          movieFound ? movieFound : { ref: "Preview", title, year },
+          movieFound ? movieFound : { ref:"Preview", title, year },
         );
 
         setDetail(movie);
