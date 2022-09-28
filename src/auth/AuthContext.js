@@ -217,7 +217,7 @@ export const AuthProvider = ({ children }) => {
             ),
           ).slice(0, 6),
           cast,
-          trailers:
+          trailer:
             trailers.filter(
               (t) =>
                 t.name.toLowerCase().includes("vf") &&
@@ -225,20 +225,24 @@ export const AuthProvider = ({ children }) => {
                 t.type === "Trailer" &&
                 t.official === true,
             ).length === 0
-              ? trailers.filter(
-                  (t) =>
-                    t.name.toLowerCase().includes("vf") &&
-                    t.site === "YouTube" &&
-                    t.type === "Teaser" &&
-                    t.official === true,
-                )
-              : trailers.filter(
-                  (t) =>
-                    t.name.toLowerCase().includes("vf") &&
-                    t.site === "YouTube" &&
-                    t.type === "Trailer" &&
-                    t.official === true,
-                ),
+              ? trailers
+                  .filter(
+                    (t) =>
+                      t.name.toLowerCase().includes("vf") &&
+                      t.site === "YouTube" &&
+                      t.type === "Teaser" &&
+                      t.official === true,
+                  )
+                  .sort((a, b) => a.published_at < b.published_at)[0]
+              : trailers
+                  .filter(
+                    (t) =>
+                      t.name.toLowerCase().includes("vf") &&
+                      t.site === "YouTube" &&
+                      t.type === "Trailer" &&
+                      t.official === true,
+                  )
+                  .sort((a, b) => a.published_at < b.published_at)[0],
         };
       }
     }

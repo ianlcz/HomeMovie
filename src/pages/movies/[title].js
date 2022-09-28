@@ -16,7 +16,7 @@ const Read = () => {
   const [compositors, setCompositors] = useState([]);
   const [charactersCreators, setCharactersCreators] = useState([]);
   const [cast, setCast] = useState([]);
-  const [trailers, setTrailers] = useState([]);
+  const [trailer, setTrailer] = useState({});
 
   const token = getCookieFromBrowser("authToken");
   const user = jwtDecode(token);
@@ -36,9 +36,9 @@ const Read = () => {
           compositors,
           characters_creators,
           cast,
-          trailers,
+          trailer,
         } = await getMovieInfo(
-          movieFound ? movieFound : { ref:"Preview", title, year },
+          movieFound ? movieFound : { ref: "Preview", title, year },
         );
 
         setDetail(movie);
@@ -46,7 +46,7 @@ const Read = () => {
         setCompositors(compositors);
         setCharactersCreators(characters_creators);
         setCast(cast);
-        setTrailers(trailers);
+        setTrailer(trailer);
       } catch (err) {
         console.error(err.message);
       }
@@ -70,7 +70,7 @@ const Read = () => {
       <HeadBand>
         {{ detail, directors, compositors, charactersCreators }}
       </HeadBand>
-      <Pane>{{ detail, cast, trailers }}</Pane>
+      <Pane>{{ detail, cast, trailer }}</Pane>
     </>
   ) : null;
 };

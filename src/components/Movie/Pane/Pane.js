@@ -18,7 +18,7 @@ const Pane = ({
       recommendations,
     },
     cast,
-    trailers,
+    trailer,
   },
 }) => {
   const isHover = false;
@@ -142,16 +142,14 @@ const Pane = ({
     {
       title: { text: "Bande-annonce", options: "mt-6 mb-4 text-center" },
       body: {
-        verify: trailers.length > 0,
+        verify: trailer,
         content:
-          trailers.length > 0 ? (
+          trailer? (
             <div className="aspect-w-16 aspect-h-[9.4] rounded-xl">
               <iframe
                 className="rounded-xl shadow-lg"
                 src={`https://www.youtube.com/embed/${
-                  trailers[
-                    Math.floor(Math.random() * Math.floor(trailers.length))
-                  ].key
+                  trailer.key
                 }`}
                 frameBorder="0"
                 allowFullScreen
