@@ -64,7 +64,7 @@ const Pane = ({
                             className="h-8 mx-auto"
                           />
                         ) : undefined}
-                        <p className="w-max mx-auto mt-2 text-center text-xs font-medium">
+                        <p className="w-max mx-auto mt-2 text-center text-xs font-extralight">
                           {p.name}
                         </p>
                       </li>
@@ -89,7 +89,7 @@ const Pane = ({
                 .map((c) => (
                   <li
                     key={c.id}
-                    className="w-fit h-max pr-2 lg:pr-0 hover:bg-blue-100/80 hover:dark:bg-blue-100/60 hover:shadow rounded-xl transition duration-500 ease-in"
+                    className="w-fit h-max pr-2 lg:pr-0 hover:bg-blue-100/80 hover:shadow hover:dark:shadow-none rounded-xl transition duration-500 ease-in"
                   >
                     <a
                       href={`/credits/${c.id}`}
@@ -112,7 +112,7 @@ const Pane = ({
                             {formatName(c.name).lastname}
                           </span>
                         </p>
-                        <p className="mt-1 text-left text-xs lg:text-sm">
+                        <p className="mt-1.5 text-left text-xs lg:text-sm font-extralight">
                           {c.character
                             .split(" / ")
                             .slice(
