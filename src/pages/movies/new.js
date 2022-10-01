@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Card from "../../components/Movie/Card";
 import Submit from "../../components/Submit";
 import { Helmet } from "react-helmet";
+import { encodeSlug } from "../../utils";
 
 const Create = () => {
   const { user } = useContext(AuthContext);
@@ -49,9 +50,7 @@ const Create = () => {
         .then((res) => res.data)
         .catch((err) => console.error(err.message));
 
-      navigate(
-        `/movies/${encodeURIComponent(title.toLowerCase())}?year=${year}`,
-      );
+      navigate(`/movies/${encodeSlug(title)}/${year}`);
       window.location.reload(false);
     }
   };

@@ -1,3 +1,4 @@
+import { encodeSlug } from "../../utils";
 import Actions from "../Actions";
 
 const List = ({ movie }) => {
@@ -12,9 +13,7 @@ const List = ({ movie }) => {
   return movie.title ? (
     <li>
       <a
-        href={`/movies/${encodeURIComponent(movie.title.toLowerCase())}?year=${
-          movie.year
-        }`}
+        href={`/movies/${encodeSlug(movie.title)}/${movie.year}`}
         className="flex flex-row items-center mb-2"
       >
         <p className="flex items-center justify-center w-16 h-6 mr-4 shadow-inner bg-gradient-to-br from-blue-800 to-blue-400 text-white text-center text-sm font-semibold rounded-xl">

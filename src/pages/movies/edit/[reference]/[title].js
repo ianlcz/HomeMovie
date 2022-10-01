@@ -7,6 +7,7 @@ import AuthContext from "../../../../auth/AuthContext";
 import Card from "../../../../components/Movie/Card";
 import Submit from "../../../../components/Submit";
 import jwtDecode from "jwt-decode";
+import { decodeSlug, encodeSlug } from "../../../../utils";
 
 const Update = () => {
   const user = jwtDecode(getCookieFromBrowser("authToken"));
@@ -25,8 +26,7 @@ const Update = () => {
       setMovie(
         movies.filter((m) =>
           m.ref && m.title
-            ? m.ref === reference &&
-              m.title.toLowerCase() === decodeURIComponent(title.toLowerCase())
+            ? m.ref === reference && m.title.toLowerCase() === decodeSlug(title)
             : undefined,
         )[0],
       );
@@ -74,11 +74,7 @@ const Update = () => {
         .then((res) => res.data)
         .catch((err) => console.error(err.message));
 
-      navigate(
-        `/movies/${encodeURIComponent(newMovie.title).toLowerCase()}?year=${
-          newMovie.year
-        }`,
-      );
+      navigate(`/movies/${encodeSlug(newMovie.title)}/${newMovie.year}`);
       window.location.reload(false);
     }
   };

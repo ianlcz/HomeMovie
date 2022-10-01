@@ -3,7 +3,7 @@ import { IoInformationCircle } from "react-icons/io5";
 import Collection from "./Collection";
 import GoToHome from "./GoToHome";
 import Footer from "../../Footer";
-import { formatName } from "../../../utils";
+import { encodeSlug, formatName } from "../../../utils";
 import Background from "../Background";
 import { useState } from "react";
 
@@ -143,19 +143,16 @@ const Pane = ({
       title: { text: "Bande-annonce", options: "mt-6 mb-4 text-center" },
       body: {
         verify: trailer,
-        content:
-          trailer? (
-            <div className="aspect-w-16 aspect-h-[9.4] rounded-xl">
-              <iframe
-                className="rounded-xl shadow-lg"
-                src={`https://www.youtube.com/embed/${
-                  trailer.key
-                }`}
-                frameBorder="0"
-                allowFullScreen
-              ></iframe>
-            </div>
-          ) : undefined,
+        content: trailer ? (
+          <div className="aspect-w-16 aspect-h-[9.4] rounded-xl">
+            <iframe
+              className="rounded-xl shadow-lg"
+              src={`https://www.youtube.com/embed/${trailer.key}`}
+              frameBorder="0"
+              allowFullScreen
+            ></iframe>
+          </div>
+        ) : undefined,
       },
     },
     {
@@ -171,7 +168,7 @@ const Pane = ({
                   className="hover:scale-110 duration-700 ease-in-out w-[172px] lg:w-[204px] 2xl:w-[280px]"
                 >
                   <a
-                    href={`/movies/${r.title.toLowerCase()}?year=${String(
+                    href={`/movies/${encodeSlug(r.title)}/${String(
                       new Date(r.release_date).getFullYear(),
                     )}`}
                     title={r.title}
@@ -210,7 +207,11 @@ const Pane = ({
           ({ title: { text, options }, body: { verify, content } }, idx) =>
             verify ? (
               <span key={idx}>
-                <h2 className={`${options} text-xl font-medium text-blue-800 dark:text-blue-600`}>{text}</h2>
+                <h2
+                  className={`${options} text-xl font-medium text-blue-800 dark:text-blue-600`}
+                >
+                  {text}
+                </h2>
                 {content}
               </span>
             ) : undefined,

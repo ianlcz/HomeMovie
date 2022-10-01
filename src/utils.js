@@ -69,3 +69,13 @@ export const formatName = (nameOfCharacter) => {
         firstname: nameOfCharacter.split(" ")[0] + " ",
       };
 };
+
+export const encodeSlug = (text) =>
+  String(text)
+    .replace(/( : )/g, "-")
+    .toLowerCase()
+    .replace(/(:)|(- )|\'|,/g, "")
+    .replace(/ /g, "-");
+
+export const decodeSlug = (text) =>
+  String(text).toLowerCase().replace(/-/g, " ");

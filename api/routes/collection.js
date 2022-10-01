@@ -28,7 +28,7 @@ router.post("/:id", async (req, res) => {
         m.title
           ? m.title.toLowerCase() === newMovie.title.toLowerCase() &&
             m.ref === newMovie.ref
-          : undefined
+          : undefined,
       ).length === 0
     ) {
       movies.push(newMovie);
@@ -39,7 +39,7 @@ router.post("/:id", async (req, res) => {
           $set: {
             movies: movies.sort((a, b) => Number(a.ref) - Number(b.ref)),
           },
-        }
+        },
       );
 
       console.log(`INFO : Add movie (${title} - ${year}) in collection !`);
@@ -82,7 +82,7 @@ router.put("/:id", async (req, res) => {
             title: { $in: [movie.title.toLowerCase()] },
           },
         },
-      }
+      },
     );
 
     // Add movie in movies
@@ -94,7 +94,7 @@ router.put("/:id", async (req, res) => {
         $set: {
           movies: movies.sort((a, b) => Number(a.ref) - Number(b.ref)),
         },
-      }
+      },
     );
 
     console.log(`INFO : Edit movie in collection !`);
@@ -119,10 +119,10 @@ router.delete("/:id/:ref/:title", async (req, res) => {
         $pull: {
           movies: {
             ref: { $in: [ref] },
-            title: { $in: [decodeURIComponent(title.toLowerCase())] },
+            title: { $in: [title.toLowerCase().replace("-", " ")] },
           },
         },
-      }
+      },
     );
 
     console.log(`INFO : Delete movie in collection !`);

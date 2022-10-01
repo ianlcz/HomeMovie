@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router";
 import axios from "axios";
 import AuthContext from "../../../../auth/AuthContext";
 import Submit from "../../../../components/Submit";
+import { decodeSlug, encodeSlug } from "../../../../utils";
 
 const Delete = () => {
   const { user, movies } = useContext(AuthContext);
@@ -16,7 +17,7 @@ const Delete = () => {
       movies.filter((m) =>
         m.ref && m.title
           ? m.ref === reference &&
-            m.title.toLowerCase() === decodeURIComponent(title.toLowerCase())
+            m.title.toLowerCase() === decodeSlug(title)
           : undefined,
       )[0],
     );
@@ -27,9 +28,7 @@ const Delete = () => {
 
     await axios
       .delete(
-        `/api/collection/${user.movies._id}/${reference}/${encodeURIComponent(
-          title.toLowerCase(),
-        )}`,
+        `/api/collection/${user.movies._id}/${reference}/${encodeSlug(title)}`,
       )
       .then((res) => res.data)
       .catch((err) => console.error(err.message));

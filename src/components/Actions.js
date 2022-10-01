@@ -8,6 +8,7 @@ import {
 } from "react-icons/io5";
 
 import AuthContext from "../auth/AuthContext";
+import { encodeSlug } from "../utils";
 
 const Actions = ({ children }) => {
   const { logout } = useContext(AuthContext);
@@ -38,9 +39,7 @@ const Actions = ({ children }) => {
       ) : (
         <div className="flex flex-row mt-2">
           <a
-            href={`/movies/edit/${children.ref}/${encodeURIComponent(
-              children.title,
-            )}`}
+            href={`/movies/edit/${children.ref}/${encodeSlug(children.title)}`}
             className="flex items-center w-max mr-5 px-2 py-1 text-gray-400 hover:text-gray-50 border border-gray-400 hover:border-gray-400 bg-gray-50 dark:bg-gray-500/30 hover:bg-gray-400 rounded-full shadow transition-all duration-300 ease-in-out"
           >
             <IoSettings className="w-4 h-4" />
@@ -48,7 +47,7 @@ const Actions = ({ children }) => {
           </a>
 
           <a
-            href={`/movies/delete/${children.ref}/${encodeURIComponent(
+            href={`/movies/delete/${children.ref}/${encodeSlug(
               children.title,
             )}`}
             className="flex items-center w-max px-2 py-1 text-red-600 hover:text-red-50 border border-red-500 hover:border-red-400 bg-red-50 dark:bg-red-500/20 hover:bg-red-400 rounded-full shadow transition-all duration-300 ease-in-out"

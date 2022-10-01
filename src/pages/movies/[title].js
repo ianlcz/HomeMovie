@@ -4,13 +4,14 @@ import { useLocation, useParams } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import AuthContext from "../../auth/AuthContext";
 import { getCookieFromBrowser } from "../../auth/cookies";
+import { decodeSlug, encodeSlug } from "../../utils";
 
 const HeadBand = lazy(() => import("../../components/Movie/HeadBand/HeadBand"));
 const Pane = lazy(() => import("../../components/Movie/Pane/Pane"));
 
 const Read = () => {
   const { getMovieInfo, movies } = useContext(AuthContext);
-  const { title } = useParams();
+  const { title, year } = useParams();
   const [detail, setDetail] = useState({});
   const [directors, setDirectors] = useState([]);
   const [compositors, setCompositors] = useState([]);
@@ -20,14 +21,13 @@ const Read = () => {
 
   const token = getCookieFromBrowser("authToken");
   const user = jwtDecode(token);
-  const year = Number(new URLSearchParams(useLocation().search).get("year"));
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const movieFound = movies.filter(
           (m) =>
-            m.title.toLowerCase() === decodeURIComponent(title.toLowerCase()) &&
+            decodeSlug(encodeSlug(m.title)) === decodeSlug(title) &&
             m.year == year,
         )[0];
         const {
@@ -38,7 +38,9 @@ const Read = () => {
           cast,
           trailer,
         } = await getMovieInfo(
-          movieFound ? movieFound : { ref: "Preview", title, year },
+          movieFound
+            ? movieFound
+            : { ref: "Preview", title: decodeSlug(title), year },
         );
 
         setDetail(movie);
