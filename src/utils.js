@@ -74,7 +74,7 @@ export const encodeSlug = (text) =>
   String(text)
     .replace(/( : )/g, "-")
     .toLowerCase()
-    .replace(/(:)|(- )|\'|,/g, "")
+    .replace(/(:)|(- )|'|,|[\u25A0\u00A0]/g, "")
     .replace(/ /g, "-");
 
 export const decodeSlug = (text) =>
