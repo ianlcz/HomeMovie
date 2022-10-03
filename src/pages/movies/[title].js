@@ -40,7 +40,7 @@ const Read = () => {
         } = await getMovieInfo(
           movieFound
             ? movieFound
-            : { ref: "Preview", title: decodeSlug(title), year },
+            : { ref: "Preview", title: decodeSlug(encode(title)), year },
         );
 
         setDetail(movie);
