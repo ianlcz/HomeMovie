@@ -11,7 +11,7 @@ const List = ({ movie }) => {
   ];
 
   return movie.title ? (
-    <li>
+    <li className="pl-4 pr-2 py-2 rounded-xl text-blue-600 dark:text-blue-500 hover:dark:text-blue-800 hover:bg-blue-100 hover:dark:bg-blue-100/80 transition-all duration-500 ease-in-out">
       <a
         href={`/movies/${encodeSlug(movie.title)}/${movie.year}`}
         className="flex flex-row items-center mb-2"
@@ -20,7 +20,7 @@ const List = ({ movie }) => {
           {movie.ref}
         </p>
         <div>
-          <p className="text-blue-600 dark:text-blue-500 font-light">
+          <p className="font-light">
             {movie.title}
             {movie.year ? (
               <span className="ml-1 font-medium text-sm">{`(${movie.year})`}</span>

@@ -40,7 +40,7 @@ const Actions = ({ children }) => {
         <div className="flex flex-row mt-2">
           <a
             href={`/movies/edit/${children.ref}/${encodeSlug(children.title)}`}
-            className="flex items-center w-max mr-5 px-2 py-1 text-gray-400 hover:text-gray-50 border border-gray-400 hover:border-gray-400 bg-gray-50 dark:bg-gray-500/30 hover:bg-gray-400 rounded-full shadow transition-all duration-300 ease-in-out"
+            className="flex items-center w-max mr-5 px-2 py-1 text-gray-400 dark:text-gray-300 hover:text-gray-50 border border-gray-400 hover:border-gray-400 bg-gray-50 dark:bg-gray-500/20 hover:bg-gray-400 rounded-full shadow transition-all duration-300 ease-in-out"
           >
             <IoSettings className="w-4 h-4" />
             <span className="ml-2 text-xs">Modifier</span>

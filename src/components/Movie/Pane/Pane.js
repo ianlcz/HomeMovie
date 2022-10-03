@@ -89,7 +89,7 @@ const Pane = ({
                 .map((c) => (
                   <li
                     key={c.id}
-                    className="w-fit h-max pr-2 lg:pr-0 hover:bg-blue-100/80 hover:shadow hover:dark:shadow-none rounded-xl transition duration-500 ease-in"
+                    className="w-fit h-max pr-2 lg:pr-0 hover:bg-blue-100/80 rounded-xl transition duration-500 ease-in"
                   >
                     <a
                       href={`/credits/${c.id}`}
