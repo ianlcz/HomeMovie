@@ -73,7 +73,7 @@ export const formatName = (nameOfCharacter) => {
 export const encodeSlug = (text) =>
   String(text)
     .toLowerCase()
-    .replace(/( : )|\//ig, "-")
+    .replace(/( : )|\/|°/ig, "-")
     .replace(/(:)|(- )|(– )|(# )|( !)|[?!,’'&#\.]|[\u00A0]/gm, "")
     .replace(/ /ig, "-");
 
