@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react";
-import { Helmet } from "react-helmet";
 import { useNavigate, useParams } from "react-router";
 import axios from "axios";
 import AuthContext from "../../../../auth/AuthContext";
 import Submit from "../../../../components/Submit";
 import { decodeSlug, encodeSlug } from "../../../../utils";
+import { Helmet } from "react-helmet";
 
 const Delete = () => {
   const { user, movies } = useContext(AuthContext);
@@ -14,13 +14,17 @@ const Delete = () => {
 
   useEffect(() => {
     setMovie(
-      movies.filter((m) =>
+      movies.find((m) =>
         m.ref && m.title
           ? m.ref === reference &&
-            m.title.toLowerCase() === decodeSlug(title)
+            decodeSlug(encodeSlug(m.title)) === decodeSlug(title)
           : undefined,
-      )[0],
+      ),
     );
+
+    document.title =
+      `Suppression ${movie ? "de " + movie.title : "d'un film"} | HomeMovie` ||
+      "";
   }, [movies, title, reference]);
 
   const handleDelete = async (e) => {
@@ -39,10 +43,15 @@ const Delete = () => {
 
   return (
     <>
-      <Helmet>
-        <title>{`Suppression ${
-          movie ? "de " + movie.title : "d'un film"
-        } | HomeMovie`}</title>
+      <Helmet
+        meta={[
+          {
+            name: `theme-color`,
+            content: "#7f1d1d",
+          },
+        ]}
+      >
+        >
       </Helmet>
       <div className="flex flex-col bg-gradient-to-br from-red-900 to-red-400 dark:from-slate-800 dark:to-slate-800 min-h-screen">
         <div className="w-5/6 lg:w-auto mx-auto my-auto p-8 bg-red-50 dark:bg-slate-600 rounded-xl shadow-lg">

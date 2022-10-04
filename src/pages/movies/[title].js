@@ -1,5 +1,4 @@
 import { lazy, useContext, useEffect, useState } from "react";
-import { Helmet } from "react-helmet";
 import { useLocation, useParams } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import AuthContext from "../../auth/AuthContext";
@@ -43,6 +42,16 @@ const Read = () => {
             : { ref: "Preview", title: decodeSlug(encodeSlug(title)), year },
         );
 
+        document.title =
+          `${
+            movie.code &&
+            (movie.code === "Vu au cinéma" || movie.code === "Vu en streaming")
+              ? `${movie.code} -`
+              : movie.ref
+              ? `${movie.ref} -`
+              : ""
+          } ${movie.title} | HomeMovie` || "";
+
         setDetail(movie);
         setDirectors(directors);
         setCompositors(compositors);
@@ -58,17 +67,6 @@ const Read = () => {
 
   return detail.title ? (
     <>
-      <Helmet>
-        <title>{`${
-          detail.code &&
-          (detail.code === "Vu au cinéma" || detail.code === "Vu en streaming")
-            ? `${detail.code} -`
-            : detail.ref
-            ? `${detail.ref} -`
-            : ""
-        } ${detail.title} | HomeMovie`}</title>
-      </Helmet>
-
       <HeadBand>
         {{ detail, directors, compositors, charactersCreators }}
       </HeadBand>

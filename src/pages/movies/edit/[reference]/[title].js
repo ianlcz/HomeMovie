@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import { Helmet } from "react-helmet";
 import { useNavigate, useParams } from "react-router";
 import axios from "axios";
 import { getCookieFromBrowser } from "../../../../auth/cookies";
@@ -24,12 +23,18 @@ const Update = () => {
   useEffect(() => {
     const fetchMovie = async () => {
       setMovie(
-        movies.filter((m) =>
+        movies.find((m) =>
           m.ref && m.title
-            ? m.ref === reference && m.title.toLowerCase() === decodeSlug(title)
+            ? m.ref === reference &&
+              decodeSlug(encodeSlug(m.title)) === decodeSlug(title)
             : undefined,
-        )[0],
+        ),
       );
+
+      document.title =
+        `Modification ${
+          movie ? "de " + movie.title : "d'un film"
+        } | HomeMovie` || "";
 
       if (newTitle !== "") {
         setSuggestion(
@@ -81,11 +86,6 @@ const Update = () => {
 
   return (
     <>
-      <Helmet>
-        <title>{`Modification ${
-          movie ? "de " + movie.title : "d'un film"
-        } | HomeMovie`}</title>
-      </Helmet>
       <div className="flex flex-col bg-gradient-to-br from-blue-800 to-blue-400 dark:from-slate-800 dark:to-slate-800 min-h-screen">
         <div className="w-4/5 lg:w-3/4 mx-auto my-auto p-8 bg-blue-50 dark:bg-slate-600 rounded-xl shadow-lg">
           <h1 className="mb-6 font-semibold text-2xl text-center text-blue-900 dark:text-blue-500">

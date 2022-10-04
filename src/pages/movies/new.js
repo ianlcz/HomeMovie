@@ -4,7 +4,6 @@ import AuthContext from "../../auth/AuthContext";
 import { useNavigate } from "react-router-dom";
 import Card from "../../components/Movie/Card";
 import Submit from "../../components/Submit";
-import { Helmet } from "react-helmet";
 import { encodeSlug } from "../../utils";
 
 const Create = () => {
@@ -33,6 +32,9 @@ const Create = () => {
         setSuggestion([]);
       }
     };
+
+    document.title = `Ajout d'un nouveau film | HomeMovie` || "";
+
     fetchMovie();
   }, [title]);
 
@@ -57,9 +59,6 @@ const Create = () => {
 
   return (
     <>
-      <Helmet>
-        <title>{`Ajout d'un nouveau film | HomeMovie`}</title>
-      </Helmet>
       <div className="flex flex-col bg-gradient-to-br from-blue-800 to-blue-400 dark:from-slate-800 dark:to-slate-800 min-h-screen">
         <div className="w-4/5 lg:w-3/4 mx-auto my-auto p-8 bg-blue-50 dark:bg-slate-600 rounded-xl shadow-lg">
           <h1 className="mb-6 font-semibold text-2xl text-center text-blue-900 dark:text-blue-500">
