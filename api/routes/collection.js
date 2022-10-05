@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const logging = require("py-logging");
 const Collection = require("../models/Collection");
 const { decodeSlug, encodeSlug } = require("../utils");
 
@@ -43,7 +44,7 @@ router.post("/:id", async (req, res) => {
         },
       );
 
-      console.log(`INFO : Add movie (${title} - ${year}) in collection !`);
+      logging.info(`Add movie (${title} - ${year}) in collection !`);
 
       res.status(200).json({
         success: true,
@@ -51,7 +52,7 @@ router.post("/:id", async (req, res) => {
       });
     }
   } catch (err) {
-    console.error(err.message);
+    logging.error(err.message);
   }
 });
 
@@ -61,7 +62,7 @@ router.get("/:id", (req, res) => {
 
   Collection.findById(id, (err, data) => {
     if (!err) {
-      console.log(JSON.stringify(data, null, 2));
+      logging.info(JSON.stringify(data, null, 2));
       res.status(200).send(data);
     }
   });
@@ -86,7 +87,7 @@ router.put("/:id", async (req, res) => {
       },
     );
 
-    // Add movie in movies
+    // Edit movie in movies
     const { movies } = await Collection.findById(id);
     movies.push(newMovie);
     await Collection.updateOne(
@@ -98,14 +99,14 @@ router.put("/:id", async (req, res) => {
       },
     );
 
-    console.log(`INFO : Edit movie in collection !`);
+    logging.info(`Edit movie in collection !`);
 
     res.status(200).json({
       success: true,
       movies,
     });
   } catch (err) {
-    console.error(err.message);
+    logging.error(err.message);
   }
 });
 
@@ -126,14 +127,14 @@ router.delete("/:id/:ref/:title", async (req, res) => {
       },
     );
 
-    console.log(`INFO : Delete movie in collection !`);
+    logging.info(`Delete movie in collection !`);
 
     res.status(200).json({
       success: true,
       movies,
     });
   } catch (err) {
-    console.error(err.message);
+    logging.error(err.message);
   }
 });
 
