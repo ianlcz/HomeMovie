@@ -165,6 +165,7 @@ const Update = () => {
                         setNewTitle(m.title);
                         setNewMovie(m);
                       }}
+                      isClicked={newTitle === m.title}
                     >
                       {m}
                     </Card>

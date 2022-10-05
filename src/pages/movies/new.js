@@ -91,7 +91,7 @@ const Create = () => {
                 className={`my-8 w-max m-auto ${
                   suggestion.length === 1
                     ? ""
-                    : "grid grid-flow-col grid-rows-8 lg:grid-cols-2 lg:grid-rows-4 gap-8"
+                    : "grid grid-flow-col grid-rows-8 lg:grid-cols-2 lg:grid-rows-4 gap-x-20 gap-y-4"
                 }`}
               >
                 {suggestion
@@ -105,6 +105,10 @@ const Create = () => {
                         setGenre(m.genre_ids);
                         setYear(new Date(m.release_date).getFullYear());
                       }}
+                      isClicked={
+                        title === m.title &&
+                        year === new Date(m.release_date).getFullYear()
+                      }
                     >
                       {m}
                     </Card>
