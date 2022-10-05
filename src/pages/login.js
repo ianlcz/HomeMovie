@@ -19,9 +19,9 @@ const Login = () => {
 
   return (
     <>
-      <div className="h-screen lg:min-h-screen flex flex-col bg-gradient-to-br from-blue-800 to-blue-400 dark:from-slate-800 dark:to-slate-800">
-        <div className="w-11/12 lg:w-1/3 mx-auto my-auto py-8 bg-blue-50 dark:bg-slate-600 rounded-xl shadow-lg">
-          <h1 className="font-semibold text-2xl text-center text-blue-500">
+      <div className="h-screen lg:min-h-screen flex flex-col bg-blue-100 dark:bg-slate-800">
+        <div className="w-11/12 lg:w-2/5 mx-auto my-auto py-8 bg-white dark:bg-slate-600 rounded-xl shadow-lg">
+          <h1 className="font-semibold text-2xl text-center text-blue-800 dark:text-blue-500">
             Connexion
           </h1>
 
