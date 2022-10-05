@@ -72,7 +72,7 @@ const HeadBand = ({
         </h1>
 
         {original_title.toLowerCase() !==
-        title.replace(" : ", ": ").toLowerCase() ? (
+        title.replace(" : ", ": ").replace(" ! ", "! ").toLowerCase() ? (
           <p className="mt-2 text-sm italic text-white/90 text-center">
             {original_title}
           </p>
@@ -93,7 +93,7 @@ const HeadBand = ({
         <div
           className={`flex flex-row items-center lg:w-max mx-auto mt-2 ${
             original_title.toLowerCase() ===
-              title.replace(" : ", ": ").toLowerCase() &&
+              title.replace(" : ", ": ").replace(" ! ", "! ").toLowerCase() &&
             new Date(release_date).getTime() < new Date().getTime()
               ? "lg:-my-1"
               : new Date(release_date).getTime() < new Date().getTime()

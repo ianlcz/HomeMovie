@@ -2,7 +2,7 @@ import React, { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import jwt from "jwt-decode";
 import { getCookieFromBrowser, removeCookie, setCookie } from "./cookies";
-import { arrayOfUniqueElement, shuffleArray } from "../utils";
+import { arrayOfUniqueElement, encodeSlug, shuffleArray } from "../utils";
 
 const AuthContext = createContext({
   user: null,
@@ -77,7 +77,7 @@ export const AuthProvider = ({ children }) => {
     if (title) {
       const results = await axios
         .get(
-          `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(
+          `https://api.themoviedb.org/3/search/movie?query=${encodeSlug(
             title,
           )}&api_key=${
             process.env.REACT_APP_API_KEY
@@ -217,7 +217,7 @@ export const AuthProvider = ({ children }) => {
             ),
           ).slice(0, 6),
           cast,
-          trailers:
+          trailer:
             trailers.filter(
               (t) =>
                 t.name.toLowerCase().includes("vf") &&
@@ -225,20 +225,24 @@ export const AuthProvider = ({ children }) => {
                 t.type === "Trailer" &&
                 t.official === true,
             ).length === 0
-              ? trailers.filter(
-                  (t) =>
-                    t.name.toLowerCase().includes("vf") &&
-                    t.site === "YouTube" &&
-                    t.type === "Teaser" &&
-                    t.official === true,
-                )
-              : trailers.filter(
-                  (t) =>
-                    t.name.toLowerCase().includes("vf") &&
-                    t.site === "YouTube" &&
-                    t.type === "Trailer" &&
-                    t.official === true,
-                ),
+              ? trailers
+                  .filter(
+                    (t) =>
+                      t.name.toLowerCase().includes("vf") &&
+                      t.site === "YouTube" &&
+                      t.type === "Teaser" &&
+                      t.official === true,
+                  )
+                  .sort((a, b) => a.published_at < b.published_at)[0]
+              : trailers
+                  .filter(
+                    (t) =>
+                      t.name.toLowerCase().includes("vf") &&
+                      t.site === "YouTube" &&
+                      t.type === "Trailer" &&
+                      t.official === true,
+                  )
+                  .sort((a, b) => a.published_at < b.published_at)[0],
         };
       }
     }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Background from "../Background";
+import { encodeSlug } from "../../../utils";
 
 const Collection = ({ movie_title, belongs_to_collection }) =>
   belongs_to_collection &&
@@ -35,7 +36,7 @@ const Collection = ({ movie_title, belongs_to_collection }) =>
                   <a
                     href={
                       movie_title !== title && release_date !== ""
-                        ? `/movies/${title.toLowerCase()}?year=${String(
+                        ? `/movies/${encodeSlug(title)}/${String(
                             new Date(release_date).getFullYear(),
                           )}`
                         : undefined

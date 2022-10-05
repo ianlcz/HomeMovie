@@ -1,17 +1,22 @@
 const Card = ({
   children: { poster_path, title, release_date, overview },
   onClick,
+  isClicked,
 }) => {
   return (
     <li
-      className="flex flex-col lg:flex-row items-center cursor-pointer"
+      className={`p-2 flex flex-col lg:flex-row items-center cursor-pointer rounded-xl ${
+        isClicked
+          ? "bg-blue-200 dark:bg-blue-200/80"
+          : "hover:bg-blue-100 hover:dark:bg-blue-100/80 transition-all duration-100 ease-in-out"
+      }`}
       onClick={onClick}
     >
       {poster_path ? (
         <img
           src={`https://image.tmdb.org/t/p/original/${poster_path}`}
           alt={`Affiche du film : ${title}`}
-          className="w-20 mb-4 mr-0 lg:mb-0 lg:mr-2 rounded-md shadow-xl"
+          className="w-24 mb-4 mr-0 lg:mb-0 lg:mr-2 rounded-md shadow-xl"
         />
       ) : undefined}
 

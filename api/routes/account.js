@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const { sign } = require("jsonwebtoken");
+const logging = require("py-logging");
 const Collection = require("../models/Collection");
 const Owner = require("../models/Owner");
 
@@ -19,7 +20,7 @@ router.get("/:id", async (req, res) => {
       res.json({ success: false, message: "Owner not found !" });
     }
   } catch (err) {
-    console.error(err.message);
+    logging.error(err.message);
   }
 });
 
@@ -39,23 +40,25 @@ router.post("/register", async (req, res) => {
               { emailAddress, password: hash, movies: movies._id },
               (err) => {
                 if (err) throw new Error(err.message);
-              }
+              },
             );
           }
         });
       });
 
+      logging.info("new user has been registered");
       res
         .status(200)
         .json({ success: true, message: "A new user has been registered" });
     } else {
+      logging.error("new user has not been registered");
       res.json({
         success: false,
         message: "We didn't registered this new user !",
       });
     }
   } catch (err) {
-    console.error(err.message);
+    logging.error(err.message);
   }
 });
 
@@ -72,10 +75,10 @@ router.post("/login", async (req, res) => {
             expiresIn: "7d",
           });
 
-          console.log(token);
-
+          logging.info(`logging on HomeMovie App`);
           res.status(200).json({ success: true, token });
         } else {
+          logging.error(err.message);
           res.json({
             success: false,
             message: err.message,
@@ -83,13 +86,14 @@ router.post("/login", async (req, res) => {
         }
       });
     } else {
+      logging.error("owner not found");
       res.json({
         success: false,
         message: "Owner not found !",
       });
     }
   } catch (err) {
-    console.error(err.message);
+    logging.error(err.message);
   }
 });
 

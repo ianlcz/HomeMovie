@@ -3,7 +3,7 @@ import { IoInformationCircle } from "react-icons/io5";
 import Collection from "./Collection";
 import GoToHome from "./GoToHome";
 import Footer from "../../Footer";
-import { formatName } from "../../../utils";
+import { encodeSlug, formatName } from "../../../utils";
 import Background from "../Background";
 import { useState } from "react";
 
@@ -18,7 +18,7 @@ const Pane = ({
       recommendations,
     },
     cast,
-    trailers,
+    trailer,
   },
 }) => {
   const isHover = false;
@@ -64,7 +64,7 @@ const Pane = ({
                             className="h-8 mx-auto"
                           />
                         ) : undefined}
-                        <p className="w-max mx-auto mt-2 text-center text-xs font-medium">
+                        <p className="w-max mx-auto mt-2 text-center text-xs font-extralight">
                           {p.name}
                         </p>
                       </li>
@@ -89,7 +89,7 @@ const Pane = ({
                 .map((c) => (
                   <li
                     key={c.id}
-                    className="w-fit h-max pr-2 lg:pr-0 hover:bg-blue-100/80 hover:dark:bg-blue-100/60 hover:shadow rounded-xl transition duration-500 ease-in"
+                    className="w-fit h-max pr-2 lg:pr-0 hover:bg-blue-100/80 dark:text-blue-500 hover:dark:text-blue-800 rounded-xl transition duration-500 ease-in"
                   >
                     <a
                       href={`/credits/${c.id}`}
@@ -112,7 +112,7 @@ const Pane = ({
                             {formatName(c.name).lastname}
                           </span>
                         </p>
-                        <p className="mt-1 text-left text-xs lg:text-sm">
+                        <p className="mt-1.5 text-left text-xs lg:text-sm font-extralight">
                           {c.character
                             .split(" / ")
                             .slice(
@@ -142,22 +142,17 @@ const Pane = ({
     {
       title: { text: "Bande-annonce", options: "mt-6 mb-4 text-center" },
       body: {
-        verify: trailers.length > 0,
-        content:
-          trailers.length > 0 ? (
-            <div className="aspect-w-16 aspect-h-[9.4] rounded-xl">
-              <iframe
-                className="rounded-xl shadow-lg"
-                src={`https://www.youtube.com/embed/${
-                  trailers[
-                    Math.floor(Math.random() * Math.floor(trailers.length))
-                  ].key
-                }`}
-                frameBorder="0"
-                allowFullScreen
-              ></iframe>
-            </div>
-          ) : undefined,
+        verify: trailer,
+        content: trailer ? (
+          <div className="aspect-w-16 aspect-h-[9.4] rounded-xl">
+            <iframe
+              className="rounded-xl shadow-lg"
+              src={`https://www.youtube.com/embed/${trailer.key}`}
+              frameBorder="0"
+              allowFullScreen
+            ></iframe>
+          </div>
+        ) : undefined,
       },
     },
     {
@@ -173,7 +168,7 @@ const Pane = ({
                   className="hover:scale-110 duration-700 ease-in-out w-[172px] lg:w-[204px] 2xl:w-[280px]"
                 >
                   <a
-                    href={`/movies/${r.title.toLowerCase()}?year=${String(
+                    href={`/movies/${encodeSlug(r.title)}/${String(
                       new Date(r.release_date).getFullYear(),
                     )}`}
                     title={r.title}
@@ -212,7 +207,11 @@ const Pane = ({
           ({ title: { text, options }, body: { verify, content } }, idx) =>
             verify ? (
               <span key={idx}>
-                <h2 className={`${options} text-xl font-medium text-blue-800 dark:text-blue-600`}>{text}</h2>
+                <h2
+                  className={`${options} text-xl font-medium text-blue-800 dark:text-blue-600`}
+                >
+                  {text}
+                </h2>
                 {content}
               </span>
             ) : undefined,

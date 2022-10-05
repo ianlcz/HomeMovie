@@ -16,19 +16,19 @@ const Score = ({ children: { vote_average, budget, revenue } }) =>
       <tbody>
         <tr className="text-sm text-blue-600 dark:text-blue-500">
           {vote_average > 0 ? (
-            <td className="text-center">{`${Math.round(
+            <td className="text-center font-light">{`${Math.round(
               vote_average * 10,
-            )} %`}</td>
+            )}%`}</td>
           ) : undefined}
           {budget ? (
-            <td className="text-center">{formatNumber(budget)}</td>
+            <td className="text-center font-light">{formatNumber(budget)}</td>
           ) : undefined}
           {revenue ? (
-            <td className="flex flex-row w-max mx-auto">
+            <td className="flex flex-row w-max mx-auto font-light">
               <p>{formatNumber(revenue)}</p>
               {budget > 0 ? (
                 <div
-                  className={`flex flex-row ml-2 items-center ${
+                  className={`flex flex-row ml-2 items-center font-medium ${
                     revenue < budget
                       ? "text-red-600"
                       : revenue < 1.5 * budget
