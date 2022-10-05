@@ -40,20 +40,15 @@ On Linux and Mac, type this command `openssl rand -hex 32` or go to https://gene
 
 ### Write the .env files
 
-You must copy the `.env.example` file to the **api** folder and replace `<Your_MONGO_URI` and `<Your_JWT_SECRET>` with your own :
+You must copy the `.env.example` file in the root folder of the application and replace `<YOUR_MONGO_URI>`, `<YOUR_JWT_SECRET>` and `<YOUR_TMDB_API_KEY>` with your own :
 
 ```
+REACT_APP_API_KEY=<YOUR_TMDB_API_KEY>
 MONGO_URI=<YOUR_MONGO_URI>
 JWT_SECRET=<YOUR_JWT_SECRET>
 ```
 
-And another `.env.example` file in the **root** folder of the application and replace `<Your_TMDB_API_KEY>` with yours :
-
-```
-REACT_APP_API_KEY=<YOUR_TMDB_API_KEY>
-```
-
-Next, you will need to type the command `npm start` to launch the project and your browser will open the HomeMovie application at http://localhost:3000.
+Next, you will need to type the command `npm run start` to launch the project and your browser will open the HomeMovie application at http://localhost:3000.
 
 ## License
 
