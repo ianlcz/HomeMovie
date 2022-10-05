@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { Helmet } from "react-helmet";
 import { isMobileOnly } from "react-device-detect";
 import axios from "axios";
 import Poster from "../../components/Poster";
@@ -62,6 +61,8 @@ const Credit = () => {
       );
       setFilmography(movies);
     };
+
+    document.title = `${people.name} | HomeMovie` || "";
     fetchData();
   }, [character_id]);
 
@@ -78,9 +79,6 @@ const Credit = () => {
 
   return profile_path ? (
     <>
-      <Helmet>
-        <title>{`${name} | HomeMovie`}</title>
-      </Helmet>
       <div className="bg-blue-50 dark:bg-slate-800 min-h-screen">
         <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between w-full px-8 pt-8 lg:pt-0">
           <div className="lg:flex lg:items-center lg:w-[22%] lg:h-full lg:fixed">

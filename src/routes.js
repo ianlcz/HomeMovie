@@ -21,7 +21,7 @@ const routes = [
   },
   { path: "/register", component: <Register />, isProtected: false },
   { path: "/movies/new", component: <Create />, isProtected: true },
-  { path: "/movies/:title", component: <Read />, isProtected: true },
+  { path: "/movies/:title/:year", component: <Read />, isProtected: true },
   {
     path: "/movies/edit/:reference/:title",
     component: <Update />,

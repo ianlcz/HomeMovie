@@ -1,11 +1,14 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import AuthContext from "../auth/AuthContext";
-import { Helmet } from "react-helmet";
 
 const Login = () => {
   const { login } = useContext(AuthContext);
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    document.title = `Connexion | HomeMovie` || "";
+  }, []);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -16,9 +19,6 @@ const Login = () => {
 
   return (
     <>
-      <Helmet>
-        <title>{`Connexion | HomeMovie`}</title>
-      </Helmet>
       <div className="h-screen lg:min-h-screen flex flex-col bg-gradient-to-br from-blue-800 to-blue-400 dark:from-slate-800 dark:to-slate-800">
         <div className="w-11/12 lg:w-1/3 mx-auto my-auto py-8 bg-blue-50 dark:bg-slate-600 rounded-xl shadow-lg">
           <h1 className="font-semibold text-2xl text-center text-blue-500">

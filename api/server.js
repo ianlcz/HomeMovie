@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const logging = require("py-logging");
 const account = require("./routes/account");
 const collection = require("./routes/collection");
 const PORT = process.env.PORT || 8080;
@@ -15,5 +16,5 @@ app.use("/api/collection", collection);
 
 app.listen(PORT, (err) => {
   if (err) throw err;
-  console.log(`Server is listenning on http://localhost:${PORT}`);
+  logging.info(`listenning on http://localhost:${PORT}`);
 });
