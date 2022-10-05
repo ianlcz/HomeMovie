@@ -50,6 +50,10 @@ JWT_SECRET=<YOUR_JWT_SECRET>
 
 Next, you will need to type the command `npm run start` to launch the project and your browser will open the HomeMovie application at http://localhost:3000.
 
+#### Docker
+
+You can launch the HomeMovie application with Docker by following the [Docker commands](./docs/docker.md) documentation.
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
