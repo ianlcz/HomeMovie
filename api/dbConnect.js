@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const logging = require("py-logging");
 require("dotenv").config({ path: "../.env" });
 
 logging.basicConfig({
