@@ -2,8 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import AuthContext from "../../auth/AuthContext";
 import { useNavigate } from "react-router-dom";
-import Card from "../../components/Movie/Card";
-import Submit from "../../components/Submit";
+import Card from "../../components/Movie/Card.component";
+import Submit from "../../components/Submit.component";
 import { encodeSlug } from "../../utils";
 
 const Create = () => {

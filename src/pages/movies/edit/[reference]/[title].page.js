@@ -3,8 +3,8 @@ import { useNavigate, useParams } from "react-router";
 import axios from "axios";
 import { getCookieFromBrowser } from "../../../../auth/cookies";
 import AuthContext from "../../../../auth/AuthContext";
-import Card from "../../../../components/Movie/Card";
-import Submit from "../../../../components/Submit";
+import Card from "../../../../components/Movie/Card.component";
+import Submit from "../../../../components/Submit.component";
 import jwtDecode from "jwt-decode";
 import { decodeSlug, encodeSlug } from "../../../../utils";
 

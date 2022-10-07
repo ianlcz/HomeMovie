@@ -13,6 +13,7 @@ import { encodeSlug } from "../utils";
 const Actions = ({ children }) => {
   const { logout } = useContext(AuthContext);
   const location = useLocation();
+
   return (
     <>
       {!children ? (

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { IoInformationCircle, IoSyncCircle } from "react-icons/io5";
 import AuthContext from "../auth/AuthContext";
-import List from "./Movie/List";
+import List from "./Movie/List.component";
 
 const Suggestions = ({ result }) => {
   const { isLoading } = useContext(AuthContext);

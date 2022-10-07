@@ -1,5 +1,5 @@
 import { encodeSlug } from "../../utils";
-import Actions from "../Actions";
+import Actions from "../Actions.component";
 
 const List = ({ movie }) => {
   const codeEquivalent = [

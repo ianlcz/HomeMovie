@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import axios from "axios";
 import AuthContext from "../../../../auth/AuthContext";
-import Submit from "../../../../components/Submit";
+import Submit from "../../../../components/Submit.component";
 import { decodeSlug, encodeSlug } from "../../../../utils";
 import { Helmet } from "react-helmet";
 

@@ -5,8 +5,8 @@ import AuthContext from "../../auth/AuthContext";
 import { getCookieFromBrowser } from "../../auth/cookies";
 import { decodeSlug, encodeSlug } from "../../utils";
 
-const HeadBand = lazy(() => import("../../components/Movie/HeadBand/HeadBand"));
-const Pane = lazy(() => import("../../components/Movie/Pane/Pane"));
+const HeadBand = lazy(() => import("../../components/Movie/HeadBand/HeadBand.component"));
+const Pane = lazy(() => import("../../components/Movie/Pane/Pane.component"));
 
 const Read = () => {
   const { getMovieInfo, movies } = useContext(AuthContext);

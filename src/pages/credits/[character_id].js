@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { isMobileOnly } from "react-device-detect";
 import axios from "axios";
-import Poster from "../../components/Poster";
-import Body from "../../components/Credit/Body";
-import GoToHome from "../../components/Movie/Pane/GoToHome";
-import Footer from "../../components/Footer";
+import Poster from "../../components/Poster.component";
+import Body from "../../components/Credit/Body.component";
+import GoToHome from "../../components/Movie/Pane/GoToHome.component";
+import Footer from "../../components/Footer.component";
 import { arrayOfUniqueElement, formatName } from "../../utils";
 
 const Credit = () => {
