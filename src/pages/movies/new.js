@@ -17,6 +17,8 @@ const Create = () => {
 
   useEffect(() => {
     const fetchMovie = async () => {
+      document.title = `Ajout d'un nouveau film | HomeMovie` || "";
+
       if (title !== "") {
         const data = await axios
           .get(
@@ -32,8 +34,6 @@ const Create = () => {
         setSuggestion([]);
       }
     };
-
-    document.title = `Ajout d'un nouveau film | HomeMovie` || "";
 
     fetchMovie();
   }, [title]);
