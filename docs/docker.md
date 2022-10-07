@@ -13,11 +13,11 @@ docker build -t ianlcz/homemovie:latest .
 Run **homemovie** container by using Docker thanks to this command on Linux:
 
 ```
-docker run --rm -d --name homemovie -v $(pwd)/src:/home/homemovie/src -p 3000:3000 ianlcz/homemovie
+docker run --rm -d -p 3000:3000 -p 8080:8080 --name homemovie -v $(pwd)/src:/home/homemovie/src ianlcz/homemovie
 ```
 
 or on Windows :
 
 ```
-docker run --rm -d --name homemovie -v %cd%/src:/home/homemovie/src -p 3000:3000 ianlcz/homemovie
+docker run --rm -d -p 3000:3000 -p 8080:8080 --name homemovie -v %cd%/src:/home/homemovie/src ianlcz/homemovie
 ```
