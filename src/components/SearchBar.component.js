@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useHistory, useNavigate } from "react-router-dom";
 import { IoInformationCircle, IoSyncCircle } from "react-icons/io5";
-import AuthContext from "../auth/AuthContext";
+import AuthContext from "../contexts/auth.context";
 import List from "./Movie/List.component";
 import Actions from "./Actions.component";
 import Suggestions from "./Suggestions.component";

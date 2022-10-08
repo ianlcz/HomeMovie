@@ -7,11 +7,13 @@ import {
   IoRemoveCircle,
 } from "react-icons/io5";
 
-import AuthContext from "../auth/AuthContext";
+import AuthContext from "../contexts/auth.context";
 import { encodeSlug } from "../utils";
+import PopUpContext from "../contexts/pop-up.context";
 
 const Actions = ({ children }) => {
   const { logout } = useContext(AuthContext);
+  const { displayMovieOnPopUp } = useContext(PopUpContext);
   const location = useLocation();
 
   return (
@@ -47,15 +49,19 @@ const Actions = ({ children }) => {
             <span className="ml-2 text-xs">Modifier</span>
           </a>
 
-          <a
-            href={`/movies/delete/${children.ref}/${encodeSlug(
-              children.title,
-            )}`}
+          <button
             className="flex items-center w-max px-2 py-1 text-red-600 hover:text-red-50 border border-red-500 hover:border-red-400 bg-red-50 dark:bg-red-500/20 hover:bg-red-400 rounded-full shadow transition-all duration-300 ease-in-out"
+            onClick={() =>
+              displayMovieOnPopUp({
+                ref: children.ref,
+                title: children.title,
+                year: children.year,
+              })
+            }
           >
             <IoRemoveCircle className="w-4 h-4" />
             <span className="ml-2 text-xs">Retirer</span>
-          </a>
+          </button>
         </div>
       )}
     </>

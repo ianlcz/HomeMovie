@@ -1,11 +1,13 @@
 import { lazy, useContext, useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import jwtDecode from "jwt-decode";
-import AuthContext from "../../auth/AuthContext";
-import { getCookieFromBrowser } from "../../auth/cookies";
+import AuthContext from "../../contexts/auth.context";
+import { getCookieFromBrowser } from "../../cookies";
 import { decodeSlug, encodeSlug } from "../../utils";
 
-const HeadBand = lazy(() => import("../../components/Movie/HeadBand/HeadBand.component"));
+const HeadBand = lazy(() =>
+  import("../../components/Movie/HeadBand/HeadBand.component"),
+);
 const Pane = lazy(() => import("../../components/Movie/Pane/Pane.component"));
 
 const Read = () => {
@@ -26,7 +28,7 @@ const Read = () => {
       try {
         const movieFound = movies.filter(
           (m) =>
-            decodeSlug(encodeSlug(m.title)) === decodeSlug(title) &&
+            decodeSlug(encodeSlug(m.title)) === decodeSlug(encodeSlug(title)) &&
             m.year == year,
         )[0];
         const {
@@ -72,7 +74,7 @@ const Read = () => {
       </HeadBand>
       <Pane>{{ detail, cast, trailer }}</Pane>
     </>
-  ) : null;
+  ) : undefined;
 };
 
 export default Read;

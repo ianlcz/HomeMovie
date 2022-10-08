@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import axios from "axios";
-import { getCookieFromBrowser } from "../../../../auth/cookies";
-import AuthContext from "../../../../auth/AuthContext";
+import { getCookieFromBrowser } from "../../../../cookies";
+import AuthContext from "../../../../contexts/auth.context";
 import Card from "../../../../components/Movie/Card.component";
 import Submit from "../../../../components/Submit.component";
 import jwtDecode from "jwt-decode";
