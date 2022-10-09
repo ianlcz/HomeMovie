@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from "react";
-import { Helmet } from "react-helmet";
 import { useNavigate, useParams } from "react-router";
 import axios from "axios";
-import { getCookieFromBrowser } from "../../../../auth/cookies";
-import AuthContext from "../../../../auth/AuthContext";
-import Card from "../../../../components/Movie/Card";
-import Submit from "../../../../components/Submit";
+import { getCookieFromBrowser } from "../../../../cookies";
+import AuthContext from "../../../../contexts/auth.context";
+import Card from "../../../../components/Movie/Card.component";
+import Submit from "../../../../components/Submit.component";
 import jwtDecode from "jwt-decode";
+import { decodeSlug, encodeSlug } from "../../../../utils";
 
 const Update = () => {
   const user = jwtDecode(getCookieFromBrowser("authToken"));
@@ -23,13 +23,18 @@ const Update = () => {
   useEffect(() => {
     const fetchMovie = async () => {
       setMovie(
-        movies.filter((m) =>
+        movies.find((m) =>
           m.ref && m.title
             ? m.ref === reference &&
-              m.title.toLowerCase() === decodeURIComponent(title.toLowerCase())
+              decodeSlug(encodeSlug(m.title)) === decodeSlug(title)
             : undefined,
-        )[0],
+        ),
       );
+
+      document.title =
+        `Modification ${
+          movie ? "de " + movie.title : "d'un film"
+        } | HomeMovie` || "";
 
       if (newTitle !== "") {
         setSuggestion(
@@ -74,25 +79,16 @@ const Update = () => {
         .then((res) => res.data)
         .catch((err) => console.error(err.message));
 
-      navigate(
-        `/movies/${encodeURIComponent(newMovie.title).toLowerCase()}?year=${
-          newMovie.year
-        }`,
-      );
+      navigate(`/movies/${encodeSlug(newMovie.title)}/${newMovie.year}`);
       window.location.reload(false);
     }
   };
 
   return (
     <>
-      <Helmet>
-        <title>{`Modification ${
-          movie ? "de " + movie.title : "d'un film"
-        } | HomeMovie`}</title>
-      </Helmet>
-      <div className="flex flex-col bg-gradient-to-br from-blue-800 to-blue-400 dark:from-slate-800 dark:to-slate-800 min-h-screen">
-        <div className="w-4/5 lg:w-3/4 mx-auto my-auto p-8 bg-blue-50 dark:bg-slate-600 rounded-xl shadow-lg">
-          <h1 className="mb-6 font-semibold text-2xl text-center text-blue-900 dark:text-blue-500">
+      <div className="flex flex-col bg-blue-100 dark:bg-slate-800 min-h-screen">
+        <div className="w-4/5 lg:w-3/4 mx-auto my-auto p-8 bg-white dark:bg-slate-600 rounded-xl shadow-lg">
+          <h1 className="mb-6 font-semibold text-2xl text-center text-blue-800 dark:text-blue-500">
             Voulez-vous modifier ce film ?
           </h1>
           <form onSubmit={HandleEdit}>
@@ -169,6 +165,7 @@ const Update = () => {
                         setNewTitle(m.title);
                         setNewMovie(m);
                       }}
+                      isClicked={newTitle === m.title}
                     >
                       {m}
                     </Card>

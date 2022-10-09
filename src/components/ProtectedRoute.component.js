@@ -1,6 +1,6 @@
 import React from "react";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
-import { getCookieFromBrowser } from "../auth/cookies";
+import { getCookieFromBrowser } from "../cookies";
 
 const ProtectedRoute = () => {
   const user = getCookieFromBrowser("authToken");

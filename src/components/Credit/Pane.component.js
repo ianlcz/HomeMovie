@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { isMobileOnly } from "react-device-detect";
+import { encodeSlug } from "../../utils";
 
 const Pane = ({ movies, gender }) => {
   const [informations, setInformations] = useState([]);
@@ -100,7 +101,7 @@ const Pane = ({ movies, gender }) => {
             {i.movies.map((m) => (
               <li
                 key={m.id}
-                className={`px-6 py-4 lg:px-8 lg:py-4 ${
+                className={`px-5 py-3 ${
                   m.release_date !== ""
                     ? "cursor-pointer dark:text-blue-400 hover:dark:text-blue-800 hover:bg-blue-100 hover:dark:bg-blue-100/80 transition-all duration-100 ease-in-out"
                     : ""
@@ -110,25 +111,25 @@ const Pane = ({ movies, gender }) => {
                 <a
                   href={
                     m.release_date !== ""
-                      ? `/movies/${m.title.toLowerCase()}?year=${String(
+                      ? `/movies/${encodeSlug(m.title)}/${String(
                           new Date(m.release_date).getFullYear(),
                         )}`
                       : undefined
                   }
                 >
-                  <div className="flex flex-row items-center w-full text-sm lg:text-base font-medium">
+                  <div className="flex flex-row mb-0.5 items-center w-full text-sm lg:text-base font-medium">
                     <span className="mr-4 truncate">
                       {m.title.split(" / ").slice(0, 3).join(" / ")}
                     </span>
 
                     {m.vote_average > 0 ? (
                       <p
-                        className={`ml-auto px-2 rounded-full text-xs lg:text-sm font-medium ${
+                        className={`ml-auto px-2 rounded-full text-xs lg:text-sm font-normal ${
                           m.vote_average < 5
-                            ? "text-red-500 bg-red-100"
+                            ? "text-red-500 dark:text-red-600 bg-red-100 dark:bg-red-600/30 dark:border dark:border-red-600"
                             : m.vote_average < 7.5
-                            ? "text-yellow-500 bg-yellow-100"
-                            : "text-green-500 bg-green-100"
+                            ? "text-yellow-500 dark:text-yellow-600 bg-yellow-100 dark:bg-yellow-600/30 dark:border dark:border-yellow-600"
+                            : "text-green-500 dark:text-green-600 bg-green-100 dark:bg-green-600/30 dark:border dark:border-green-600"
                         }`}
                       >
                         {Math.round(m.vote_average * 10)}%
@@ -136,8 +137,10 @@ const Pane = ({ movies, gender }) => {
                     ) : undefined}
                   </div>
                   {m.character ? (
-                    <div className="flex flex-row text-sm lg:text-base">
-                      <span className="mr-1 lg:mr-2">incarnant</span>
+                    <div className="flex flex-row text-sm font-extralight">
+                      <span className="mr-1 lg:mr-1 font-normal">
+                        incarnant
+                      </span>
                       <p className="w-max md:w-max lg:min-w-max truncate">
                         {isMobileOnly
                           ? m.character
@@ -146,7 +149,7 @@ const Pane = ({ movies, gender }) => {
                     </div>
                   ) : undefined}
                   {m.job ? (
-                    <p className="text-sm">
+                    <p className="text-sm font-light">
                       {traductions.filter((t) =>
                         m.job ? t.en === m.job : undefined,
                       )[0]

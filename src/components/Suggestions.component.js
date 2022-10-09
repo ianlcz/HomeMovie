@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { IoInformationCircle, IoSyncCircle } from "react-icons/io5";
-import AuthContext from "../auth/AuthContext";
-import List from "./Movie/List";
+import AuthContext from "../contexts/auth.context";
+import List from "./Movie/List.component";
 
 const Suggestions = ({ result }) => {
   const { isLoading } = useContext(AuthContext);
@@ -10,7 +10,7 @@ const Suggestions = ({ result }) => {
     <div className="mt-6 mb-[18rem] lg:mb-[178px]">
       {result.length > 0 ? (
         <>
-          <ul className=" w-11/12 mx-auto grid grid-flow-cols grid-cols-1 lg:grid-cols-3 lg:gap-x-12 gap-y-3 lg:gap-y-6">
+          <ul className=" w-11/12 mx-auto grid grid-flow-cols grid-cols-1 lg:grid-cols-3 lg:gap-x-20 gap-y-3 lg:gap-y-6 items-center">
             {result.map((m) => (
               <List key={m.ref + " " + m.title} movie={m} />
             ))}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import Pane from "./Pane";
-import Section from "./Section";
+import Pane from "./Pane.component";
+import Section from "./Section.component";
 
 const Filmography = ({ movies: { cast, crew }, job, gender }) => {
   const [filmography, setFilmography] = useState([

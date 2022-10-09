@@ -1,8 +1,9 @@
-import Filmography from "./Filmography";
-import Section from "./Section";
-import GoToHome from "../Movie/Pane/GoToHome";
+import Filmography from "./Filmography.component";
+import Section from "./Section.component";
+import GoToHome from "../Movie/Pane/GoToHome.component";
 import ReactMarkdown from "react-markdown";
 import { isMobileOnly } from "react-device-detect";
+import { encodeSlug } from "../../utils";
 
 const Body = ({
   children: {
@@ -39,7 +40,7 @@ const Body = ({
               className="w-full transform hover:scale-110 transition-all duration-700 ease-in-out"
             >
               <a
-                href={`/movies/${m.title.toLowerCase()}?year=${String(
+                href={`/movies/${encodeSlug(m.title)}/${String(
                   new Date(m.release_date).getFullYear(),
                 )}`}
               >

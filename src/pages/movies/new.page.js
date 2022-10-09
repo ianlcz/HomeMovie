@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import AuthContext from "../../auth/AuthContext";
+import AuthContext from "../../contexts/auth.context";
 import { useNavigate } from "react-router-dom";
-import Card from "../../components/Movie/Card";
-import Submit from "../../components/Submit";
-import { Helmet } from "react-helmet";
+import Card from "../../components/Movie/Card.component";
+import Submit from "../../components/Submit.component";
+import { encodeSlug } from "../../utils";
 
 const Create = () => {
   const { user } = useContext(AuthContext);
@@ -17,6 +17,8 @@ const Create = () => {
 
   useEffect(() => {
     const fetchMovie = async () => {
+      document.title = `Ajout d'un nouveau film | HomeMovie` || "";
+
       if (title !== "") {
         const data = await axios
           .get(
@@ -32,6 +34,7 @@ const Create = () => {
         setSuggestion([]);
       }
     };
+
     fetchMovie();
   }, [title]);
 
@@ -49,21 +52,16 @@ const Create = () => {
         .then((res) => res.data)
         .catch((err) => console.error(err.message));
 
-      navigate(
-        `/movies/${encodeURIComponent(title.toLowerCase())}?year=${year}`,
-      );
+      navigate(`/movies/${encodeSlug(title)}/${year}`);
       window.location.reload(false);
     }
   };
 
   return (
     <>
-      <Helmet>
-        <title>{`Ajout d'un nouveau film | HomeMovie`}</title>
-      </Helmet>
-      <div className="flex flex-col bg-gradient-to-br from-blue-800 to-blue-400 dark:from-slate-800 dark:to-slate-800 min-h-screen">
-        <div className="w-4/5 lg:w-3/4 mx-auto my-auto p-8 bg-blue-50 dark:bg-slate-600 rounded-xl shadow-lg">
-          <h1 className="mb-6 font-semibold text-2xl text-center text-blue-900 dark:text-blue-500">
+      <div className="flex flex-col bg-blue-100 dark:bg-slate-800 min-h-screen">
+        <div className="w-4/5 lg:w-3/4 mx-auto my-auto p-8 bg-white dark:bg-slate-600 rounded-xl shadow-lg">
+          <h1 className="mb-6 font-semibold text-2xl text-center text-transparent bg-clip-text bg-gradient-to-t from-blue-800 to-blue-400 dark:from-blue-700 dark:to-blue-400">
             Quel est votre nouveau film ?
           </h1>
           <form onSubmit={handleMovie}>
@@ -93,7 +91,7 @@ const Create = () => {
                 className={`my-8 w-max m-auto ${
                   suggestion.length === 1
                     ? ""
-                    : "grid grid-flow-col grid-rows-8 lg:grid-cols-2 lg:grid-rows-4 gap-8"
+                    : "grid grid-flow-col grid-rows-8 lg:grid-cols-2 lg:grid-rows-4 gap-x-20 gap-y-4"
                 }`}
               >
                 {suggestion
@@ -107,6 +105,10 @@ const Create = () => {
                         setGenre(m.genre_ids);
                         setYear(new Date(m.release_date).getFullYear());
                       }}
+                      isClicked={
+                        title === m.title &&
+                        year === new Date(m.release_date).getFullYear()
+                      }
                     >
                       {m}
                     </Card>
