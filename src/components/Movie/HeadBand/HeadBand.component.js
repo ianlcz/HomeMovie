@@ -1,11 +1,11 @@
 import { isMobileOnly } from "react-device-detect";
 import axios from "axios";
-import Background from "../Background";
-import Poster from "../../Poster";
-import StreamPlatform from "./StreamPlatform";
-import ReadingTime from "./ReadingTime";
-import TechnicalTeamSection from "./TechnicalTeamSection";
-import Score from "./Score";
+import Background from "../Background.component";
+import Poster from "../../Poster.component";
+import StreamPlatform from "./StreamPlatform.component";
+import ReadingTime from "./ReadingTime.component";
+import TechnicalTeamSection from "./TechnicalTeamSection.component";
+import Score from "./Score.component";
 
 const HeadBand = ({
   children: {

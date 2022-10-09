@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import jwt from "jwt-decode";
-import { getCookieFromBrowser, removeCookie, setCookie } from "./cookies";
+import { getCookieFromBrowser, removeCookie, setCookie } from "../cookies";
 import { arrayOfUniqueElement, encodeSlug, shuffleArray } from "../utils";
 
 const AuthContext = createContext({

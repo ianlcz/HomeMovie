@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import ProtectedRoute from "./components/ProtectedRoute";
+import ProtectedRoute from "./components/ProtectedRoute.component";
 import routes from "./routes";
 
 const App = () => (

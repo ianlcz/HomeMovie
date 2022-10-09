@@ -1,6 +1,6 @@
-import Filmography from "./Filmography";
-import Section from "./Section";
-import GoToHome from "../Movie/Pane/GoToHome";
+import Filmography from "./Filmography.component";
+import Section from "./Section.component";
+import GoToHome from "../Movie/Pane/GoToHome.component";
 import ReactMarkdown from "react-markdown";
 import { isMobileOnly } from "react-device-detect";
 import { encodeSlug } from "../../utils";

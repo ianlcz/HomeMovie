@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Background from "../Background";
+import Background from "../Background.component";
 import { encodeSlug } from "../../../utils";
 
 const Collection = ({ movie_title, belongs_to_collection }) =>
