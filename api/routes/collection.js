@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const logging = require("py-logging");
 const Collection = require("../models/Collection");
-const { decodeSlug, encodeSlug } = require("../utils");
 
 /* Post a new movie in collection */
 router.post("/:id", async (req, res) => {
@@ -121,7 +120,7 @@ router.delete("/:id/:ref/:title", async (req, res) => {
         $pull: {
           movies: {
             ref: { $in: [ref] },
-            title: { $in: [decodeSlug(encodeSlug(title))] },
+            title: { $in: [title] },
           },
         },
       },

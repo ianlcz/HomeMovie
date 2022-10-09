@@ -13,7 +13,7 @@ const PopUp = ({ title, content }) => {
         <div className="flex items-center justify-center w-full h-screen top-0 left-0 z-50 bg-blue-400/40 dark:bg-blue-400/25 backdrop-blur-lg fixed">
           <div className="w-[90%] lg:w-2/5 mx-auto my-auto bg-white dark:bg-slate-600 rounded-xl shadow-lg">
             <IoCloseCircle
-              className="w-6 h-6 ml-auto mr-2 mt-2 text-white hover:text-red-300 cursor-pointer"
+              className="w-6 h-6 ml-auto mr-2 mt-2 text-blue-200 dark:text-white hover:text-red-300 cursor-pointer"
               onClick={() => closePopUp()}
             />
             <div className="px-8 pb-8">
