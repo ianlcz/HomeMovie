@@ -30,6 +30,8 @@ const Credit = () => {
         .then((res) => res.data)
         .catch((err) => console.error(err.message));
 
+      document.title = `${peopleData.name} | HomeMovie` || "";
+
       setPeople(peopleData);
       setBestMovies(
         peopleData.known_for_department === "Acting"
@@ -62,7 +64,6 @@ const Credit = () => {
       setFilmography(movies);
     };
 
-    document.title = `${people.name} | HomeMovie` || "";
     fetchData();
   }, [character_id]);
 
