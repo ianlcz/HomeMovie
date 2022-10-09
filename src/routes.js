@@ -6,7 +6,6 @@ import Register from "./pages/register.page";
 import Create from "./pages/movies/new.page";
 import Read from "./pages/movies/[title].page";
 import Update from "./pages/movies/edit/[reference]/[title].page";
-import Delete from "./pages/movies/delete/[reference]/[title].page";
 
 /* Credits pages */
 import Credit from "./pages/credits/[character_id]";
@@ -25,11 +24,6 @@ const routes = [
   {
     path: "/movies/edit/:reference/:title",
     component: <Update />,
-    isProtected: true,
-  },
-  {
-    path: "/movies/delete/:reference/:title",
-    component: <Delete />,
     isProtected: true,
   },
   { path: "/credits/:character_id", component: <Credit />, isProtected: true },
