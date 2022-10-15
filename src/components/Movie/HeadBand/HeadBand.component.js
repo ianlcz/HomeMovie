@@ -176,7 +176,14 @@ const HeadBand = ({
           />
         </div>
 
-        <Score>{{ vote_average, budget, revenue }}</Score>
+        <Score>
+          {{
+            vote_average,
+            budget,
+            revenue,
+            isReleased: new Date(release_date).getTime() < new Date().getTime(),
+          }}
+        </Score>
       </div>
     </div>
   </Background>

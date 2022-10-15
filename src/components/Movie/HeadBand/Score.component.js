@@ -1,7 +1,7 @@
 import { IoArrowDownCircle, IoArrowUpCircle } from "react-icons/io5";
 import { formatNumber } from "../../../utils";
 
-const Score = ({ children: { vote_average, budget, revenue } }) =>
+const Score = ({ children: { vote_average, budget, revenue, isReleased } }) =>
   vote_average > 0 || budget || revenue ? (
     <table className="w-full lg:w-1/2 mx-auto mt-6 shadow bg-blue-50/80 dark:bg-slate-800/80 backdrop-filter backdrop-blur dark:backdrop-blur-md rounded-full">
       <thead>
@@ -10,7 +10,9 @@ const Score = ({ children: { vote_average, budget, revenue } }) =>
             <th className="font-semibold">Score</th>
           ) : undefined}
           {budget ? <th className="font-semibold">Budget</th> : undefined}
-          {revenue ? <th className="font-semibold">Box-office</th> : undefined}
+          {revenue && isReleased ? (
+            <th className="font-semibold">Box-office</th>
+          ) : undefined}
         </tr>
       </thead>
       <tbody>
@@ -23,7 +25,7 @@ const Score = ({ children: { vote_average, budget, revenue } }) =>
           {budget ? (
             <td className="text-center font-light">{formatNumber(budget)}</td>
           ) : undefined}
-          {revenue ? (
+          {revenue && isReleased ? (
             <td className="flex flex-row w-max mx-auto font-light">
               <p>{formatNumber(revenue)}</p>
               {budget > 0 ? (

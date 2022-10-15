@@ -4,6 +4,7 @@ import jwtDecode from "jwt-decode";
 import AuthContext from "../../contexts/auth.context";
 import { getCookieFromBrowser } from "../../cookies";
 import { decodeSlug, encodeSlug } from "../../utils";
+import { Helmet } from "react-helmet";
 
 const HeadBand = lazy(() =>
   import("../../components/Movie/HeadBand/HeadBand.component"),
@@ -71,6 +72,16 @@ const Read = () => {
 
   return detail.title ? (
     <>
+      <Helmet>
+        <meta
+          property="og:image"
+          content={`https://image.tmdb.org/t/p/original/${detail.backdrop_path}`}
+        />
+        <meta
+          property="og:image:secure_url"
+          content={`https://image.tmdb.org/t/p/original/${detail.backdrop_path}`}
+        />
+      </Helmet>
       <HeadBand>
         {{ detail, directors, compositors, charactersCreators }}
       </HeadBand>
