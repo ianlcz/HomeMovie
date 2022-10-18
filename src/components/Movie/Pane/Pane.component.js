@@ -81,7 +81,7 @@ const Pane = ({
           cast.filter((p) => p.profile_path).slice(0, isMobileOnly ? 6 : 12)
             .length > 0 ? (
             <ul
-              className={`grid grid-flow-dense lg:grid-flow-col grid-cols-1 grid-rows-1 lg:grid-cols-3 lg:grid-rows-3 gap-x-0 gap-y-4 lg:gap-x-4 lg:gap-y-8`}
+              className={`grid grid-flow-dense lg:grid-flow-col grid-cols-1 grid-rows-1 lg:grid-cols-3 lg:grid-rows-3 gap-x-0 gap-y-4 lg:gap-x-4 lg:gap-y-8 z-50`}
             >
               {cast
                 .filter((p) => p.profile_path)
@@ -188,11 +188,11 @@ const Pane = ({
   ];
 
   return (
-    <div className="w-full h-auto mx-auto z-0 relative shadow-[0px_-10px_10px_rgba(0,0,0,0.1)]">
+    <div className="w-full h-auto mx-auto z-0 relative">
       {backdrop_path ? (
         <img
           src={`https://image.tmdb.org/t/p/original/${backdrop_path}`}
-          className="w-full h-full object-cover rounded-t-xl z-0 absolute"
+          className="w-full h-full object-cover z-0 absolute"
         />
       ) : undefined}
 
@@ -201,19 +201,19 @@ const Pane = ({
           backdrop_path
             ? "bg-blue-50/90 backdrop-blur-xl dark:bg-slate-800/90 dark:backdrop-blur-2xl"
             : "bg-blue-50 dark:bg-slate-800"
-        } w-full -mt-8 px-4 pt-4 lg:px-14 lg:pt-8 rounded-t-xl text-blue-600 dark:text-blue-500 z-10 relative`}
+        } w-full -mt-4 px-4 pt-10 lg:px-14 text-blue-600 dark:text-blue-500`}
       >
         {PaneItems.map(
           ({ title: { text, options }, body: { verify, content } }, idx) =>
             verify ? (
-              <span key={idx}>
+              <div key={idx}>
                 <h2
                   className={`${options} text-xl font-medium text-blue-800 dark:text-blue-600`}
                 >
                   {text}
                 </h2>
                 {content}
-              </span>
+              </div>
             ) : undefined,
         )}
 

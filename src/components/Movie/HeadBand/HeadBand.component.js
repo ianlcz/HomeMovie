@@ -40,7 +40,7 @@ const HeadBand = ({
     }}
   >
     <div
-      className={`flex flex-col lg:flex-row mt-4 mb-14 items-center ${
+      className={`flex flex-col lg:flex-row my-4 items-center ${
         poster_path && title ? "justify-around" : "justify-center"
       }`}
     >
@@ -164,7 +164,7 @@ const HeadBand = ({
           </>
         ) : undefined}
 
-        <div className="flex flex-row flex-wrap gap-x-4 items-start justify-around">
+        <div className="flex flex-row flex-wrap gap-x-4 items-start justify-around mb-2">
           <TechnicalTeamSection
             title="D'après les personnages créés par"
             content={charactersCreators}
