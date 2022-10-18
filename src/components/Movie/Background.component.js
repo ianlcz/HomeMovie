@@ -24,7 +24,7 @@ const Background = ({
           ? `py-12 shadow-inner rounded-xl ${
               hasCover ? "bg-blue-800/60" : "bg-blue-800"
             }`
-          : `px-8 py-6 shadow-lg text-white rounded-b-2xl ${
+          : `px-8 lg:px-0 py-8 shadow-lg text-white rounded-b-2xl ${
               hasCover ? "bg-blue-800/70" : "bg-blue-800"
             }`
       } z-0 relative`}

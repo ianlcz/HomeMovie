@@ -40,8 +40,8 @@ const HeadBand = ({
     }}
   >
     <div
-      className={`flex flex-col lg:flex-row my-4 items-center ${
-        poster_path && title ? "justify-around" : "justify-center"
+      className={`flex flex-col lg:flex-row items-center ${
+        poster_path && title ? "justify-evenly" : "justify-center"
       }`}
     >
       <div className="flex flex-col">
