@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-router.all("/", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     res.json({
       server_name: "HomeMovie API Server",
