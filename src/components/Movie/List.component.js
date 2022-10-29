@@ -11,7 +11,7 @@ const List = ({ movie }) => {
   ];
 
   return movie.title ? (
-    <li className="pl-4 pr-2 py-2 rounded-xl text-blue-600 dark:text-blue-500 hover:dark:text-blue-800 hover:bg-blue-100 hover:dark:bg-blue-100/80 transition-all duration-500 ease-in-out">
+    <li className="pl-4 pr-2 py-2 rounded-xl text-blue-600 dark:text-blue-500 hover:dark:text-blue-800 hover:bg-blue-600/10 hover:dark:bg-blue-200/80 transition-all duration-500 ease-in-out">
       <a
         href={`/movies/${encodeSlug(movie.title)}/${movie.year}`}
         className="flex flex-row items-center mb-3"
