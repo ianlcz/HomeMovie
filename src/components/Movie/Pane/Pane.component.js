@@ -144,12 +144,12 @@ const Pane = ({
       body: {
         verify: trailer,
         content: trailer ? (
-          <div className="aspect-w-16 aspect-h-[9.4] rounded-xl">
+          <div className="aspect-w-16 aspect-h-[9.4] lg:aspect-w-[10] lg:aspect-h-[5.64] rounded-2xl">
             <iframe
-              className="rounded-xl shadow-lg"
+              className="rounded-2xl shadow-lg"
               src={`https://www.youtube.com/embed/${trailer.key}`}
               frameBorder="0"
-              allowFullScreen
+              allowFullScreen={false}
             ></iframe>
           </div>
         ) : undefined,
