@@ -25,7 +25,9 @@ const Background = ({
               hasCover ? "bg-blue-800/60" : "bg-blue-800"
             }`
           : `px-8 lg:px-0 py-8 shadow-lg text-white rounded-b-2xl ${
-          hasCover ? "bg-gradient-to-b from-blue-800/70 to-blue-800/90" : "bg-blue-800"
+              hasCover
+                ? "bg-gradient-to-b from-blue-800/60 to-blue-800/90"
+                : "bg-blue-800"
             }`
       } z-0 relative`}
     >
