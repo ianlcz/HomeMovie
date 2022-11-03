@@ -97,8 +97,8 @@ const HeadBand = ({
             new Date(release_date).getTime() < new Date().getTime()
               ? "lg:-my-1"
               : new Date(release_date).getTime() < new Date().getTime()
-              ? "lg:my-1"
-              : "lg:my-1"
+              ? "lg:my-0"
+              : "lg:my-2"
           }`}
         >
           {genres && (
