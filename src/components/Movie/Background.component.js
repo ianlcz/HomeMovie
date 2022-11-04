@@ -4,12 +4,12 @@ const Background = ({
   isOnPane = false,
   hasCover = !new URL(cover).pathname.includes("/null"),
 }) => (
-  <section className={`w-full h-auto mx-auto z-0 relative`}>
+  <section className={`w-full h-auto mx-auto z-10 relative`}>
     {hasCover ? (
       <img
         src={cover}
         className={`w-full h-full object-cover ${
-          isOnPane ? "rounded-xl" : undefined
+          isOnPane ? "rounded-xl" : "rounded-b-2xl"
         } z-0 absolute`}
         alt={`Couverture ${
           isOnPane ? "de la collection" : "du film"
@@ -24,12 +24,14 @@ const Background = ({
           ? `py-12 shadow-inner rounded-xl ${
               hasCover ? "bg-blue-800/60" : "bg-blue-800"
             }`
-          : `px-8 py-6 text-white ${
-              hasCover ? "bg-blue-800/70" : "bg-blue-800"
+          : `px-8 lg:px-0 py-8 shadow-lg text-white rounded-b-2xl ${
+              hasCover
+                ? "bg-gradient-to-b from-blue-800/60 to-blue-800/90"
+                : "bg-blue-800"
             }`
-      } z-10 relative`}
+      } z-0 relative`}
     >
-      {children}
+      <div className="rounded-b-2xl">{children}</div>
     </div>
   </section>
 );

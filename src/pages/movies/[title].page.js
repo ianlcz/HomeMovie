@@ -52,7 +52,9 @@ const Read = () => {
               : movie.ref
               ? `${movie.ref} -`
               : ""
-          } ${movie.title} | HomeMovie` || "";
+          } ${movie.title} (${new Date(
+            movie.release_date,
+          ).getFullYear()}) | HomeMovie` || "";
 
         setDetail(movie);
         setDirectors(directors);

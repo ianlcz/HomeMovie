@@ -72,10 +72,10 @@ export const formatName = (nameOfCharacter) => {
 
 export const encodeSlug = (text) =>
   String(text)
-    .toLowerCase()
     .replace(/: | : |\/|°|'/gi, "-")
     .replace(/(- )|(– )|(# )|( !)|[?!,’&#\.]|[\u00A0]/gm, "")
-    .replace(/ /gi, "-");
+    .replace(/ /gi, "-")
+    .toLowerCase();
 
 export const decodeSlug = (text) =>
   String(text).replace(/-/gi, " ").toLowerCase();

@@ -40,8 +40,8 @@ const HeadBand = ({
     }}
   >
     <div
-      className={`flex flex-col lg:flex-row mt-4 mb-14 items-center ${
-        poster_path && title ? "justify-around" : "justify-center"
+      className={`flex flex-col lg:flex-row items-center ${
+        poster_path && title ? "justify-evenly" : "justify-center"
       }`}
     >
       <div className="flex flex-col">
@@ -96,7 +96,7 @@ const HeadBand = ({
               title.replace(" : ", ": ").replace(" ! ", "! ").toLowerCase() &&
             new Date(release_date).getTime() < new Date().getTime()
               ? "lg:-my-1"
-              : new Date(release_date).getTime() < new Date().getTime()
+              : runtime && runtime > 0
               ? "lg:my-0"
               : "lg:my-4"
           }`}
@@ -164,7 +164,7 @@ const HeadBand = ({
           </>
         ) : undefined}
 
-        <div className="flex flex-row flex-wrap gap-x-4 items-start justify-around">
+        <div className="flex flex-row flex-wrap gap-x-4 items-start justify-around mb-2">
           <TechnicalTeamSection
             title="D'après les personnages créés par"
             content={charactersCreators}
@@ -176,7 +176,14 @@ const HeadBand = ({
           />
         </div>
 
-        <Score>{{ vote_average, budget, revenue }}</Score>
+        <Score>
+          {{
+            vote_average,
+            budget,
+            revenue,
+            isReleased: new Date(release_date).getTime() < new Date().getTime(),
+          }}
+        </Score>
       </div>
     </div>
   </Background>

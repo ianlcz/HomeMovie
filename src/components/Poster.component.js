@@ -15,7 +15,7 @@ const Poster = ({ children: { poster_path, title }, isCenter }) =>
         }
         className={`w-60 ${
           isCenter ? "mx-auto lg:w-72" : "lg:w-80"
-        } object-cover rounded-xl shadow-xl`}
+        } object-cover rounded-2xl shadow-xl`}
       />
     </a>
   ) : null;
