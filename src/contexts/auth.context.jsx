@@ -210,6 +210,7 @@ export const AuthProvider = ({ children }) => {
                 (c.job === "Characters" ||
                   c.job === "Comic Book" ||
                   c.job === "Novel" ||
+                  c. job === "Graphic Novel" ||
                   c.job === "Short Story" ||
                   c.job === "Original Story" ||
                   c.job === "Original Series Creator" ||
