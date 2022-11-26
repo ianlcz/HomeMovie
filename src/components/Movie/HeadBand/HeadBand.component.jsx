@@ -61,11 +61,11 @@ const HeadBand = ({
           </p>
         ) : undefined}
 
-        <h1 className="flex flex-row w-full items-center justify-center text-center text-white/90 flex-wrap text-2xl lg:text-4xl font-semibold">
+        <h1 className="flex flex-row w-full items-center justify-center text-center text-transparent bg-clip-text bg-gradient-to-b lg:bg-gradient-to-r from-white/90 to-white/70 flex-wrap text-2xl lg:text-4xl font-semibold">
           {title}
 
           {new Date(release_date).getTime() < new Date().getTime() ? (
-            <span className="ml-2 lg:ml-4 text-base lg:text-2xl font-light">
+            <span className="ml-2 text-base lg:text-2xl font-light">
               ({new Date(release_date).getFullYear()})
             </span>
           ) : undefined}
