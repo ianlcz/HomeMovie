@@ -4,6 +4,7 @@ import jwtDecode from "jwt-decode";
 import AuthContext from "../../contexts/auth.context";
 import { getCookieFromBrowser } from "../../cookies";
 import { decodeSlug, encodeSlug } from "../../utils";
+import { Helmet } from "react-helmet";
 
 const HeadBand = lazy(() =>
   import("../../components/Movie/HeadBand/HeadBand.component"),
@@ -44,18 +45,6 @@ const Read = () => {
             : { ref: "Preview", title: decodeSlug(encodeSlug(title)), year },
         );
 
-        document.title =
-          `${
-            movie.code &&
-            (movie.code === "Vu au cinéma" || movie.code === "Vu en streaming")
-              ? `${movie.code} -`
-              : movie.ref
-              ? `${movie.ref} -`
-              : ""
-          } ${movie.title} (${new Date(
-            movie.release_date,
-          ).getFullYear()}) | HomeMovie` || "";
-
         setDetail(movie);
         setDirectors(directors);
         setCompositors(compositors);
@@ -71,6 +60,61 @@ const Read = () => {
 
   return detail.title ? (
     <>
+      <Helmet
+        meta={[
+          { name: "description", content: `${detail.overview}` },
+          {
+            name: "application-name",
+            content: `${
+              detail.code &&
+              (detail.code === "Vu au cinéma" ||
+                detail.code === "Vu en streaming")
+                ? `${detail.code} -`
+                : detail.ref
+                ? `${detail.ref} -`
+                : ""
+            } ${detail.title} (${new Date(
+              detail.release_date,
+            ).getFullYear()}) | HomeMovie`,
+          },
+          {
+            name: "apple-mobile-web-app-title",
+            content: `${
+              detail.code &&
+              (detail.code === "Vu au cinéma" ||
+                detail.code === "Vu en streaming")
+                ? `${detail.code} -`
+                : detail.ref
+                ? `${detail.ref} -`
+                : ""
+            } ${detail.title} (${new Date(
+              detail.release_date,
+            ).getFullYear()}) | HomeMovie`,
+          },
+          {
+            property: "og:image",
+            content: `https://image.tmdb.org/t/p/original/${detail.backdrop_path}`,
+          },
+          {
+            property: "og:image:secure_url",
+            content: `https://image.tmdb.org/t/p/original/${detail.backdrop_path}`,
+          },
+        ]}
+      >
+        <title>
+          {`${
+            detail.code &&
+            (detail.code === "Vu au cinéma" ||
+              detail.code === "Vu en streaming")
+              ? `${detail.code} -`
+              : detail.ref
+              ? `${detail.ref} -`
+              : ""
+          } ${detail.title} (${new Date(
+            detail.release_date,
+          ).getFullYear()}) | HomeMovie` || ""}
+        </title>
+      </Helmet>
       <HeadBand>
         {{ detail, directors, compositors, charactersCreators }}
       </HeadBand>
