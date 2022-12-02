@@ -12,22 +12,12 @@ root.render(
     <Providers>
       <Helmet
         meta={[
-          { name: "description", content: "Gérez votre collection de films" },
-          { name: "application-name", content: "HomeMovie" },
-          { name: "apple-mobile-web-app-title", content: "HomeMovie" },
-          { property: "og:image", content: "%PUBLIC_URL%/image-cover.png" },
-          {
-            property: "og:image:secure_url",
-            content: "%PUBLIC_URL%/image-cover.png",
-          },
           {
             name: `theme-color`,
             content: "#1e40af",
           },
         ]}
-      >
-        <title>HomeMovie</title>
-      </Helmet>
+      ></Helmet>
       <App />
     </Providers>
   </BrowserRouter>,
