@@ -1,14 +1,11 @@
-import { lazy, useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import AuthContext from "../../contexts/auth.context";
+import HeadBand from "../../components/Movie/HeadBand/HeadBand.component";
+import Pane from "../../components/Movie/Pane/Pane.component";
 import { getCookieFromBrowser } from "../../cookies";
 import { decodeSlug, encodeSlug } from "../../utils";
-
-const HeadBand = lazy(() =>
-  import("../../components/Movie/HeadBand/HeadBand.component"),
-);
-const Pane = lazy(() => import("../../components/Movie/Pane/Pane.component"));
 
 const Read = () => {
   const { getMovieInfo, movies } = useContext(AuthContext);
