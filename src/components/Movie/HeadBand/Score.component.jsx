@@ -1,4 +1,10 @@
-import { IoArrowDownCircle, IoArrowUpCircle } from "react-icons/io5";
+import {
+  IoCaretDown,
+  IoCaretUp,
+  IoHappyOutline,
+  IoReorderTwo,
+  IoSadOutline,
+} from "react-icons/io5";
 import { formatNumber } from "../../../utils";
 
 const Score = ({ children: { vote_average, budget, revenue, isReleased } }) =>
@@ -18,9 +24,23 @@ const Score = ({ children: { vote_average, budget, revenue, isReleased } }) =>
       <tbody>
         <tr className="text-sm text-blue-700 dark:text-blue-600">
           {vote_average > 0 ? (
-            <td className="text-center font-light">{`${Math.round(
-              vote_average * 10,
-            )}%`}</td>
+            <td
+              className={`flex flex-row w-max mx-auto font-light ${
+                Math.round(vote_average) < 5
+                  ? "text-red-600"
+                  : Math.round(vote_average) < 7
+                  ? "text-yellow-600"
+                  : "text-green-600"
+              }`}
+            >
+              {Math.round(vote_average) < 5 ? (
+                <IoSadOutline size={18} />
+              ) : (
+                <IoHappyOutline size={18} />
+              )}
+
+              <p className="ml-1">{`${Math.round(vote_average)}/10`}</p>
+            </td>
           ) : undefined}
           {budget ? (
             <td className="text-center font-light">{formatNumber(budget)}</td>
@@ -38,14 +58,17 @@ const Score = ({ children: { vote_average, budget, revenue, isReleased } }) =>
                       : "text-green-600"
                   }`}
                 >
-                  <p className="mr-0.5 text-xs">
+                  {revenue < budget ? (
+                    <IoCaretDown />
+                  ) : revenue > budget ? (
+                    <IoCaretUp />
+                  ) : (
+                    <IoReorderTwo />
+                  )}
+
+                  <p className="ml-0.5 text-xs">
                     {`x${(revenue / budget).toFixed(2)}`}
                   </p>
-                  {revenue < budget ? (
-                    <IoArrowDownCircle />
-                  ) : (
-                    <IoArrowUpCircle />
-                  )}
                 </div>
               ) : undefined}
             </td>

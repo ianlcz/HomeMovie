@@ -5,7 +5,6 @@ import GoToHome from "./GoToHome.component";
 import Footer from "../../Footer.component";
 import { encodeSlug, formatName } from "../../../utils";
 import Background from "../Background.component";
-import { useState } from "react";
 
 const Pane = ({
   children: {
@@ -161,11 +160,11 @@ const Pane = ({
         verify: recommendations.length > 0,
         content:
           recommendations.length > 0 ? (
-            <ul className="flex flex-row flex-wrap lg:gap-x-4 gap-y-3 justify-between">
+            <ul className="flex flex-row flex-wrap justify-between gap-y-3 lg:gap-x-4 lg:gap-y-0">
               {recommendations.slice(0, isMobileOnly ? 4 : 6).map((r) => (
                 <li
                   key={r.id}
-                  className="hover:scale-110 duration-700 ease-in-out w-[172px] lg:w-[204px] 2xl:w-[280px]"
+                  className="hover:scale-110 lg:hover:scale-125 duration-700 ease-in-out w-[172px] lg:w-[194px] 2xl:w-[280px]"
                 >
                   <a
                     href={`/movies/${encodeSlug(r.title)}/${String(
@@ -176,8 +175,25 @@ const Pane = ({
                     <img
                       src={`https://image.tmdb.org/t/p/original/${r.backdrop_path}`}
                       alt={`Couverture du film ${r.title}`}
-                      className="rounded-lg shadow-md hover:shadow-lg duration-700 ease-in-out"
+                      className="rounded-lg shadow-md hover:shadow-xl duration-700 ease-in-out"
                     />
+
+                    {r.vote_average ? (
+                      <div className="flex flex-row items-start justify-evenly mt-2 text-sm">
+                        <h3 className="font-medium truncate">
+                          {r.title ? r.title : r.original_title}
+                        </h3>
+                        <p
+                          className={`ml-auto px-2 rounded-full text-xs font-normal ${
+                            Math.round(r.vote_average) < 5
+                              ? "text-red-500 dark:text-red-600 bg-red-100 dark:bg-red-600/30 dark:border dark:border-red-600"
+                              : Math.round(r.vote_average) < 7
+                              ? "text-yellow-500 dark:text-yellow-600 bg-yellow-100 dark:bg-yellow-600/30 dark:border dark:border-yellow-600"
+                              : "text-green-500 dark:text-green-600 bg-green-100 dark:bg-green-600/30 dark:border dark:border-green-600"
+                          }`}
+                        >{`${Math.round(r.vote_average)}/10`}</p>
+                      </div>
+                    ) : undefined}
                   </a>
                 </li>
               ))}

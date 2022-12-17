@@ -125,14 +125,14 @@ const Pane = ({ movies, gender }) => {
                     {m.vote_average > 0 ? (
                       <p
                         className={`ml-auto px-2 rounded-full text-xs lg:text-sm font-normal ${
-                          m.vote_average < 5
+                          Math.round(m.vote_average) < 5
                             ? "text-red-500 dark:text-red-600 bg-red-100 dark:bg-red-600/30 dark:border dark:border-red-600"
-                            : m.vote_average < 7.5
+                            : Math.round(m.vote_average) < 7
                             ? "text-yellow-500 dark:text-yellow-600 bg-yellow-100 dark:bg-yellow-600/30 dark:border dark:border-yellow-600"
                             : "text-green-500 dark:text-green-600 bg-green-100 dark:bg-green-600/30 dark:border dark:border-green-600"
                         }`}
                       >
-                        {Math.round(m.vote_average * 10)}%
+                        {`${Math.round(m.vote_average)}/10`}
                       </p>
                     ) : undefined}
                   </div>

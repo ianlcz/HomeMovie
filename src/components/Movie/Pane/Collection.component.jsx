@@ -8,7 +8,7 @@ const Collection = ({ movie_title, belongs_to_collection }) =>
   belongs_to_collection.name &&
   belongs_to_collection.backdrop_path &&
   belongs_to_collection.parts.length > 1 ? (
-    <div className="w-full lg:w-1/2 mx-auto mt-10">
+    <div className="w-full lg:w-1/2 mx-auto mt-4 lg:mt-8">
       <Background
         data={{
           cover: `https://image.tmdb.org/t/p/original/${belongs_to_collection.backdrop_path}`,
@@ -58,9 +58,13 @@ const Collection = ({ movie_title, belongs_to_collection }) =>
                   >
                     {title}
                   </a>
-                  {idx + 1 < belongs_to_collection.parts.length ? (
-                    <span className="mr-1">,</span>
-                  ) : undefined}
+                  <span className="mr-1">
+                    {idx + 2 < belongs_to_collection.parts.length
+                      ? ","
+                      : idx + 1 == belongs_to_collection.parts.length
+                      ? undefined
+                      : " et"}
+                  </span>
                 </li>
               ))}
           </ul>

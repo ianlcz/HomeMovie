@@ -16,7 +16,7 @@ export const formatNumber = (number) =>
   number === null || isNaN(number)
     ? 0
     : String(number).length >= 10
-    ? `${(number / 1000000000).toFixed(2)} Mrds`
+      ? `${(number / 1000000000).toFixed(2)} Mds`
     : String(number).length >= 7
     ? `${(number / 1000000).toFixed(0)} M`
     : String(number).length >= 4
