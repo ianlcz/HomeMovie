@@ -33,7 +33,7 @@ const Score = ({ children: { vote_average, budget, revenue, isReleased } }) =>
                   : "text-green-600"
               }`}
             >
-              {Math.round(vote_average) < 5 ? (
+              {Math.round(vote_average) < 6 ? (
                 <IoSadOutline size={18} />
               ) : (
                 <IoHappyOutline size={18} />

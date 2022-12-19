@@ -5,7 +5,7 @@ import axios from "axios";
 import Poster from "../../components/Poster.component";
 import Body from "../../components/Credit/Body.component";
 import GoToHome from "../../components/Movie/Pane/GoToHome.component";
-import Footer from "../../components/Footer.component";
+import Footer from "../../layouts/footer.layout";
 import { arrayOfUniqueElement, formatName } from "../../utils";
 
 const Credit = () => {

@@ -1,10 +1,10 @@
 import { isMobileOnly } from "react-device-detect";
 import { IoInformationCircle } from "react-icons/io5";
+import Background from "../Background.component";
 import Collection from "./Collection.component";
 import GoToHome from "./GoToHome.component";
-import Footer from "../../Footer.component";
+import Footer from "../../../layouts/footer.layout";
 import { encodeSlug, formatName } from "../../../utils";
-import Background from "../Background.component";
 
 const Pane = ({
   children: {
