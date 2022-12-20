@@ -2,7 +2,6 @@ import {
   IoCaretDown,
   IoCaretUp,
   IoHappyOutline,
-  IoReorderTwo,
   IoSadOutline,
 } from "react-icons/io5";
 import { formatNumber } from "../../../utils";
@@ -51,20 +50,14 @@ const Score = ({ children: { vote_average, budget, revenue, isReleased } }) =>
               {budget > 0 ? (
                 <div
                   className={`flex flex-row ml-2 items-center font-medium ${
-                    revenue < budget
-                      ? "text-red-600"
-                      : revenue < 1.5 * budget
+                    revenue > 2 * budget
+                      ? "text-green-600"
+                      : revenue > budget
                       ? "text-yellow-600"
-                      : "text-green-600"
+                      : "text-red-600"
                   }`}
                 >
-                  {revenue < budget ? (
-                    <IoCaretDown />
-                  ) : revenue > budget ? (
-                    <IoCaretUp />
-                  ) : (
-                    <IoReorderTwo />
-                  )}
+                  {revenue > budget ? <IoCaretUp /> : <IoCaretDown />}
 
                   <p className="ml-0.5 text-xs">
                     {`x${(revenue / budget).toFixed(2)}`}
