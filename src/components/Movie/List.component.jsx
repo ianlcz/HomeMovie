@@ -16,8 +16,8 @@ const List = ({ movie }) => {
         href={`/movies/${encodeSlug(movie.title)}/${movie.year}`}
         className="flex flex-row items-center mb-3"
       >
-        <p className="flex items-center justify-center w-16 h-6 mr-4 shadow-inner bg-gradient-to-br from-blue-800 to-blue-400 text-white text-center text-sm font-semibold rounded-xl">
-          {movie.ref}
+        <p className="flex items-center justify-center min-w-[4rem] mr-4 px-2 py-0.5 shadow-inner bg-gradient-to-br from-blue-800 to-blue-400 text-white text-center text-sm font-semibold rounded-xl">
+          {movie.ref.replace(", ", " - ")}
         </p>
         <div>
           <p className="font-light">
