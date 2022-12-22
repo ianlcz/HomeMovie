@@ -11,7 +11,7 @@ const PopUp = ({ title, content, onClick }) => {
     isShow ? (
       <>
         <div
-          className="flex items-center justify-center w-full h-screen top-0 left-0 z-50 bg-blue-400/40 dark:bg-blue-400/25 backdrop-blur-lg fixed"
+          className="flex items-center justify-center w-full h-screen top-0 left-0 z-50 bg-white/25 dark:bg-blue-400/25 backdrop-blur-lg fixed"
           onClick={(e) => onClick(e)}
         >
           <div className="w-[90%] lg:w-2/5 mx-auto my-auto bg-white dark:bg-slate-600 rounded-xl shadow-lg">

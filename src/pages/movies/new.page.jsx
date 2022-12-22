@@ -25,7 +25,7 @@ const Create = () => {
   const [suggestion, setSuggestion] = useState([]);
   const [genre, setGenre] = useState([]);
   const [year, setYear] = useState(0);
-  const [movie, setMovie] = useState({});
+  const [movie, setMovie] = useState(undefined);
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -58,9 +58,16 @@ const Create = () => {
     }
   };
 
-  const handlePopUp = ({ detail }, movie = null) => {
+  const handlePopUp = async ({ detail }, movieId = 0) => {
     if (detail === 2 && isBrowser) {
-      setMovie(movie);
+      setMovie(
+        await axios
+          .get(
+            `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_API_KEY}&language=fr-FR`,
+          )
+          .then((res) => res.data)
+          .catch((err) => console.error(err.message)),
+      );
       setIsShow(true);
     } else {
       setMovie({});
@@ -91,7 +98,7 @@ const Create = () => {
     <>
       {isShow ? (
         <PopUp
-          onClick={(e) => handlePopUp(e)}
+          onClick={async (e) => await handlePopUp(e)}
           isShow
           content={
             <Background
@@ -106,7 +113,7 @@ const Create = () => {
                   {{ poster_path: movie.poster_path, title: movie.title }}
                 </Poster>
 
-                <div className="flex flex-col">
+                <div className="flex flex-col ml-4">
                   <h1 className="flex flex-row w-full items-center justify-center text-center text-transparent bg-clip-text bg-gradient-to-b lg:bg-gradient-to-r from-white/90 to-white/70 flex-wrap text-2xl font-semibold">
                     {movie.title}
 
@@ -128,15 +135,84 @@ const Create = () => {
                     </p>
                   ) : undefined}
 
+                  <div
+                    className={`flex flex-row items-center w-max mx-auto mt-2 ${
+                      movie.original_title.toLowerCase() ===
+                        movie.title
+                          .replace(" : ", ": ")
+                          .replace(" ! ", "! ")
+                          .toLowerCase() &&
+                      new Date(movie.release_date).getTime() <
+                        new Date().getTime()
+                        ? "lg:-my-1"
+                        : movie.runtime && movie.runtime > 0
+                        ? "my-0"
+                        : "my-4"
+                    }`}
+                  >
+                    {movie.genres && (
+                      <>
+                        <ul className="flex flex-row font-light">
+                          {isMobileOnly
+                            ? movie.genres.slice(0, 2).map((g, index) => (
+                                <li
+                                  key={g.name}
+                                  className={`ml-1 ${
+                                    index === 1 ? "truncate" : undefined
+                                  }`}
+                                >
+                                  <p className="text-sm">
+                                    {g.name}
+                                    {index === 1 ? undefined : ", "}
+                                  </p>
+                                </li>
+                              ))
+                            : movie.genres.map((g, index) => (
+                                <li
+                                  key={g.name}
+                                  className={`ml-1 ${
+                                    index === movie.genres.length - 1
+                                      ? "truncate"
+                                      : undefined
+                                  }`}
+                                >
+                                  <p className="text-sm">
+                                    {g.name}
+                                    {index === movie.genres.length - 1
+                                      ? undefined
+                                      : ", "}
+                                  </p>
+                                </li>
+                              ))}
+                        </ul>
+
+                        {movie.runtime > 0 ? (
+                          <>
+                            {movie.genres.length > 0 ? (
+                              <p className="mx-2">&bull;</p>
+                            ) : undefined}
+                            <ReadingTime>{movie.runtime}</ReadingTime>
+                          </>
+                        ) : undefined}
+                      </>
+                    )}
+                  </div>
+
+                  {movie.tagline ? (
+                    <p className="mt-1 text-blue-200 font-light text-sm">
+                      {movie.tagline}
+                    </p>
+                  ) : undefined}
+
                   {movie.overview ? (
-                    <div className="ml-4">
-                      <h2 className="text-left text-lg mt-2 mb-2 font-medium">
+                    <>
+                      <h2 className="mt-2 mb-2 text-left text-lg font-medium">
                         Synopsis
                       </h2>
                       <p className="leading-snug font-light text-sm text-justify">
                         {movie.overview}
                       </p>
-                    </div>
+                    </>
                   ) : undefined}
                 </div>
               </div>
@@ -186,12 +262,12 @@ const Create = () => {
                   .map((m) => (
                     <Card
                       key={m.id}
-                      onClick={(e) => {
+                      onClick={async (e) => {
                         setTitle(m.title);
                         setGenre(m.genre_ids);
                         setYear(new Date(m.release_date).getFullYear());
 
-                        handlePopUp(e, m);
+                        await handlePopUp(e, m.id);
                       }}
                       isClicked={
                         title === m.title &&
