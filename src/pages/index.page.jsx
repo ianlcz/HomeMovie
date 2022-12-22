@@ -6,15 +6,26 @@ import SearchBar from "../components/SearchBar.component";
 import AuthContext from "../contexts/auth.context";
 import PopUpContext from "../contexts/pop-up.context";
 import { encodeSlug } from "../utils";
+import { useEffect } from "react";
 
 const Home = () => {
   const { user } = useContext(AuthContext);
-  const { isShow, movie } = useContext(PopUpContext);
+  const { isShow, closePopUp, movie } = useContext(PopUpContext);
   const navigate = useNavigate();
   const [movieTitleEnteredByUser, setMovieTitleEnteredByUser] = useState("");
 
   const isDisabled =
     movieTitleEnteredByUser !== `${movie.ref} - ${movie.title} (${movie.year})`;
+
+  useEffect(() => {
+    document.addEventListener("keydown", detectKeyDown, true);
+  }, []);
+
+  const detectKeyDown = (e) => {
+    if (e.key === "Escape") {
+      closePopUp();
+    }
+  };
 
   const handleDelete = async (e) => {
     e.preventDefault();
