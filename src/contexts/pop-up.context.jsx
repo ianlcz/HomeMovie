@@ -25,6 +25,7 @@ export const PopUpProvider = ({ children }) => {
     <Provider
       value={{
         isShow,
+        setIsShow,
         movie,
         displayMovieOnPopUp,
         closePopUp,
