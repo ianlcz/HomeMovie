@@ -5,7 +5,7 @@ const Card = ({
 }) => {
   return (
     <li
-      className={`p-2 flex flex-col lg:flex-row items-center cursor-pointer rounded-xl ${
+      className={`p-2 flex flex-col lg:flex-row items-center justify-center lg:justify-start cursor-pointer rounded-xl ${
         isClicked
           ? "bg-blue-200 dark:bg-blue-200/80"
           : "hover:bg-blue-100 hover:dark:bg-blue-100/80 transition-all duration-100 ease-in-out"

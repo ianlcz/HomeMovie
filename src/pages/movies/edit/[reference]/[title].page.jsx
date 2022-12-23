@@ -1,24 +1,38 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
+import { isBrowser, isMobileOnly } from "react-device-detect";
 import axios from "axios";
-import { getCookieFromBrowser } from "../../../../cookies";
-import AuthContext from "../../../../contexts/auth.context";
+import jwtDecode from "jwt-decode";
+
 import Card from "../../../../components/Movie/Card.component";
 import Submit from "../../../../components/Submit.component";
-import jwtDecode from "jwt-decode";
+import Score from "../../../../components/Movie/HeadBand/Score.component";
+import ReadingTime from "../../../../components/Movie/HeadBand/ReadingTime.component";
+import Poster from "../../../../components/Poster.component";
+import Background from "../../../../components/Movie/Background.component";
+import PopUp from "../../../../components/PopUp.component";
+
+import AuthContext from "../../../../contexts/auth.context";
+import PopUpContext from "../../../../contexts/pop-up.context";
+
 import { decodeSlug, encodeSlug } from "../../../../utils";
+import { getCookieFromBrowser } from "../../../../cookies";
 
 const Update = () => {
   const user = jwtDecode(getCookieFromBrowser("authToken"));
   const { movies } = useContext(AuthContext);
+  const { isShow, setIsShow } = useContext(PopUpContext);
+
   const navigate = useNavigate();
   const { reference, title } = useParams();
+
   const [newTitle, setNewTitle] = useState("");
   const [newRef, setNewRef] = useState("");
   const [movie, setMovie] = useState({});
   let [newMovie, setNewMovie] = useState({});
   const [suggestion, setSuggestion] = useState([]);
   const [newCode, setNewCode] = useState(undefined);
+  const [movieToPopUp, setMovieToPopUp] = useState({});
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -51,10 +65,36 @@ const Update = () => {
         setSuggestion([]);
       }
     };
+
     fetchMovie();
+    document.addEventListener("keydown", detectKeyDown, true);
   }, [movies, reference, title, newTitle]);
 
-  const HandleEdit = async (e) => {
+  const detectKeyDown = (e) => {
+    if (e.key === "Escape") {
+      navigate("/");
+      window.location.reload(false);
+    }
+  };
+
+  const handlePopUp = async ({ detail }, movieId = 0) => {
+    if (detail === 2 && isBrowser) {
+      setMovieToPopUp(
+        await axios
+          .get(
+            `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_API_KEY}&language=fr-FR`,
+          )
+          .then((res) => res.data)
+          .catch((err) => console.error(err.message)),
+      );
+      setIsShow(true);
+    } else {
+      setMovieToPopUp({});
+      setIsShow(false);
+    }
+  };
+
+  const handleEdit = async (e) => {
     e.preventDefault();
     const today = new Date();
     newMovie = {
@@ -86,12 +126,153 @@ const Update = () => {
 
   return (
     <>
+      {isShow ? (
+        <PopUp
+          onClick={async (e) => await handlePopUp(e)}
+          isShow
+          content={
+            <Background
+              data={{
+                cover: `https://image.tmdb.org/t/p/original/${movieToPopUp.backdrop_path}`,
+                title: movieToPopUp.title,
+              }}
+              onPopUp
+            >
+              <div className={`flex flex-row p-6 items-center justify-evenly`}>
+                <Poster onPopUp>
+                  {{
+                    poster_path: movieToPopUp.poster_path,
+                    title: movieToPopUp.title,
+                  }}
+                </Poster>
+
+                <div className="flex flex-col ml-4">
+                  <h1 className="flex flex-row w-full items-center justify-center text-center text-transparent bg-clip-text bg-gradient-to-b lg:bg-gradient-to-r from-white/90 to-white/70 flex-wrap text-2xl font-semibold">
+                    {movieToPopUp.title}
+
+                    {new Date(movieToPopUp.release_date).getTime() <
+                    new Date().getTime() ? (
+                      <span className="ml-2 text-lg font-light">
+                        ({new Date(movieToPopUp.release_date).getFullYear()})
+                      </span>
+                    ) : undefined}
+                  </h1>
+
+                  {movieToPopUp.original_title.toLowerCase() !==
+                  movieToPopUp.title
+                    .replace(" : ", ": ")
+                    .replace(" ! ", "! ")
+                    .toLowerCase() ? (
+                    <p className="mt-2 text-sm italic text-white/90 text-center">
+                      {movieToPopUp.original_title}
+                    </p>
+                  ) : undefined}
+
+                  <div
+                    className={`flex flex-row items-center w-max mx-auto mt-2 ${
+                      movieToPopUp.original_title.toLowerCase() ===
+                        movieToPopUp.title
+                          .replace(" : ", ": ")
+                          .replace(" ! ", "! ")
+                          .toLowerCase() &&
+                      new Date(movieToPopUp.release_date).getTime() <
+                        new Date().getTime()
+                        ? "lg:-my-1"
+                        : movieToPopUp.runtime && movieToPopUp.runtime > 0
+                        ? "my-0"
+                        : "my-4"
+                    }`}
+                  >
+                    {movieToPopUp.genres && (
+                      <>
+                        <ul className="flex flex-row font-light">
+                          {isMobileOnly
+                            ? movieToPopUp.genres
+                                .slice(0, 2)
+                                .map((g, index) => (
+                                  <li
+                                    key={g.name}
+                                    className={`ml-1 ${
+                                      index === 1 ? "truncate" : undefined
+                                    }`}
+                                  >
+                                    <p className="text-sm">
+                                      {g.name}
+                                      {index === 1 ? undefined : ", "}
+                                    </p>
+                                  </li>
+                                ))
+                            : movieToPopUp.genres.map((g, index) => (
+                                <li
+                                  key={g.name}
+                                  className={`ml-1 ${
+                                    index === movieToPopUp.genres.length - 1
+                                      ? "truncate"
+                                      : undefined
+                                  }`}
+                                >
+                                  <p className="text-sm">
+                                    {g.name}
+                                    {index === movieToPopUp.genres.length - 1
+                                      ? undefined
+                                      : ", "}
+                                  </p>
+                                </li>
+                              ))}
+                        </ul>
+
+                        {movieToPopUp.runtime > 0 ? (
+                          <>
+                            {movieToPopUp.genres.length > 0 ? (
+                              <p className="mx-2">&bull;</p>
+                            ) : undefined}
+                            <ReadingTime>{movieToPopUp.runtime}</ReadingTime>
+                          </>
+                        ) : undefined}
+                      </>
+                    )}
+                  </div>
+
+                  {movieToPopUp.tagline ? (
+                    <p className="mt-1 text-blue-200 font-light text-sm">
+                      {movieToPopUp.tagline}
+                    </p>
+                  ) : undefined}
+
+                  {movieToPopUp.overview ? (
+                    <>
+                      <h2 className="mt-2 mb-2 text-left text-lg font-medium">
+                        Synopsis
+                      </h2>
+                      <p className="leading-snug font-light text-sm text-justify">
+                        {movieToPopUp.overview}
+                      </p>
+                    </>
+                  ) : undefined}
+
+                  <Score onPopUp>
+                    {{
+                      vote_average: movieToPopUp.vote_average,
+                      budget: movieToPopUp.budget,
+                      revenue: movieToPopUp.revenue,
+                      isReleased:
+                        new Date(movieToPopUp.release_date).getTime() <
+                        new Date().getTime(),
+                    }}
+                  </Score>
+                </div>
+              </div>
+            </Background>
+          }
+        />
+      ) : undefined}
+
       <div className="flex flex-col bg-blue-100 dark:bg-slate-800 min-h-screen">
-        <div className="w-4/5 lg:w-3/4 mx-auto my-auto p-8 bg-white dark:bg-slate-600 rounded-xl shadow-lg">
+        <div className="w-fit mx-auto my-auto p-8 bg-white dark:bg-slate-600 rounded-xl shadow-lg">
           <h1 className="mb-6 font-semibold text-2xl text-center text-blue-800 dark:text-blue-500">
             Voulez-vous modifier ce film ?
           </h1>
-          <form onSubmit={HandleEdit}>
+          <form onSubmit={handleEdit}>
             {movie ? (
               <ul className="my-4">
                 <li className="flex flex-row items-center w-max mx-auto px-2 rounded-full text-white bg-gradient-to-br from-blue-800 to-blue-400 truncate">
@@ -152,7 +333,7 @@ const Update = () => {
                 className={`my-8 w-max m-auto ${
                   suggestion.length === 1
                     ? ""
-                    : "grid grid-flow-col grid-rows-[repeat(8, minmax(0, 1fr))] lg:grid-cols-2 lg:grid-rows-4 gap-8"
+                    : "grid grid-flow-row lg:grid-flow-col grid-rows-[repeat(8, minmax(0, 1fr))] lg:grid-cols-2 lg:grid-rows-4 gap-8"
                 }`}
               >
                 {suggestion
@@ -161,9 +342,11 @@ const Update = () => {
                   .map((m) => (
                     <Card
                       key={m.id}
-                      onClick={() => {
+                      onClick={async (e) => {
                         setNewTitle(m.title);
                         setNewMovie(m);
+
+                        await handlePopUp(e, m.id);
                       }}
                       isClicked={newTitle === m.title}
                     >

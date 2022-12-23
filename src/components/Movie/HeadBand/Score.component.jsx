@@ -6,9 +6,16 @@ import {
 } from "react-icons/io5";
 import { formatNumber } from "../../../utils";
 
-const Score = ({ children: { vote_average, budget, revenue, isReleased } }) =>
+const Score = ({
+  children: { vote_average, budget, revenue, isReleased },
+  onPopUp,
+}) =>
   vote_average > 0 || budget || revenue ? (
-    <table className="w-full lg:w-1/2 mx-auto mt-6 shadow-inner bg-blue-50/70 dark:bg-slate-800/70 backdrop-filter backdrop-blur dark:backdrop-blur-md rounded-full">
+    <table
+      className={`w-full ${
+        onPopUp ? "" : "lg:w-1/2"
+      } mx-auto mt-6 shadow-inner bg-blue-50/70 dark:bg-slate-800/70 backdrop-filter backdrop-blur dark:backdrop-blur-md rounded-full`}
+    >
       <thead>
         <tr className="text-base text-blue-700 dark:text-blue-600">
           {vote_average > 0 ? (

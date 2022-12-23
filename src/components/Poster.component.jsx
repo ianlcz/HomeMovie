@@ -1,6 +1,6 @@
 import { useLocation } from "react-router";
 
-const Poster = ({ children: { poster_path, title }, isCenter }) =>
+const Poster = ({ children: { poster_path, title }, isCenter, onPopUp }) =>
   poster_path ? (
     <a
       href={`https://www.youtube.com/results?search_query=${title}`}
@@ -13,9 +13,9 @@ const Poster = ({ children: { poster_path, title }, isCenter }) =>
             ? `Affiche du film : ${title}`
             : `Image de : ${title}`
         }
-        className={`w-60 ${
+        className={`w-60 ${onPopUp ? "max-w-[10rem] rounded-lg" : "rounded-2xl"} ${
           isCenter ? "mx-auto lg:w-72" : "lg:w-80"
-        } object-cover rounded-2xl shadow-xl`}
+        } object-cover shadow-xl`}
       />
     </a>
   ) : null;
