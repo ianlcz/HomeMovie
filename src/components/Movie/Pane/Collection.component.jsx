@@ -14,7 +14,7 @@ const Collection = ({ movie_title, belongs_to_collection }) =>
           cover: `https://image.tmdb.org/t/p/original/${belongs_to_collection.backdrop_path}`,
           title: belongs_to_collection.name,
         }}
-        isOnPane
+        onPane
       >
         <div className="px-4 flex flex-col text-slate-50">
           <div className="flex flex-col lg:flex-row flex-wrap gap-x-1 mb-2 lg:mb-2 text-lg lg:text-xl items-center justify-center">
