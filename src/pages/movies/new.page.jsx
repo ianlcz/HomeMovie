@@ -19,6 +19,7 @@ import { encodeSlug } from "../../utils";
 const Create = () => {
   const { user } = useContext(AuthContext);
   const { isShow, setIsShow } = useContext(PopUpContext);
+
   const navigate = useNavigate();
 
   const [ref, setRef] = useState("");
@@ -26,7 +27,7 @@ const Create = () => {
   const [suggestion, setSuggestion] = useState([]);
   const [genre, setGenre] = useState([]);
   const [year, setYear] = useState(0);
-  const [movie, setMovie] = useState(undefined);
+  const [movieToPopUp, setMovieToPopUp] = useState({});
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -59,9 +60,9 @@ const Create = () => {
     }
   };
 
-  const handlePopUp = async ({ detail }, movieId = 0) => {
+  const handlePopUp = async ({ detail }, movieId = null) => {
     if (detail === 2 && isBrowser) {
-      setMovie(
+      setMovieToPopUp(
         await axios
           .get(
             `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.REACT_APP_API_KEY}&language=fr-FR`,
@@ -71,7 +72,7 @@ const Create = () => {
       );
       setIsShow(true);
     } else {
-      setMovie({});
+      setMovieToPopUp({});
       setIsShow(false);
     }
   };
@@ -104,82 +105,87 @@ const Create = () => {
           content={
             <Background
               data={{
-                cover: `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`,
-                title: movie.title,
+                cover: `https://image.tmdb.org/t/p/original/${movieToPopUp.backdrop_path}`,
+                title: movieToPopUp.title,
               }}
               onPopUp
             >
               <div className={`flex flex-row p-6 items-center justify-evenly`}>
                 <Poster onPopUp>
-                  {{ poster_path: movie.poster_path, title: movie.title }}
+                  {{
+                    poster_path: movieToPopUp.poster_path,
+                    title: movieToPopUp.title,
+                  }}
                 </Poster>
 
                 <div className="flex flex-col ml-4">
                   <h1 className="flex flex-row w-full items-center justify-center text-center text-transparent bg-clip-text bg-gradient-to-b lg:bg-gradient-to-r from-white/90 to-white/70 flex-wrap text-2xl font-semibold">
-                    {movie.title}
+                    {movieToPopUp.title}
 
-                    {new Date(movie.release_date).getTime() <
+                    {new Date(movieToPopUp.release_date).getTime() <
                     new Date().getTime() ? (
                       <span className="ml-2 text-lg font-light">
-                        ({new Date(movie.release_date).getFullYear()})
+                        ({new Date(movieToPopUp.release_date).getFullYear()})
                       </span>
                     ) : undefined}
                   </h1>
 
-                  {movie.original_title.toLowerCase() !==
-                  movie.title
+                  {movieToPopUp.original_title.toLowerCase() !==
+                  movieToPopUp.title
                     .replace(" : ", ": ")
                     .replace(" ! ", "! ")
                     .toLowerCase() ? (
                     <p className="mt-2 text-sm italic text-white/90 text-center">
-                      {movie.original_title}
+                      {movieToPopUp.original_title}
                     </p>
                   ) : undefined}
 
                   <div
                     className={`flex flex-row items-center w-max mx-auto mt-2 ${
-                      movie.original_title.toLowerCase() ===
-                        movie.title
+                      movieToPopUp.original_title.toLowerCase() ===
+                        movieToPopUp.title
                           .replace(" : ", ": ")
                           .replace(" ! ", "! ")
                           .toLowerCase() &&
-                      new Date(movie.release_date).getTime() <
+                      new Date(movieToPopUp.release_date).getTime() <
                         new Date().getTime()
                         ? "lg:-my-1"
-                        : movie.runtime && movie.runtime > 0
+                        : movieToPopUp.runtime && movieToPopUp.runtime > 0
                         ? "my-0"
                         : "my-4"
                     }`}
                   >
-                    {movie.genres && (
+                    {movieToPopUp.genres && (
                       <>
                         <ul className="flex flex-row font-light">
                           {isMobileOnly
-                            ? movie.genres.slice(0, 2).map((g, index) => (
+                            ? movieToPopUp.genres
+                                .slice(0, 2)
+                                .map((g, index) => (
+                                  <li
+                                    key={g.name}
+                                    className={`ml-1 ${
+                                      index === 1 ? "truncate" : undefined
+                                    }`}
+                                  >
+                                    <p className="text-sm">
+                                      {g.name}
+                                      {index === 1 ? undefined : ", "}
+                                    </p>
+                                  </li>
+                                ))
+                            : movieToPopUp.genres.map((g, index) => (
                                 <li
                                   key={g.name}
                                   className={`ml-1 ${
-                                    index === 1 ? "truncate" : undefined
-                                  }`}
-                                >
-                                  <p className="text-sm">
-                                    {g.name}
-                                    {index === 1 ? undefined : ", "}
-                                  </p>
-                                </li>
-                              ))
-                            : movie.genres.map((g, index) => (
-                                <li
-                                  key={g.name}
-                                  className={`ml-1 ${
-                                    index === movie.genres.length - 1
+                                    index === movieToPopUp.genres.length - 1
                                       ? "truncate"
                                       : undefined
                                   }`}
                                 >
                                   <p className="text-sm">
                                     {g.name}
-                                    {index === movie.genres.length - 1
+                                    {index === movieToPopUp.genres.length - 1
                                       ? undefined
                                       : ", "}
                                   </p>
@@ -187,42 +193,42 @@ const Create = () => {
                               ))}
                         </ul>
 
-                        {movie.runtime > 0 ? (
+                        {movieToPopUp.runtime > 0 ? (
                           <>
-                            {movie.genres.length > 0 ? (
+                            {movieToPopUp.genres.length > 0 ? (
                               <p className="mx-2">&bull;</p>
                             ) : undefined}
-                            <ReadingTime>{movie.runtime}</ReadingTime>
+                            <ReadingTime>{movieToPopUp.runtime}</ReadingTime>
                           </>
                         ) : undefined}
                       </>
                     )}
                   </div>
 
-                  {movie.tagline ? (
+                  {movieToPopUp.tagline ? (
                     <p className="mt-1 text-blue-200 font-light text-sm">
-                      {movie.tagline}
+                      {movieToPopUp.tagline}
                     </p>
                   ) : undefined}
 
-                  {movie.overview ? (
+                  {movieToPopUp.overview ? (
                     <>
                       <h2 className="mt-2 mb-2 text-left text-lg font-medium">
                         Synopsis
                       </h2>
                       <p className="leading-snug font-light text-sm text-justify">
-                        {movie.overview}
+                        {movieToPopUp.overview}
                       </p>
                     </>
                   ) : undefined}
 
                   <Score onPopUp>
                     {{
-                      vote_average: movie.vote_average,
-                      budget: movie.budget,
-                      revenue: movie.revenue,
+                      vote_average: movieToPopUp.vote_average,
+                      budget: movieToPopUp.budget,
+                      revenue: movieToPopUp.revenue,
                       isReleased:
-                        new Date(movie.release_date).getTime() <
+                        new Date(movieToPopUp.release_date).getTime() <
                         new Date().getTime(),
                     }}
                   </Score>
