@@ -7,13 +7,14 @@ import Background from "../../components/Movie/Background.component";
 import PopUp from "../../components/PopUp.component";
 import Card from "../../components/Movie/Card.component";
 import Submit from "../../components/Submit.component";
+import ReadingTime from "../../components/Movie/HeadBand/ReadingTime.component";
+import Poster from "../../components/Poster.component";
+import Score from "../../components/Movie/HeadBand/Score.component";
 
 import AuthContext from "../../contexts/auth.context";
 import PopUpContext from "../../contexts/pop-up.context";
 
 import { encodeSlug } from "../../utils";
-import ReadingTime from "../../components/Movie/HeadBand/ReadingTime.component";
-import Poster from "../../components/Poster.component";
 
 const Create = () => {
   const { user } = useContext(AuthContext);
@@ -214,6 +215,17 @@ const Create = () => {
                       </p>
                     </>
                   ) : undefined}
+
+                  <Score onPopUp>
+                    {{
+                      vote_average: movie.vote_average,
+                      budget: movie.budget,
+                      revenue: movie.revenue,
+                      isReleased:
+                        new Date(movie.release_date).getTime() <
+                        new Date().getTime(),
+                    }}
+                  </Score>
                 </div>
               </div>
             </Background>
