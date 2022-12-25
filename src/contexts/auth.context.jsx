@@ -28,9 +28,13 @@ export const AuthProvider = ({ children }) => {
 
       if (owner) {
         setUser(owner);
-        const moviesUser = owner.movies.movies;
 
-        setMovies(moviesUser);
+        setMovies(
+          owner.movies.movies.sort(
+            (a, b) =>
+              Number(a.ref.split(", ")[0]) > Number(b.ref.split(", ")[0]),
+          ),
+        );
       }
       setIsLoading(false);
     } catch (err) {
@@ -210,7 +214,7 @@ export const AuthProvider = ({ children }) => {
                 (c.job === "Characters" ||
                   c.job === "Comic Book" ||
                   c.job === "Novel" ||
-                  c. job === "Graphic Novel" ||
+                  c.job === "Graphic Novel" ||
                   c.job === "Short Story" ||
                   c.job === "Original Story" ||
                   c.job === "Original Series Creator" ||
