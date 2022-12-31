@@ -27,10 +27,14 @@ export const AuthProvider = ({ children }) => {
       } = await axios.get(`/api/account/${authData.sub}`);
 
       if (owner) {
-        setUser(owner);
+        const collection = await axios
+          .get(`/api/collection/${owner.movies}`)
+          .then(({ data: { movies } }) => movies)
+          .catch((err) => console.error(err.message));
 
+        setUser(owner);
         setMovies(
-          owner.movies.movies.sort(
+          collection.sort(
             (a, b) =>
               Number(a.ref.split(", ")[0]) > Number(b.ref.split(", ")[0]),
           ),

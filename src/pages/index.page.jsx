@@ -29,10 +29,9 @@ const Home = () => {
 
   const handleDelete = async (e) => {
     e.preventDefault();
-
     const collectionId = await axios
-      .get(`/api/account/${user.sub}`)
-      .then((res) => res.data.movies)
+      .get(`/api/account/${user._id}`)
+      .then(({ data: { owner } }) => owner.movies)
       .catch((err) => console.error(err.message));
 
     await axios

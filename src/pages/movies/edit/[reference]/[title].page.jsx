@@ -97,6 +97,7 @@ const Update = () => {
   const handleEdit = async (e) => {
     e.preventDefault();
     const today = new Date();
+
     newMovie = {
       ref: newRef === "" ? movie.ref : newRef,
       title: newMovie.title
@@ -113,7 +114,7 @@ const Update = () => {
     if (user && (newRef !== "" || newTitle !== "" || newCode)) {
       const collectionId = await axios
         .get(`/api/account/${user.sub}`)
-        .then((res) => res.data.movies)
+        .then(({ data: { owner } }) => owner.movies)
         .catch((err) => console.error(err.message));
 
       await axios
