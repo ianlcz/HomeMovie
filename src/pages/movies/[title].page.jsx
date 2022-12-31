@@ -45,9 +45,9 @@ const Read = () => {
           `${
             movie.code &&
             (movie.code === "Vu au cinéma" || movie.code === "Vu en streaming")
-              ? `${movie.code} -`
+              ? `${movie.code} —`
               : movie.ref
-              ? `${movie.ref} -`
+              ? `${movie.ref} —`
               : ""
           } ${movie.title} (${new Date(
             movie.release_date,
