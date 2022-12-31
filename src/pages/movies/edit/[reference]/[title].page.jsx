@@ -111,8 +111,13 @@ const Update = () => {
     };
 
     if (user && (newRef !== "" || newTitle !== "" || newCode)) {
+      const collectionId = await axios
+        .get(`/api/account/${user.sub}`)
+        .then((res) => res.data.movies)
+        .catch((err) => console.error(err.message));
+
       await axios
-        .put(`/api/collection/${user.movies}`, {
+        .put(`/api/collection/${collectionId}`, {
           movie,
           newMovie,
         })
