@@ -162,7 +162,9 @@ const HeadBand = ({
           <TechnicalTeamSection title="Un film de" content={directors} />
 
           {tagline ? (
-            <p className="text-blue-200 font-extralight text-sm">{tagline}</p>
+            <p className="text-blue-200 font-light lg:font-extralight text-sm">
+              {tagline}
+            </p>
           ) : undefined}
 
           {overview ? (
