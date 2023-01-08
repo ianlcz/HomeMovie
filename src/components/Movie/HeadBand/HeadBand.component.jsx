@@ -121,12 +121,14 @@ const HeadBand = ({
                         <li
                           key={g.name}
                           className={`ml-1 ${
-                            index === 1 ? "lg:truncate" : undefined
+                            index === genres.length - 1
+                              ? "lg:truncate"
+                              : undefined
                           }`}
                         >
-                          <p className="text-sm lg:text-base">
+                          <p className="text-sm">
                             {g.name}
-                            {index === 1 ? undefined : ", "}
+                            {index === genres.length - 1 ? undefined : ", "}
                           </p>
                         </li>
                       ))
