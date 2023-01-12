@@ -3,6 +3,7 @@ import {
   IoCaretUp,
   IoHappyOutline,
   IoSadOutline,
+  IoSparkles,
 } from "react-icons/io5";
 import { formatNumber } from "../../../utils";
 
@@ -64,7 +65,13 @@ const Score = ({
                       : "text-red-600"
                   }`}
                 >
-                  {revenue > budget ? <IoCaretUp /> : <IoCaretDown />}
+                  {revenue > 10 * budget ? (
+                    <IoSparkles />
+                  ) : revenue > budget ? (
+                    <IoCaretUp />
+                  ) : (
+                    <IoCaretDown />
+                  )}
 
                   <p className="ml-0.5 text-xs">
                     {`x${(revenue / budget).toFixed(2)}`}
