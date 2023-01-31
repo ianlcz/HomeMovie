@@ -115,8 +115,7 @@ const HeadBand = ({
             {genres && (
               <>
                 <ul className="flex flex-row font-light">
-                  {isMobileOnly
-                    ? genres.slice(0, 2).map((g, index) => (
+                  {genres.map((g, index) => (
                         <li
                           key={g.name}
                           className={`ml-1 ${
@@ -130,22 +129,7 @@ const HeadBand = ({
                             {index === genres.length - 1 ? undefined : ", "}
                           </p>
                         </li>
-                      ))
-                    : genres.map((g, index) => (
-                        <li
-                          key={g.name}
-                          className={`ml-1 ${
-                            index === genres.length - 1
-                              ? "lg:truncate"
-                              : undefined
-                          }`}
-                        >
-                          <p className="text-sm">
-                            {g.name}
-                            {index === genres.length - 1 ? undefined : ", "}
-                          </p>
-                        </li>
-                      ))}
+                   ))}
                 </ul>
 
                 {runtime > 0 ? (
