@@ -35,6 +35,7 @@ const HeadBand = ({
 }) => {
   const movieRef =
     code === "Vu en streaming" ||
+    (code === "Vu au cinéma" && ref === "8000") ||
     (code === "Pas vu" && ref === "8000") ? (
       code
     ) : code ? (
