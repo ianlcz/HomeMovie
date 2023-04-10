@@ -135,7 +135,7 @@ const HeadBand = ({
               <h2 className="text-center lg:text-left text-xl mt-2 mb-2 font-medium">
                 Synopsis
               </h2>
-              <p className="leading-snug font-light text-sm lg:text-base text-justify">
+              <p className="leading-snug font-light text-xs lg:text-base text-justify">
                 {overview}
               </p>
             </>
