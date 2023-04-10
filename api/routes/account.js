@@ -9,10 +9,7 @@ const Owner = require("../models/Owner");
 router.get("/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const owner = await Owner.findById(id).populate({
-      path: "movies",
-      select: ["movies"],
-    });
+    const owner = await Owner.findOne({ _id: id });
 
     if (owner) {
       res.status(200).json({ success: true, owner });
@@ -70,10 +67,13 @@ router.post("/login", async (req, res) => {
     if (owner) {
       bcrypt.compare(password, owner.password, async (err, result) => {
         if (!err && result) {
-          const claims = { sub: owner._id, emailAddress, movies: owner.movies };
-          const token = sign(claims, process.env.JWT_SECRET, {
-            expiresIn: "7d",
-          });
+          const token = sign(
+            { sub: owner._id, emailAddress },
+            process.env.JWT_SECRET,
+            {
+              expiresIn: "7d",
+            },
+          );
 
           logging.info(`logging on HomeMovie App`);
           res.status(200).json({ success: true, token });

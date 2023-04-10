@@ -29,9 +29,13 @@ const Home = () => {
 
   const handleDelete = async (e) => {
     e.preventDefault();
+    const collectionId = await axios
+      .get(`/api/account/${user._id}`)
+      .then(({ data: { owner } }) => owner.movies)
+      .catch((err) => console.error(err.message));
 
     await axios
-      .delete(`/api/collection/${user.movies._id}/${movie.ref}/${movie.title}`)
+      .delete(`/api/collection/${collectionId}/${movie.ref}/${movie.title}`)
       .then((res) => res.data)
       .catch((err) => console.error(err.message));
 

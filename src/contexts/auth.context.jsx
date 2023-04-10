@@ -27,10 +27,18 @@ export const AuthProvider = ({ children }) => {
       } = await axios.get(`/api/account/${authData.sub}`);
 
       if (owner) {
-        setUser(owner);
-        const moviesUser = owner.movies.movies;
+        const collection = await axios
+          .get(`/api/collection/${owner.movies}`)
+          .then(({ data: { movies } }) => movies)
+          .catch((err) => console.error(err.message));
 
-        setMovies(moviesUser);
+        setUser(owner);
+        setMovies(
+          collection.sort(
+            (a, b) =>
+              Number(a.ref.split(", ")[0]) > Number(b.ref.split(", ")[0]),
+          ),
+        );
       }
       setIsLoading(false);
     } catch (err) {
@@ -206,15 +214,14 @@ export const AuthProvider = ({ children }) => {
           characters_creators: arrayOfUniqueElement(
             crew.filter(
               (c) =>
-                c.known_for_department === "Writing" &&
-                (c.job === "Characters" ||
-                  c.job === "Comic Book" ||
-                  c.job === "Novel" ||
-                  c. job === "Graphic Novel" ||
-                  c.job === "Short Story" ||
-                  c.job === "Original Story" ||
-                  c.job === "Original Series Creator" ||
-                  c.job === "Author"),
+                c.job === "Characters" ||
+                c.job === "Comic Book" ||
+                c.job === "Novel" ||
+                c.job === "Graphic Novel" ||
+                c.job === "Short Story" ||
+                c.job === "Original Story" ||
+                c.job === "Original Series Creator" ||
+                c.job === "Author",
             ),
           ).slice(0, 6),
           cast,

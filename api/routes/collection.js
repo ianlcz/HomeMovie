@@ -21,7 +21,6 @@ router.post("/:id", async (req, res) => {
       }`,
       year,
     };
-
     const { movies } = await Collection.findById(id);
 
     if (
@@ -61,7 +60,6 @@ router.get("/:id", (req, res) => {
 
   Collection.findById(id, (err, data) => {
     if (!err) {
-      logging.info(JSON.stringify(data, null, 2));
       res.status(200).send(data);
     }
   });

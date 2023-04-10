@@ -80,20 +80,23 @@ const Create = () => {
   const handleMovie = async (e) => {
     e.preventDefault();
 
-    if (user) {
-      await axios
-        .post(`/api/collection/${user.movies._id}`, {
-          ref,
-          title,
-          genre,
-          year,
-        })
-        .then((res) => res.data)
-        .catch((err) => console.error(err.message));
+    const collectionId = await axios
+      .get(`/api/account/${user._id}`)
+      .then(({ data: { owner } }) => owner.movies)
+      .catch((err) => console.error(err.message));
 
-      navigate(`/movies/${encodeSlug(title)}/${year}`);
-      window.location.reload(false);
-    }
+    await axios
+      .post(`/api/collection/${collectionId}`, {
+        ref,
+        title,
+        genre,
+        year,
+      })
+      .then((res) => res.data)
+      .catch((err) => console.error(err.message));
+
+    navigate(`/movies/${encodeSlug(title)}/${year}`);
+    window.location.reload(false);
   };
 
   return (
@@ -244,6 +247,7 @@ const Create = () => {
           <h1 className="mb-6 font-semibold text-2xl text-center text-transparent bg-clip-text bg-gradient-to-t from-blue-800 to-blue-400 dark:from-blue-700 dark:to-blue-400">
             Quel est votre nouveau film ?
           </h1>
+
           <form onSubmit={handleMovie}>
             <div className="flex flex-col lg:flex-row justify-between">
               <input
