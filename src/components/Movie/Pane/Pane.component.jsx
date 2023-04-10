@@ -160,11 +160,11 @@ const Pane = ({
         verify: recommendations.length > 0,
         content:
           recommendations.length > 0 ? (
-            <ul className="flex flex-row flex-wrap justify-between gap-y-3 lg:gap-x-4 lg:gap-y-0">
+            <ul className="flex flex-row flex-wrap justify-between gap-x-0 gap-y-3 lg:gap-x-4 lg:gap-y-0">
               {recommendations.slice(0, isMobileOnly ? 4 : 6).map((r) => (
                 <li
                   key={r.id}
-                  className="hover:scale-110 lg:hover:scale-125 duration-700 ease-in-out w-[172px] lg:w-[194px] 2xl:w-[280px]"
+                  className="hover:scale-110 lg:hover:scale-125 duration-700 ease-in-out w-[170px] lg:w-[194px]"
                 >
                   <a
                     href={`/movies/${encodeSlug(r.title)}/${String(
