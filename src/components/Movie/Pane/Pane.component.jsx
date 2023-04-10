@@ -164,7 +164,7 @@ const Pane = ({
               {recommendations.slice(0, isMobileOnly ? 4 : 6).map((r) => (
                 <li
                   key={r.id}
-                  className="hover:scale-110 lg:hover:scale-125 duration-700 ease-in-out w-[170px] lg:w-[194px]"
+                  className="hover:scale-110 lg:hover:scale-125 duration-700 ease-in-out w-[150px] lg:w-[194px]"
                 >
                   <a
                     href={`/movies/${encodeSlug(r.title)}/${String(
