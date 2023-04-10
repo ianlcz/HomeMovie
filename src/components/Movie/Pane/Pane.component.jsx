@@ -131,7 +131,7 @@ const Pane = ({
           ) : (
             <div className="flex flex-row items-center justify-center text-blue-600">
               <IoInformationCircle size={"20px"} />
-              <p className="ml-1 font-light text-sm">
+              <p className="ml-1 font-light text-xs lg:text-sm">
                 Aucune distribution est disponible pour l'instant
               </p>
             </div>
@@ -179,7 +179,7 @@ const Pane = ({
                     />
 
                     {r.vote_average ? (
-                      <div className="flex flex-row items-start justify-evenly mt-2 text-sm">
+                      <div className="flex flex-row items-start justify-evenly mt-2 text-xs lg:text-sm">
                         <h3 className="font-medium truncate">
                           {r.title ? r.title : r.original_title}
                         </h3>

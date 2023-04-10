@@ -17,11 +17,11 @@ const PopUp = ({ title, content, onClick = undefined }) => {
           />
 
           <div className="px-8 pb-8">
-            <h1 className="mb-2 pb-3 font-semibold text-2xl text-transparent bg-clip-text bg-gradient-to-t from-blue-800 to-blue-400 dark:from-blue-700 dark:to-blue-400">
+            <h1 className="mb-2 pb-3 font-semibold text-xl lg:text-2xl text-transparent bg-clip-text bg-gradient-to-t from-blue-800 to-blue-400 dark:from-blue-700 dark:to-blue-400">
               {title}
             </h1>
 
-            <div className="text-sm text-blue-600 dark:text-blue-300">
+            <div className="text-xs lg:text-sm text-blue-600 dark:text-blue-300">
               {content}
             </div>
           </div>

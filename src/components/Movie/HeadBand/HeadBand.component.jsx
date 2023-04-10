@@ -85,7 +85,7 @@ const HeadBand = ({
 
           {original_title.toLowerCase() !==
           title.replace(" : ", ": ").replace(" ! ", "! ").toLowerCase() ? (
-            <p className="mt-2 text-sm italic text-white/90 text-center">
+            <p className="mt-2 text-xs lg:text-sm italic text-white/90 text-center">
               {original_title}
             </p>
           ) : undefined}
@@ -125,7 +125,7 @@ const HeadBand = ({
           <TechnicalTeamSection title="Un film de" content={directors} />
 
           {tagline ? (
-            <p className="text-blue-200 font-light lg:font-extralight text-sm">
+            <p className="text-blue-200 font-light lg:font-extralight text-xs lg:text-sm">
               {tagline}
             </p>
           ) : undefined}

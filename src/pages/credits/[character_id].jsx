@@ -116,7 +116,7 @@ const Credit = () => {
                 </p>
 
                 {place_of_birth ? (
-                  <p className="w-full truncate mx-auto mt-2 text-sm text-center font-semibold text-blue-800 dark:text-blue-400">
+                  <p className="w-full truncate mx-auto mt-2 text-xs lg:text-sm text-center font-semibold text-blue-800 dark:text-blue-400">
                     {arrayOfUniqueElement([
                       place_of_birth.split(",")[0],
                       place_of_birth.split(",").slice(-2),

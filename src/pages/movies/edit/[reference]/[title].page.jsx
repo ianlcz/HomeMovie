@@ -169,7 +169,7 @@ const Update = () => {
                     .replace(" : ", ": ")
                     .replace(" ! ", "! ")
                     .toLowerCase() ? (
-                    <p className="mt-2 text-sm italic text-white/90 text-center">
+                    <p className="mt-2 text-xs lg:text-sm italic text-white/90 text-center">
                       {movieToPopUp.original_title}
                     </p>
                   ) : undefined}
@@ -202,7 +202,7 @@ const Update = () => {
                                       index === 1 ? "truncate" : undefined
                                     }`}
                                   >
-                                    <p className="text-sm">
+                                    <p className="text-xs lg:text-sm">
                                       {g.name}
                                       {index === 1 ? undefined : ", "}
                                     </p>
@@ -217,7 +217,7 @@ const Update = () => {
                                       : undefined
                                   }`}
                                 >
-                                  <p className="text-sm">
+                                  <p className="text-xs lg:text-sm">
                                     {g.name}
                                     {index === movieToPopUp.genres.length - 1
                                       ? undefined
@@ -240,7 +240,7 @@ const Update = () => {
                   </div>
 
                   {movieToPopUp.tagline ? (
-                    <p className="mt-1 text-blue-200 font-light text-sm">
+                    <p className="mt-1 text-blue-200 font-light text-xs lg:text-sm">
                       {movieToPopUp.tagline}
                     </p>
                   ) : undefined}
@@ -250,7 +250,7 @@ const Update = () => {
                       <h2 className="mt-2 mb-2 text-left text-lg font-medium">
                         Synopsis
                       </h2>
-                      <p className="leading-snug font-light text-sm text-justify">
+                      <p className="leading-snug font-light text-xs lg:text-sm text-justify">
                         {movieToPopUp.overview}
                       </p>
                     </>
@@ -282,9 +282,11 @@ const Update = () => {
             {movie ? (
               <ul className="my-4">
                 <li className="flex flex-row items-center w-max mx-auto px-2 rounded-full text-white bg-gradient-to-br from-blue-800 to-blue-400 truncate">
-                  <p className="text-sm font-bold mr-1">{`${movie.ref} -`}</p>
-                  <p className="mr-2 text-sm font-semibold">{movie.title}</p>
-                  <p className="text-sm">{`(${movie.year})`}</p>
+                  <p className="text-xs lg:text-sm font-bold mr-1">{`${movie.ref} -`}</p>
+                  <p className="mr-2 text-xs lg:text-sm font-semibold">
+                    {movie.title}
+                  </p>
+                  <p className="text-xs lg:text-sm">{`(${movie.year})`}</p>
                 </li>
               </ul>
             ) : undefined}
@@ -302,13 +304,13 @@ const Update = () => {
                     placeholder="Nouvelle référence"
                     value={newRef}
                     onChange={(e) => setNewRef(e.target.value)}
-                    className="w-full px-4 py-1 text-sm text-blue-400 focus:outline-none focus:ring-2 focus:dark:ring-1 focus:ring-blue-500 border border-blue-500 placeholder-blue-400 dark:bg-slate-800 rounded-full font-semibold shadow-inner"
+                    className="w-full px-4 py-1 text-xs lg:text-sm text-blue-400 focus:outline-none focus:ring-2 focus:dark:ring-1 focus:ring-blue-500 border border-blue-500 placeholder-blue-400 dark:bg-slate-800 rounded-full font-semibold shadow-inner"
                   />
 
                   <select
                     value={newCode}
                     onChange={(e) => setNewCode(e.target.value)}
-                    className="w-max mt-6 px-4 py-1 text-sm text-blue-400 border border-blue-500 appearance-none focus:outline-none focus:ring-2 focus:dark:ring-1 focus:ring-blue-500 bg-white dark:bg-slate-800 font-medium rounded transition duration-700 ease-in-out"
+                    className="w-max mt-6 px-4 py-1 text-xs lg:text-sm text-blue-400 border border-blue-500 appearance-none focus:outline-none focus:ring-2 focus:dark:ring-1 focus:ring-blue-500 bg-white dark:bg-slate-800 font-medium rounded transition duration-700 ease-in-out"
                   >
                     <option>--Choisir un code--</option>
                     <option value={1}>Vu</option>
@@ -319,7 +321,7 @@ const Update = () => {
                   </select>
                 </div>
 
-                <label className="my-2 lg:mx-4 text-blue-500 text-sm">
+                <label className="my-2 lg:mx-4 text-blue-500 text-xs lg:text-sm">
                   et/ou
                 </label>
 
@@ -329,7 +331,7 @@ const Update = () => {
                   placeholder="Nouveau titre"
                   value={newTitle}
                   onChange={(e) => setNewTitle(e.target.value)}
-                  className="w-full px-4 py-1 text-sm text-blue-400 focus:outline-none focus:ring-2 focus:dark:ring-1 focus:ring-blue-500 border border-blue-500 placeholder-blue-400 dark:bg-slate-800 rounded-full font-semibold shadow-inner"
+                  className="w-full px-4 py-1 text-xs lg:text-sm text-blue-400 focus:outline-none focus:ring-2 focus:dark:ring-1 focus:ring-blue-500 border border-blue-500 placeholder-blue-400 dark:bg-slate-800 rounded-full font-semibold shadow-inner"
                 />
               </div>
             </div>

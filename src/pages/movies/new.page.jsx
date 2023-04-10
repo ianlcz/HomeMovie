@@ -138,7 +138,7 @@ const Create = () => {
                     .replace(" : ", ": ")
                     .replace(" ! ", "! ")
                     .toLowerCase() ? (
-                    <p className="mt-2 text-sm italic text-white/90 text-center">
+                    <p className="mt-2 text-xs lg:text-sm italic text-white/90 text-center">
                       {movieToPopUp.original_title}
                     </p>
                   ) : undefined}
@@ -171,7 +171,7 @@ const Create = () => {
                                       index === 1 ? "truncate" : undefined
                                     }`}
                                   >
-                                    <p className="text-sm">
+                                    <p className="text-xs lg:text-sm">
                                       {g.name}
                                       {index === 1 ? undefined : ", "}
                                     </p>
@@ -186,7 +186,7 @@ const Create = () => {
                                       : undefined
                                   }`}
                                 >
-                                  <p className="text-sm">
+                                  <p className="text-xs lg:text-sm">
                                     {g.name}
                                     {index === movieToPopUp.genres.length - 1
                                       ? undefined
@@ -209,7 +209,7 @@ const Create = () => {
                   </div>
 
                   {movieToPopUp.tagline ? (
-                    <p className="mt-1 text-blue-200 font-light text-sm">
+                    <p className="mt-1 text-blue-200 font-light text-xs lg:text-sm">
                       {movieToPopUp.tagline}
                     </p>
                   ) : undefined}
@@ -219,7 +219,7 @@ const Create = () => {
                       <h2 className="mt-2 mb-2 text-left text-lg font-medium">
                         Synopsis
                       </h2>
-                      <p className="leading-snug font-light text-sm text-justify">
+                      <p className="leading-snug font-light text-xs lg:text-sm text-justify">
                         {movieToPopUp.overview}
                       </p>
                     </>
@@ -257,7 +257,7 @@ const Create = () => {
                 value={ref}
                 onChange={(e) => setRef(e.target.value)}
                 required
-                className="w-max mx-auto mb-2 lg:mb-0 lg:mr-4 px-4 py-1 text-sm focus:outline-none focus:ring-2 focus:dark:ring-1 focus:ring-blue-500 text-blue-400 border border-blue-500 placeholder-blue-400 dark:bg-slate-800 rounded-full font-semibold shadow-inner transition-all duration-700 ease-in-out"
+                className="w-max mx-auto mb-2 lg:mb-0 lg:mr-4 px-4 py-1 text-xs lg:text-sm focus:outline-none focus:ring-2 focus:dark:ring-1 focus:ring-blue-500 text-blue-400 border border-blue-500 placeholder-blue-400 dark:bg-slate-800 rounded-full font-semibold shadow-inner transition-all duration-700 ease-in-out"
               />
               <input
                 type="text"
@@ -266,7 +266,7 @@ const Create = () => {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 required
-                className="w-max mx-auto px-4 py-1 text-sm focus:outline-none focus:ring-2 focus:dark:ring-1 focus:ring-blue-500 text-blue-400 border border-blue-500 placeholder-blue-400 dark:bg-slate-800 rounded-full font-semibold shadow-inner transition-all duration-700 ease-in-out"
+                className="w-max mx-auto px-4 py-1 text-xs lg:text-sm focus:outline-none focus:ring-2 focus:dark:ring-1 focus:ring-blue-500 text-blue-400 border border-blue-500 placeholder-blue-400 dark:bg-slate-800 rounded-full font-semibold shadow-inner transition-all duration-700 ease-in-out"
               />
             </div>
 

@@ -7,7 +7,7 @@ const GenreHeadBand = ({ genres, runtime }) => (
     <ul className="flex flex-row mb-1.5 lg:mb-0 font-light">
       {genres.map((g, index) => (
         <li key={g.name} className="ml-1">
-          <p className="text-sm">
+          <p className="text-xs lg:text-sm">
             {g.name}
             {index === genres.length - 1 ? undefined : ", "}
           </p>

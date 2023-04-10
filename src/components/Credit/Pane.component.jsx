@@ -137,7 +137,7 @@ const Pane = ({ movies, gender }) => {
                     ) : undefined}
                   </div>
                   {m.character ? (
-                    <div className="flex flex-row text-sm font-extralight">
+                    <div className="flex flex-row text-xs lg:text-sm font-extralight">
                       <span className="mr-1 lg:mr-1 font-normal">
                         incarnant
                       </span>
@@ -149,7 +149,7 @@ const Pane = ({ movies, gender }) => {
                     </div>
                   ) : undefined}
                   {m.job ? (
-                    <p className="text-sm font-light">
+                    <p className="text-xs lg:text-sm font-light">
                       {traductions.filter((t) =>
                         m.job ? t.en === m.job : undefined,
                       )[0]
