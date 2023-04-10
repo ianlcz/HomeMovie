@@ -3,9 +3,9 @@ import axios from "axios";
 import Background from "../Background.component";
 import Poster from "../../Poster.component";
 import StreamPlatform from "./StreamPlatform.component";
-import ReadingTime from "./ReadingTime.component";
 import TechnicalTeamSection from "./TechnicalTeamSection.component";
 import Score from "./Score.component";
+import GenreHeadBand from "./GenreHeadBand.component";
 
 const HeadBand = ({
   children: {
@@ -113,35 +113,12 @@ const HeadBand = ({
                 : "lg:my-4"
             }`}
           >
-            {genres && (
-              <>
-                <ul className="flex flex-row font-light">
-                  {genres.map((g, index) => (
-                        <li
-                          key={g.name}
-                          className={`ml-1 ${
-                            index === genres.length - 1
-                              ? "lg:truncate"
-                              : undefined
-                          }`}
-                        >
-                          <p className="text-sm">
-                            {g.name}
-                            {index === genres.length - 1 ? undefined : ", "}
-                          </p>
-                        </li>
-                   ))}
-                </ul>
-
-                {runtime > 0 ? (
-                  <>
-                    {genres.length > 0 ? (
-                      <p className="mx-2">&bull;</p>
-                    ) : undefined}
-                    <ReadingTime>{runtime}</ReadingTime>
-                  </>
-                ) : undefined}
-              </>
+            {genres && isMobileOnly ? (
+              <div>
+                <GenreHeadBand genres={genres} runtime={runtime} />
+              </div>
+            ) : (
+              <GenreHeadBand genres={genres} runtime={runtime} />
             )}
           </div>
 

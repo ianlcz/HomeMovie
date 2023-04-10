@@ -214,15 +214,14 @@ export const AuthProvider = ({ children }) => {
           characters_creators: arrayOfUniqueElement(
             crew.filter(
               (c) =>
-                c.known_for_department === "Writing" &&
-                (c.job === "Characters" ||
-                  c.job === "Comic Book" ||
-                  c.job === "Novel" ||
-                  c.job === "Graphic Novel" ||
-                  c.job === "Short Story" ||
-                  c.job === "Original Story" ||
-                  c.job === "Original Series Creator" ||
-                  c.job === "Author"),
+                c.job === "Characters" ||
+                c.job === "Comic Book" ||
+                c.job === "Novel" ||
+                c.job === "Graphic Novel" ||
+                c.job === "Short Story" ||
+                c.job === "Original Story" ||
+                c.job === "Original Series Creator" ||
+                c.job === "Author",
             ),
           ).slice(0, 6),
           cast,
