@@ -160,13 +160,7 @@ const Pane = ({
         verify: recommendations.length > 0,
         content:
           recommendations.length > 0 ? (
-            <ul
-              className={`${
-                isMobileOnly
-                  ? "grid grid-cols-2"
-                  : "flex flex-row flex-wrap justify-between"
-              } gap-x-4 gap-y-3 lg:gap-y-0`}
-            >
+            <ul className="flex flex-row flex-wrap justify-between gap-x-4 gap-y-3 lg:gap-x-4 lg:gap-y-0">
               {recommendations.slice(0, isMobileOnly ? 4 : 6).map((r) => (
                 <li
                   key={r.id}
