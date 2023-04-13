@@ -10,7 +10,11 @@ const ReadingTime = ({ children }) => (
     ) : (
       <IoTimeOutline className="h-4 lg:h-14" />
     )}
-    <p className={"font-bold lg:font-light ml-1.5 text-xs lg:text-sm"}>
+    <p
+      className={`${
+        isMobileOnly ? "font-bold" : "font-light"
+      } ml-1.5 text-xs lg:text-sm`}
+    >
       {formatTime(children)}
     </p>
   </div>

@@ -25,7 +25,7 @@ const Collection = ({ movie_title, belongs_to_collection }) =>
             </p>
           </div>
 
-          <ul className="flex flex-row flex-wrap font-extralight text-sm justify-left">
+          <ul className="flex flex-row flex-wrap font-extralight text-xs lg:text-sm justify-left">
             <span className="mr-1">Comprend</span>
             {belongs_to_collection.parts
               .sort(

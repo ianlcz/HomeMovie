@@ -113,13 +113,7 @@ const HeadBand = ({
                 : "lg:my-4"
             }`}
           >
-            {genres && isMobileOnly ? (
-              <div>
-                <GenreHeadBand genres={genres} runtime={runtime} />
-              </div>
-            ) : (
-              <GenreHeadBand genres={genres} runtime={runtime} />
-            )}
+            {genres && <GenreHeadBand genres={genres} runtime={runtime} />}
           </div>
 
           <TechnicalTeamSection title="Un film de" content={directors} />

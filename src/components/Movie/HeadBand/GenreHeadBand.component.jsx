@@ -3,7 +3,7 @@ import { isMobileOnly } from "react-device-detect";
 import ReadingTime from "./ReadingTime.component";
 
 const GenreHeadBand = ({ genres, runtime }) => (
-  <>
+  <div className="flex flex-col lg:flex-row items-center justify-center">
     <ul className="flex flex-row mb-1.5 lg:mb-0 font-light">
       {genres.map((g, index) => (
         <li key={g.name} className="ml-1">
@@ -19,13 +19,13 @@ const GenreHeadBand = ({ genres, runtime }) => (
       <>
         {genres.length > 0 ? (
           isMobileOnly ? undefined : (
-            <p className="mx-2">&bull;</p>
+            <p className="mx-2 hidden lg:block">&bull;</p>
           )
         ) : undefined}
         <ReadingTime>{runtime}</ReadingTime>
       </>
     ) : undefined}
-  </>
+  </div>
 );
 
 export default GenreHeadBand;
