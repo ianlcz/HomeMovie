@@ -29,7 +29,7 @@ const Score = ({
         </tr>
       </thead>
       <tbody>
-        <tr className="text-xs lg:text-sm text-blue-700 dark:text-blue-600">
+        <tr className="text-sm text-blue-700 dark:text-blue-600">
           {vote_average > 0 ? (
             <td
               className={`flex flex-row w-max mx-auto font-light ${
