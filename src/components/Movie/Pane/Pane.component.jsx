@@ -131,7 +131,7 @@ const Pane = ({
           ) : (
             <div className="flex flex-row items-center justify-center text-blue-600">
               <IoInformationCircle size={"20px"} />
-              <p className="ml-1 font-light text-sm">
+              <p className="ml-1 font-light text-xs lg:text-sm">
                 Aucune distribution est disponible pour l'instant
               </p>
             </div>
@@ -160,11 +160,11 @@ const Pane = ({
         verify: recommendations.length > 0,
         content:
           recommendations.length > 0 ? (
-            <ul className="flex flex-row flex-wrap justify-between gap-y-3 lg:gap-x-4 lg:gap-y-0">
+            <ul className={"flex flex-row flex-wrap justify-between gap-x-0 gap-y-4 lg:gap-x-4 lg:gap-y-0"}>
               {recommendations.slice(0, isMobileOnly ? 4 : 6).map((r) => (
                 <li
                   key={r.id}
-                  className="hover:scale-110 lg:hover:scale-125 duration-700 ease-in-out w-[172px] lg:w-[194px] 2xl:w-[280px]"
+                  className="hover:scale-110 lg:hover:scale-125 duration-700 ease-in-out w-[48%] lg:w-[14.5%]"
                 >
                   <a
                     href={`/movies/${encodeSlug(r.title)}/${String(
@@ -179,7 +179,7 @@ const Pane = ({
                     />
 
                     {r.vote_average ? (
-                      <div className="flex flex-row items-start justify-evenly mt-2 text-sm">
+                      <div className="flex flex-row items-start justify-evenly mt-2 text-xs lg:text-sm">
                         <h3 className="font-medium truncate">
                           {r.title ? r.title : r.original_title}
                         </h3>

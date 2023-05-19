@@ -63,7 +63,7 @@ const SearchBar = () => {
             <select
               value={code}
               onChange={(e) => setCode(e.target.value)}
-              className="w-max mx-auto px-4 py-1 text-sm text-blue-400 appearance-none focus:outline-none focus:ring-2 focus:dark:ring-1 focus:ring-blue-500 bg-white dark:bg-slate-800 rounded-md border border-blue-500 transition duration-700 ease-in-out"
+              className="w-max mx-auto px-4 py-1 text-xs lg:text-sm text-blue-400 appearance-none focus:outline-none focus:ring-2 focus:dark:ring-1 focus:ring-blue-500 bg-white dark:bg-slate-800 rounded-md border border-blue-500 transition duration-700 ease-in-out"
             >
               <option value={0}>Filtrer</option>
               <option value={1}>Vu</option>

@@ -85,7 +85,7 @@ const HeadBand = ({
 
           {original_title.toLowerCase() !==
           title.replace(" : ", ": ").replace(" ! ", "! ").toLowerCase() ? (
-            <p className="mt-2 text-sm italic text-white/90 text-center">
+            <p className="mt-2 text-xs lg:text-sm italic text-white/90 text-center">
               {original_title}
             </p>
           ) : undefined}
@@ -113,19 +113,13 @@ const HeadBand = ({
                 : "lg:my-4"
             }`}
           >
-            {genres && isMobileOnly ? (
-              <div>
-                <GenreHeadBand genres={genres} runtime={runtime} />
-              </div>
-            ) : (
-              <GenreHeadBand genres={genres} runtime={runtime} />
-            )}
+            {genres && <GenreHeadBand genres={genres} runtime={runtime} />}
           </div>
 
           <TechnicalTeamSection title="Un film de" content={directors} />
 
           {tagline ? (
-            <p className="text-blue-200 font-light lg:font-extralight text-sm">
+            <p className="text-blue-200 font-light lg:font-extralight text-xs lg:text-sm">
               {tagline}
             </p>
           ) : undefined}
@@ -135,7 +129,7 @@ const HeadBand = ({
               <h2 className="text-center lg:text-left text-xl mt-2 mb-2 font-medium">
                 Synopsis
               </h2>
-              <p className="leading-snug font-light text-sm lg:text-base text-justify">
+              <p className="leading-snug font-light text-xs lg:text-base text-justify">
                 {overview}
               </p>
             </>

@@ -25,7 +25,9 @@ const Actions = ({ children }) => {
             className="flex items-center w-max mx-auto lg:mx-0 px-2 py-1 text-green-600 hover:text-green-50 border border-green-500 hover:border-green-400 bg-green-50 hover:bg-green-400 rounded-full shadow transition-all duration-300 ease-in-out"
           >
             <IoAddCircle className="w-5 h-5" />
-            <span className="ml-2 text-sm">Ajouter un nouveau film</span>
+            <span className="ml-2 text-xs lg:text-sm">
+              Ajouter un nouveau film
+            </span>
           </a>
 
           <button
@@ -36,7 +38,7 @@ const Actions = ({ children }) => {
             className="flex items-center w-max mx-auto lg:mx-0 mt-0 px-2 py-1 text-blue-50 bg-gradient-to-br from-blue-800 to-blue-400 border-2 border-blue-50 hover:border-blue-300 rounded-full shadow-inner transition-all duration-500 ease-in-out"
           >
             <IoExit className="w-5 h-5" />
-            <span className="ml-2 text-sm">Me déconnecter</span>
+            <span className="ml-2 text-xs lg:text-sm">Me déconnecter</span>
           </button>
         </div>
       ) : (

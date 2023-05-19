@@ -93,7 +93,7 @@ const Pane = ({ movies, gender }) => {
           key={index}
           className="flex flex-col lg:flex-row mb-6 first:mt-4 last:mb-8"
         >
-          <p className="flex items-center justify-center py-2 lg:py-0 lg:w-1/5 rounded-t-xl lg:rounded-t-none lg:rounded-l-xl font-bold bg-gradient-to-br from-blue-800 to-blue-400 text-white shadow">
+          <p className="flex items-center justify-center py-2 lg:py-0 lg:w-1/5 rounded-t-xl rounded-s-none lg:rounded-s-xl lg:rounded-tr-none font-bold bg-gradient-to-br from-blue-800 to-blue-400 text-white shadow">
             {i.year}
           </p>
 
@@ -137,7 +137,7 @@ const Pane = ({ movies, gender }) => {
                     ) : undefined}
                   </div>
                   {m.character ? (
-                    <div className="flex flex-row text-sm font-extralight">
+                    <div className="flex flex-row text-xs lg:text-sm font-extralight">
                       <span className="mr-1 lg:mr-1 font-normal">
                         incarnant
                       </span>
@@ -149,7 +149,7 @@ const Pane = ({ movies, gender }) => {
                     </div>
                   ) : undefined}
                   {m.job ? (
-                    <p className="text-sm font-light">
+                    <p className="text-xs lg:text-sm font-light">
                       {traductions.filter((t) =>
                         m.job ? t.en === m.job : undefined,
                       )[0]

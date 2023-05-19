@@ -19,14 +19,14 @@ const Suggestions = ({ result }) => {
       ) : isLoading ? (
         <div className="flex items-center w-max mx-auto mt-72">
           <IoSyncCircle className="animate-spin w-6 mr-2 h-6 text-blue-600" />
-          <p className="text-blue-600 text-sm font-semibold">
+          <p className="text-blue-600 text-xs lg:text-sm font-semibold">
             Récupération de vos films...
           </p>
         </div>
       ) : (
         <div className="flex items-center w-max mx-auto mt-60">
           <IoInformationCircle className="w-6 mr-2 h-6 text-blue-600" />
-          <p className="text-blue-600 text-sm font-semibold">
+          <p className="text-blue-600 text-xs lg:text-sm font-semibold">
             {`Nous n'avons pas trouvé de films !`}
           </p>
         </div>

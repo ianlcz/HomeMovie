@@ -25,7 +25,7 @@ const TechnicalTeamSection = ({ title, content }) =>
                     className="mr-2 rounded-full w-7 h-7 object-cover shadow-md"
                   />
                 ) : undefined}
-                <p className="text-sm">
+                <p className="text-xs lg:text-sm">
                   <span className="font-light">
                     {formatName(c.name).firstname}
                   </span>

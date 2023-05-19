@@ -52,7 +52,7 @@ const Login = () => {
             <div className="w-max mx-auto">
               <button
                 type="submit"
-                className="mt-4 mb-6 px-4 text-sm py-1 bg-gradient-to-tr from-blue-800 to-blue-400 hover:from-blue-400 hover:to-blue-800 font-medium text-blue-50 rounded-full"
+                className="mt-4 mb-6 px-4 text-xs lg:text-sm py-1 bg-gradient-to-tr from-blue-800 to-blue-400 hover:from-blue-400 hover:to-blue-800 font-medium text-blue-50 rounded-full"
               >
                 Accéder à ma collection
               </button>

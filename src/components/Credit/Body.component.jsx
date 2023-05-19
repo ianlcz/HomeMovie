@@ -49,7 +49,7 @@ const Body = ({
                   alt={`Affiche du film : ${m.title}`}
                   className="w-full object-cover rounded-xl shadow-xl"
                 />
-                <p className="w-full mx-auto mt-2 px-4 truncate text-center text-sm font-medium text-white bg-gradient-to-br from-blue-800 to-blue-400 rounded-full">
+                <p className="w-full mx-auto mt-2 px-4 truncate text-center text-xs lg:text-sm font-medium text-white bg-gradient-to-br from-blue-800 to-blue-400 rounded-full">
                   {m.character}
                 </p>
               </a>
