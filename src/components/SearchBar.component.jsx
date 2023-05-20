@@ -12,6 +12,8 @@ const SearchBar = () => {
   const [result, setResult] = useState([]);
   const [userInput, setUserInput] = useState("");
   const [code, setCode] = useState(0);
+  //navbar scroll when active state
+  const [navbar, setNavbar] = useState(false);
 
   useEffect(() => {
     if (userInput !== "" || code != 0) {
@@ -40,40 +42,58 @@ const SearchBar = () => {
     }
   }, [userInput, movies, code]);
 
+  //navbar scroll changeBackground function
+  const changeBackground = () => {
+    console.log(window.scrollY);
+    if (window.scrollY >= 2) {
+      setNavbar(true);
+    } else {
+      setNavbar(false);
+    }
+  };
+
+  useEffect(() => {
+    changeBackground();
+    // adding the event when scroll change background
+    window.addEventListener("scroll", changeBackground);
+  });
+
   return (
     <>
-      <div className="flex justify-center">
-        <div className="flex flex-col w-[96%] items-center mb-0 py-4 lg:pt-5 bottom-0 bg-blue-600/60 shadow-lg backdrop-filter backdrop-blur-2xl rounded-t-2xl z-30 fixed">
-          <h1 className="text-2xl text-blue-50 mr-2 uppercase">
-            <span className="font-bold">Home</span>
-            <span className="font-thin">Movie</span>
-          </h1>
+      <div
+        className={`flex flex-col lg:flex-row w-full items-center lg:justify-around top-0 py-2 ${
+          navbar ? "bg-blue-800/70 dark:bg-blue-800/60" : "bg-blue-800"
+        } shadow-lg backdrop-filter backdrop-blur-xl rounded-b-xl lg:rounded-none z-30 fixed`}
+      >
+        <h1 className="text-2xl text-blue-50 uppercase">
+          <span className="font-bold">Home</span>
+          <span className="font-thin">Movie</span>
+        </h1>
 
-          <div className="flex flex-col lg:flex-row items-center w-full lg:w-4/5 mx-auto mt-6 mb-3 justify-evenly">
-            <Actions />
+        <div className="flex flex-row items-center justify-evenly w-full lg:w-2/5 my-3 lg:my-0">
+          <input
+            type="text"
+            value={userInput}
+            onChange={(e) => setUserInput(e.target.value)}
+            placeholder="Rechercher un film ou une référence"
+            className="w-3/5 lg:w-[70%] px-4 py-1 focus:outline-none focus:ring-2 focus:dark:ring-1 focus:ring-blue-500 border border-blue-500 text-blue-500 bg-white dark:bg-slate-800 text-xs lg:text-base rounded-full shadow-inner placeholder-blue-400 transition duration-700 ease-in-out"
+          />
 
-            <input
-              type="text"
-              value={userInput}
-              onChange={(e) => setUserInput(e.target.value)}
-              placeholder="Rechercher un film ou une référence"
-              className="w-[92%] lg:w-5/6 lg:mr-10 mt-4 mb-4 lg:mt-0 lg:mb-0 lg:ml-10 pl-6 h-12 focus:outline-none focus:ring-2 focus:dark:ring-1 focus:ring-blue-500 border border-blue-500 text-blue-500 bg-white dark:bg-slate-800 text-sm lg:text-base rounded-full shadow-inner placeholder-blue-400 transition duration-700 ease-in-out"
-            />
-
-            <select
-              value={code}
-              onChange={(e) => setCode(e.target.value)}
-              className="w-max mx-auto px-4 py-1 text-xs lg:text-sm text-blue-400 appearance-none focus:outline-none focus:ring-2 focus:dark:ring-1 focus:ring-blue-500 bg-white dark:bg-slate-800 rounded-md border border-blue-500 transition duration-700 ease-in-out"
-            >
-              <option value={0}>Filtrer</option>
-              <option value={1}>Vu</option>
-              <option value={3}>Vu au cinéma</option>
-              <option value={6}>Vu en streaming</option>
-              <option value={4}>Pas vu</option>
-              <option value={5}>Souhait</option>
-            </select>
-          </div>
+          <select
+            value={code}
+            onChange={(e) => setCode(e.target.value)}
+            className="px-4 py-1 text-xs lg:text-sm text-blue-400 appearance-none focus:outline-none focus:ring-2 focus:dark:ring-1 focus:ring-blue-500 bg-white dark:bg-slate-800 rounded-md border border-blue-500 transition duration-700 ease-in-out"
+          >
+            <option value={0}>Filtrer</option>
+            <option value={1}>Vu</option>
+            <option value={3}>Vu au cinéma</option>
+            <option value={6}>Vu en streaming</option>
+            <option value={4}>Pas vu</option>
+            <option value={5}>Souhait</option>
+          </select>
         </div>
+
+        <Actions />
       </div>
 
       <Suggestions result={result} />

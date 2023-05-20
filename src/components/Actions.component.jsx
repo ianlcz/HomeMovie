@@ -19,12 +19,12 @@ const Actions = ({ children }) => {
   return (
     <>
       {!children ? (
-        <div className="flex flex-row items-center lg:justify-around w-full lg:w-4/5 lg:mx-auto">
+        <div className="flex flex-row items-center justify-around w-full lg:w-[28%]">
           <a
             href="/movies/new"
-            className="flex items-center w-max mx-auto lg:mx-0 px-2 py-1 text-green-600 hover:text-green-50 border border-green-500 hover:border-green-400 bg-green-50 hover:bg-green-400 rounded-full shadow transition-all duration-300 ease-in-out"
+            className="flex items-center w-max px-2 py-1 text-green-600 hover:text-green-50 border border-green-500 hover:border-green-400 bg-green-50 hover:bg-green-400 rounded-full shadow transition-all duration-300 ease-in-out"
           >
-            <IoAddCircle className="w-5 h-5" />
+            <IoAddCircle className="lg:w-5 lg:h-5" />
             <span className="ml-2 text-xs lg:text-sm">
               Ajouter un nouveau film
             </span>
@@ -35,9 +35,9 @@ const Actions = ({ children }) => {
               logout();
               window.location.reload(false);
             }}
-            className="flex items-center w-max mx-auto lg:mx-0 mt-0 px-2 py-1 text-blue-50 bg-gradient-to-br from-blue-800 to-blue-400 border-2 border-blue-50 hover:border-blue-300 rounded-full shadow-inner transition-all duration-500 ease-in-out"
+            className="flex items-center w-max mt-0 px-2 py-1 text-blue-50 bg-gradient-to-br from-blue-800 to-blue-400 border-2 border-blue-50 hover:border-blue-300 rounded-full shadow-inner transition-all duration-500 ease-in-out"
           >
-            <IoExit className="w-5 h-5" />
+            <IoExit className="lg:w-5 lg:h-5" />
             <span className="ml-2 text-xs lg:text-sm">Me déconnecter</span>
           </button>
         </div>

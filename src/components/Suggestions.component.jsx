@@ -7,7 +7,7 @@ const Suggestions = ({ result }) => {
   const { isLoading } = useContext(AuthContext);
 
   return (
-    <div className="mt-6 mb-[18rem] lg:mb-[178px]">
+    <div className="mt-[8.4em] lg:mt-14">
       {result.length > 0 ? (
         <>
           <ul className=" w-11/12 mx-auto grid grid-flow-cols grid-cols-1 lg:grid-cols-3 lg:gap-x-20 gap-y-3 lg:gap-y-6 items-center">
