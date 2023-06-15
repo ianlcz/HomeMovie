@@ -66,7 +66,7 @@ const HeadBand = ({
           ) : undefined}
         </div>
 
-        <div className="flex flex-col w-full lg:w-3/5 mt-6 lg:mt-0">
+        <div className="flex flex-col w-full lg:w-[66%] mt-6 lg:mt-0">
           {ref && new Date(release_date).getTime() < new Date().getTime() ? (
             <p className="w-fit mx-auto mb-2 px-2 py-0.5 text-xs text-center font-medium rounded-full shadow bg-gradient-to-tr from-blue-800/90 to-blue-400/80">
               {movieRef}
